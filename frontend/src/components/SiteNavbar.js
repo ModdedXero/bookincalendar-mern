@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function SiteNavbar({ children }) {
+    const [isNavCollapsed, setIsNavCollapsed] = useState(true)
     const { currentUser } = useAuth();
+
+    const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
 
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary" style={{ zIndex: "99" }}>
                 <a className="navbar-brand" href="/">Booking</a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded={!isNavCollapsed ? true : false} aria-label="Toggle navigation" onClick={handleNavCollapse}>
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
-                <div className="collapse navbar-collapse" id="navbarColor01">
+                <div className={isNavCollapsed ? "collapse navbar-collapse" : "navbar-collapse"} id="navbarColor01">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
                             <a className="nav-link" href="/">Home</a>
@@ -31,7 +34,7 @@ export default function SiteNavbar({ children }) {
                     <form class="form-inline my-2 my-lg-0">
                         {currentUser == null ?
                         <Link to="/login" className="btn btn-info my-2 my-sm-0">Login</Link> :
-                        <Link to="/dashboard" className="btn btn-info my-2 my-sm-0">Dashboard</Link>}
+                        <Link to="/calendar" className="btn btn-info my-2 my-sm-0">Admin Page</Link>}
                     </form>
                 </div>
             </nav>

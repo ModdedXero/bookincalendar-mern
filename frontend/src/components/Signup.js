@@ -35,7 +35,7 @@ export default function Signup() {
     return (
         <div className="backdrop">
             <form className="login-form center" onSubmit={handleSubmit}>
-                <h1>Login</h1>
+                <h1>Sign Up</h1>
                 {error && <div className="alert alert-danger">
                     <strong>{error}</strong>
                 </div>}

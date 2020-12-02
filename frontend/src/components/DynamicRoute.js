@@ -1,20 +1,24 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 
 import SiteNavbar from "./SiteNavbar";
 import ProfileNavbar from "./ProfileNavbar";
+import { useAuth } from "../contexts/AuthContext";
 
-export default function DynamicRoute({ component: Component, layout, ...rest }) {
-    // render actual Route from react-router
+export default function DynamicRoute({ component: Component, layout, secure, ...rest }) {
+  const { currentUser } = useAuth();
+  
     const actualRouteComponent = (
-        <Route {...rest} render={props => {
-            <Component {...props} />
-        }}>
-
-        </Route>
+      secure ?
+      <Route {...rest} layout render={props => (
+        currentUser ? <Component {...props} /> : <Redirect to="/login" />
+      )} />
+      :
+      <Route {...rest} layout render={props => (
+        <Component {...props} />
+      )} />
     );
   
-    // depends on the layout, you can wrap Route component in different layouts
     switch (layout) {
       case "SITE": {
         return (
@@ -32,10 +36,10 @@ export default function DynamicRoute({ component: Component, layout, ...rest }) 
       }
       default: {
         return (
-          <SiteNavbar>
+          <>
             {actualRouteComponent}
-          </SiteNavbar>
+          </>
         )
       }
     }
-  };
+};
