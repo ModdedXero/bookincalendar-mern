@@ -231,7 +231,9 @@
 .calendar-event {
   width: 95%;
   text-align: center;
-  background: orange;
+  color: white;
+  border: none;
+  background: #2980b9;
   cursor: pointer;
   transition: .15s ease-out;
 }
@@ -239,4 +241,8 @@
 .calendar-event:hover {
   transform: scale(1.25);
   transition: .25s ease-out;
+  border: 2px solid black;
+  z-index: 20;
+  width: 80%;
+  margin: 5px 5px;
 }

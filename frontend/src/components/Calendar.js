@@ -71,11 +71,12 @@ export default function Calendar() {
             >
               <span className="calendar-number">{formattedDate}</span>
               <span className="calendar-bg">{formattedDate}</span>
+              {isSameDay(day, new Date()) && 
               <ul className="calendar-event-list">
                 <li className="calendar-event">YoYo</li>
                 <li className="calendar-event">YoYo</li>
                 <li className="calendar-event">YoYo</li>
-              </ul>
+              </ul>}
             </div>
           );
           day = addDays(day, 1);
