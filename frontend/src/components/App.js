@@ -3,6 +3,7 @@ import { AuthProvider } from "../contexts/AuthContext";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 
 import DynamicRoute from "./DynamicRoute";
+
 import Home from "./Home";
 import Login from "./Login";
 import Signup from "./Signup";
