@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { format, subMonths, startOfWeek, endOfWeek, addDays, startOfMonth, endOfMonth, isSameMonth, addMonths, isSameDay } from "date-fns";
 import "../styles/calendar.css";
+import Modal from "./Modal";
 
 export default function Calendar() {
     const [currentMonth, setCurrentMonth] = useState(new Date());
-    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     function renderHeader() {
       const dateFormat = "MMMM yyyy";
@@ -63,19 +64,16 @@ export default function Calendar() {
       while (day <= endDate) {
         for (let i = 0; i < 7; i++) {
           formattedDate = format(day, dateFormat);
-          const cloneDay = day;
           days.push(
             <div className={`calendar-grid-col calendar-cell ${!isSameMonth(day, monthStart) ? "disabled" : ""} ${isSameDay(day, new Date()) ? "selected" : ""}`}
               key={day}
-              onClick={ () => onDateClick(cloneDay)}
             >
               <span className="calendar-number">{formattedDate}</span>
               <span className="calendar-bg">{formattedDate}</span>
               {isSameDay(day, new Date()) && 
               <ul className="calendar-event-list">
-                <li className="calendar-event">YoYo</li>
-                <li className="calendar-event">YoYo</li>
-                <li className="calendar-event">YoYo</li>
+                <li className="calendar-event" onClick={() => setIsModalOpen(true)}>YoYo</li>
+                <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)}>WoW</Modal>
               </ul>}
             </div>
           );
@@ -90,10 +88,6 @@ export default function Calendar() {
       }
 
       return <div className="calendar-body">{rows}</div>
-    }
-
-    const onDateClick = day => {
-      setSelectedDate(day);
     }
 
     const nextMonth = () => {
