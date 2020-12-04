@@ -10,7 +10,7 @@ const path = require("path");
 const loginRouter = require("./routes/login");
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
@@ -23,9 +23,9 @@ connection.once("open", () => {
     console.log("MongoDB database connection established");
 })
 
-app.get("/*", (req, res) => {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
-})
+// app.get("/*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "build", "index.html"));
+// })
 
 app.use("/login", loginRouter);
 

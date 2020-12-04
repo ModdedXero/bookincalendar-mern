@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
 import { useAuth } from "../contexts/AuthContext";
 
 import "../styles/form.css"
@@ -24,9 +25,10 @@ export default function Signup() {
             setError("");
             setLoading(true);
             await signup(emailRef.current.value, passwordRef.current.value);
+            // Send server email to create user
             history.push("/");
-        } catch {
-            setError("Failed to create and account");
+        } catch (err) {
+            setError(err);
         }
 
         setLoading(false);

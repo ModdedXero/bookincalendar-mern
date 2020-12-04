@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function ProfileNavbar({ children }) {
@@ -24,7 +24,7 @@ export default function ProfileNavbar({ children }) {
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary" style={{ zIndex: "99" }}>
-                <a className="navbar-brand" href="/">Admin Page</a>
+                <Link className="navbar-brand" to="/">Admin Page</Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded={!isNavCollapsed ? true : false} aria-label="Toggle navigation" onClick={handleNavCollapse}>
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -32,13 +32,13 @@ export default function ProfileNavbar({ children }) {
                 <div className={isNavCollapsed ? "collapse navbar-collapse" : "navbar-collapse"} id="navbarColor01">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
-                            <a className="nav-link" href="/calendar">Calendar</a>
+                            <Link className="nav-link" to="/calendar">Calendar</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/setup">Setup</a>
+                            <Link className="nav-link" to="/setup">Setup</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/profile">Profile</a>
+                            <Link className="nav-link" to="/profile">Profile</Link>
                         </li>
                     </ul>
                     <form className="form-inline my-2 my-lg-0">

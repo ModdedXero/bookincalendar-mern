@@ -1,13 +1,19 @@
 const mongoose = require("mongoose");
+const shortid = require("shortid");
 
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    email: {
+    firebaseID: {
         type: String,
         required: true,
         unique: true
     },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    }
 }, {
     timestamps: true
 })

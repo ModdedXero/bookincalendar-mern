@@ -9,15 +9,21 @@ router.route("/").get((req, res) => [
 ])
 
 router.route("/add").post((req, res) => {
-    const id = req.body.id;
-    const email = req.body.email;
-    const userId = mongoose.Types.ObjectId("id");
-    const newUser = new User({email});
-    newUser._id = userId;
-
-    newUser.save()
-        .then(() => res.json("User Created!"))
-        .catch(err => res.status(400).json(`Error: ${err}`))
+    // Take email sent by signup and create a user in Mongo, use firebase-admin to get the UID from the web portal
+    User.findOne({"firebaseID": req.body.firebaseID}, (err, user) => {
+        if (user) {
+            console.log("(DIS) User already exists: " + user.email);
+        } else {
+            const firebaseID = req.body.firebaseID;
+            const email = req.body.email;
+        
+            const newUser = new User({ firebaseID, email });
+        
+            newUser.save()
+                .then(() => res.json("User Created!"))
+                .catch(err => res.status(400).json(`Error: ${err}`))
+        }
+    })
 })
 
 module.exports = router;
