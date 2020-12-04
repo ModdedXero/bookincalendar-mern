@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "./Modal";
 
-export default function CalendarEvent({ children, onSelected }) {
+export default function CalendarEvent({ eventData }) {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const toggleModal = () => {
+        setIsModalOpen(!isModalOpen);
+    }
+
     return (
-        <div>
-            
-        </div>
+        <li className="calendar-event" onClick={toggleModal}>
+            YoYo
+            <Modal open={isModalOpen} onClose={toggleModal}>WoW</Modal>
+        </li>
     )
 }

@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { format, subMonths, startOfWeek, endOfWeek, addDays, startOfMonth, endOfMonth, isSameMonth, addMonths, isSameDay } from "date-fns";
+import CalendarEvent from "./CalendarEvent";
 import "../styles/calendar.css";
-import Modal from "./Modal";
 
 export default function Calendar() {
     const [currentMonth, setCurrentMonth] = useState(new Date());
-    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const getEventData = (date) => {
+      
+    }
 
     function renderHeader() {
       const dateFormat = "MMMM yyyy";
@@ -72,8 +75,7 @@ export default function Calendar() {
               <span className="calendar-bg">{formattedDate}</span>
               {isSameDay(day, new Date()) && 
               <ul className="calendar-event-list">
-                <li className="calendar-event" onClick={() => setIsModalOpen(true)}>YoYo</li>
-                <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)}>WoW</Modal>
+                <CalendarEvent eventData={getEventData(day)} />
               </ul>}
             </div>
           );
