@@ -7,6 +7,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const path = require("path");
 
+const loginRouter = require("./routes/login");
+
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -24,6 +26,8 @@ connection.once("open", () => {
 app.get("/*", (req, res) => {
     res.sendFile(path.join(__dirname, "build", "index.html"));
 })
+
+app.use("/login", loginRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

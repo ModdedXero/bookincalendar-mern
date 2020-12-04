@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
 import { useAuth } from "../contexts/AuthContext";
 
 import "../styles/form.css"
@@ -7,7 +8,7 @@ import "../styles/form.css"
 export default function Login() {
     const emailRef = useRef();
     const passwordRef = useRef();
-    const { login } = useAuth();
+    const { currentUser, login } = useAuth();
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const history = useHistory();
@@ -19,11 +20,21 @@ export default function Login() {
             setError("");
             setLoading(true);
             await login(emailRef.current.value, passwordRef.current.value);
-            history.push("/calendar");
+
+            if (!error) {
+                const user = {
+                    id: currentUser.id,
+                    email: emailRef.current.value
+                }
+    
+                axios.post("http://localhost:3000/login/add", user)
+                    .then(res => console.log(res.data))
+            }       
+
+            //history.push("/calendar");
         } catch {
             setError("Failed to sign in");
         }
-
         setLoading(false);
     }
 
