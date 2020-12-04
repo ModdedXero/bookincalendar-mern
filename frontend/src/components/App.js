@@ -5,9 +5,9 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 import DynamicRoute from "./DynamicRoute";
 
 import Home from "./Home";
-import Login from "./Login";
-import Signup from "./Signup";
-import ForgotPassword from "./ForgotPassword";
+import Login from "./Login/Login";
+import Signup from "./Login/Signup";
+import ForgotPassword from "./Login/ForgotPassword";
 import Calendar from "./Calendar";
 import Setup from "./Setup";
 import Profile from "./Profile";

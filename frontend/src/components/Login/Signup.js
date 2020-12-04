@@ -25,7 +25,13 @@ export default function Signup() {
             setError("");
             setLoading(true);
             await signup(emailRef.current.value, passwordRef.current.value);
-            // Send server email to create user
+            
+            const email = emailRef.current.value;
+            
+            // Send User Data to Server for Creating DB User
+            axios.post("http://localhost:5000/login/add", { email } )
+                .then((res) => console.log(res.data))
+
             history.push("/");
         } catch (err) {
             setError(err);
