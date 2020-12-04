@@ -15,7 +15,7 @@ import "../styles/flatly.css";
 
 function App() {
   return (
-    <AuthProvider>
+      <AuthProvider>
         <Router>
           <Switch>
             <DynamicRoute exact path="/" layout="SITE" component={Home} />
