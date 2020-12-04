@@ -9,6 +9,8 @@ import Login from "./Login";
 import Signup from "./Signup";
 import ForgotPassword from "./ForgotPassword";
 import Calendar from "./Calendar";
+import Setup from "./Setup";
+import Profile from "./Profile";
 import "../styles/flatly.css";
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
             <DynamicRoute path="/signup" layout="SITE" component={Signup} />
             <DynamicRoute path="/forgot-password" layout="SITE" component={ForgotPassword} />
             <DynamicRoute path="/calendar" layout="PROFILE" secure component={Calendar} />
+            <DynamicRoute path="/setup" layout="PROFILE" secure component={Setup} />
+            <DynamicRoute path="/profile" layout="PROFILE" secure component={Profile} />
           </Switch>
         </Router>
       </AuthProvider>

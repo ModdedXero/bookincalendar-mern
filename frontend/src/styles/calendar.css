@@ -241,7 +241,7 @@
 .calendar-event:hover {
   transform: scale(1.25);
   transition: .25s ease-out;
-  border: 2px solid black;
+  border: 1px solid black;
   z-index: 20;
   width: 80%;
   margin: 5px 5px;

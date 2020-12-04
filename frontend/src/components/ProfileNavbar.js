@@ -35,10 +35,10 @@ export default function ProfileNavbar({ children }) {
                             <a className="nav-link" href="/calendar">Calendar</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Notifications</a>
+                            <a className="nav-link" href="/setup">Setup</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Profile</a>
+                            <a className="nav-link" href="/profile">Profile</a>
                         </li>
                     </ul>
                     <form className="form-inline my-2 my-lg-0">
