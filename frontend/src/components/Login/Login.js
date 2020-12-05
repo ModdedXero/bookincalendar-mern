@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 
-import "../styles/form.css"
+import "../../styles/form.css"
 
 export default function Login() {
     const emailRef = useRef();

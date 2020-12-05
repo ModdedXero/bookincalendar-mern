@@ -12,13 +12,6 @@
     background: linear-gradient(120deg, #2980b9, #8e44ad);
 }
 
-.login-form {
-    width: 400px;
-    background: white;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
 .center {
     top: 50%;
     left: 50%;
@@ -26,13 +19,30 @@
     transform: translate(-50%, -50%);
 }
 
+.alert {
+    margin: 0px 20px;
+    text-align: center;
+}
+
+.form-link {
+    text-align: center;
+}
+
+
+/* Login Form */
+
+.login-form {
+    width: 400px;
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
 .login-form h1 {
     margin: 20px;
     text-align: center;
     padding: 0 0 20px 0;
     border-bottom: 1px solid silver;
 }
-
 .login-form .form-group {
     padding: 0 40px;
     box-sizing: border-box;
@@ -41,10 +51,12 @@
     margin: 30px 20px 20px;
     width: 90%;
 }
-.form-link {
-    text-align: center;
-}
-.alert {
-    margin: 0px 20px;
-    text-align: center;
+
+/* Component Form */
+
+.component-form {
+    background: white;
+    border-radius: 10px;
+    width: fit-content;
+    height: fit-content;
 }

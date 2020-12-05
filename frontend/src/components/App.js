@@ -8,7 +8,7 @@ import Home from "./Home";
 import Login from "./Login/Login";
 import Signup from "./Login/Signup";
 import ForgotPassword from "./Login/ForgotPassword";
-import Calendar from "./Calendar";
+import Calendar from "./Calendar/Calendar";
 import Setup from "./Setup";
 import Profile from "./Profile";
 import "../styles/flatly.css";
