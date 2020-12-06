@@ -12,17 +12,9 @@ export default function Calendar() {
 
     useEffect(() => {
       axios.get("http://localhost:5000/calendar/events/" + currentUser.uid)
-      .then(res => setEvents(res.data))
+      .then(res => { console.log(res.data); setEvents(res.data) })
       .catch((err) => { console.log(err) })
     }, [])
-
-    // TODO: Remove this example
-    // const newEvent = {
-    //   eventName: "Test Yo",
-    //   eventDate: new Date()
-    // }
-    // axios.post(`http://localhost:5000/calendar/events/${currentUser.uid}/add`, newEvent)
-    //   .then((res) => console.log(res.data))
 
     function renderHeader() {
       const dateFormat = "MMMM yyyy";

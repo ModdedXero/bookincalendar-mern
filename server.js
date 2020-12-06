@@ -7,9 +7,6 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const path = require("path");
 
-const loginRouter = require("./routes/login");
-const calenadarRouter = require("./routes/calendar");
-
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -29,12 +26,15 @@ connection.once("open", () => {
     console.log("MongoDB database connection established");
 })
 
-app.get("/*", (req, res) => {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
-})
+const loginRouter = require("./routes/login");
+const calenadarRouter = require("./routes/calendar");
 
 app.use("/login", loginRouter);
 app.use("/calendar", calenadarRouter);
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+})
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

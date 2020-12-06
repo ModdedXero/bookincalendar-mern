@@ -40,6 +40,9 @@ export default function CalendarDay({ classInfo, formattedDate, day, events }) {
     }
 
     function renderEvents(date) {
+        if (events.length <= 0) return;
+        console.log(events);
+
         return events.map((event) => {
             return (
                 <>
