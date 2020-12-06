@@ -29,10 +29,10 @@ connection.once("open", () => {
 const loginRouter = require("./routes/login");
 const calenadarRouter = require("./routes/calendar");
 
-app.use("/login", loginRouter);
-app.use("/calendar", calenadarRouter);
+app.use("/a/login", loginRouter);
+app.use("/a/calendar", calenadarRouter);
 
-app.get("*", (req, res) => {
+app.get("/l/*", (req, res) => {
     res.sendFile(path.join(__dirname, "build", "index.html"));
 })
 
