@@ -35,7 +35,7 @@ export default function CalendarDay({ classInfo, formattedDate, day, events }) {
             eventName: eventName.current.value,
             eventDate: selectedDate
         }
-        axios.post(`/calendar/events/${currentUser.uid}/add`, newEvent)
+        axios.post(`${process.env.REACT_APP_HOST_URL}/calendar/events/${currentUser.uid}/add`, newEvent)
         .then((res) => console.log(res.data))
     }
 
