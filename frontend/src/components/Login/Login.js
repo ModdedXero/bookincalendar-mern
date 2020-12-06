@@ -40,11 +40,11 @@ export default function Login() {
                 <div className="form-group">
                     <label>Password</label>
                     <input type="password" className="form-control" ref={passwordRef} placeholder="Password" />
-                    <p className="form-link"><Link to="/forgot-password">Forgot Password?</Link></p>
+                    <p className="form-link"><Link to="/login/forgot-password">Forgot Password?</Link></p>
                 </div>
                 <div>
                     <button className="btn btn-primary btn-lg btn-block" type="submit" disabled={loading}>Login</button>
-                    <p className="form-link">Need an account? <Link to="/signup">Sign Up</Link></p>
+                    <p className="form-link">Need an account? <Link to="/login/signup">Sign Up</Link></p>
                 </div>
             </form>
         </div>

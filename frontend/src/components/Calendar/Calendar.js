@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { format, subMonths, startOfWeek, endOfWeek, addDays, startOfMonth, endOfMonth, isSameMonth, addMonths, isSameDay } from "date-fns";
+import axios from "axios";
 import CalendarEvent from "./CalendarEvent";
+import { useAuth } from "../../contexts/AuthContext";
 import "../../styles/calendar.css";
 
 export default function Calendar() {
+    const { currentUser } = useAuth();
     const [currentMonth, setCurrentMonth] = useState(new Date());
+    const [events, setEvents] = useState([]);
 
-    const getEventData = (date) => {
-      
-    }
+    useEffect(() => {
+      axios.get("http://localhost:5000/calendar/events/" + currentUser.uid)
+      .then(res => setEvents(res.data))
+      .catch((err) => { console.log(err) })
+    }, [])
+
+    // TODO: Remove this example
+    // const newEvent = {
+    //   eventName: "Test Yo",
+    //   eventDate: new Date()
+    // }
+    // axios.post(`http://localhost:5000/calendar/events/${currentUser.uid}/add`, newEvent)
+    //   .then((res) => console.log(res.data))
 
     function renderHeader() {
       const dateFormat = "MMMM yyyy";
@@ -73,10 +87,9 @@ export default function Calendar() {
             >
               <span className="calendar-number">{formattedDate}</span>
               <span className="calendar-bg">{formattedDate}</span>
-              {isSameDay(day, new Date()) && 
               <ul className="calendar-event-list">
-                <CalendarEvent eventData={getEventData(day)} />
-              </ul>}
+                {renderEvents(day)}
+              </ul>
             </div>
           );
           day = addDays(day, 1);
@@ -90,6 +103,17 @@ export default function Calendar() {
       }
 
       return <div className="calendar-body">{rows}</div>
+    }
+
+    function renderEvents(date) {
+      return events.map((event, index) => {
+        return (
+          <>
+            {isSameDay(Date.parse(event.eventDate), date) &&
+            <CalendarEvent key={index} eventData={event} />}
+          </>
+        )
+      })
     }
 
     const nextMonth = () => {

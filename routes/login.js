@@ -1,6 +1,5 @@
 const router = require("express").Router();
-const mongoose = require("mongoose");
-let User = require("../models/user");
+const User = require("../models/user");
 
 router.route("/").get((req, res) => [
     User.find()
@@ -8,15 +7,18 @@ router.route("/").get((req, res) => [
         .catch(err => res.status(400).json(`Error: ${err}`))
 ])
 
-router.route("/add").post((req, res) => {
-    // Take email sent by signup and create a user in Mongo, use firebase-admin to get the UID from the web portal
+router.route("/signup").post((req, res) => {
         const email = req.body.email;
-    
-        const newUser = new User({ email });
-    
+        const uid = req.body.uid;
+        const newUser = new User({ email, uid });
+
+        const checkUser = User.findOne({ "uid": uid });
+
+        if (checkUser) return res.json("User exists");
+
         newUser.save()
             .then(() => res.json("User Created!"))
-            .catch(err => res.status(400).json(`Error: ${err}`))
+            .catch(err)
 })
 
 module.exports = router;

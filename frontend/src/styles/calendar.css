@@ -220,16 +220,17 @@
   height: 100%;
   align-items: center;
   justify-content: center;
+  list-style: none;
 }
 
 .calendar-event-list li {
   text-align: center;
   margin: 1px 0;
   z-index: 15;
+  width: 90%;
 }
 
-.calendar-event {
-  width: 95%;
+.calendar-event, .calendar-event-dis {
   text-align: center;
   color: white;
   border: none;
@@ -243,6 +244,5 @@
   transition: .25s ease-out;
   border: 1px solid black;
   z-index: 20;
-  width: 80%;
   margin: 5px 5px;
 }

@@ -22,13 +22,13 @@ export default function SiteNavbar({ children }) {
                             <Link className="nav-link" to="/">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="#">Features</Link>
+                            <Link className="nav-link" to="/">Features</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Pricing</a>
+                            <Link className="nav-link" to="/">Pricing</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">About</a>
+                            <Link className="nav-link" to="/">About</Link>
                         </li>
                     </ul>
                     <form className="form-inline my-2 my-lg-0">
