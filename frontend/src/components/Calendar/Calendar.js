@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { format, subMonths, startOfWeek, endOfWeek, addDays, startOfMonth, endOfMonth, isSameMonth, addMonths, isSameDay } from "date-fns";
 import axios from "axios";
-import CalendarEvent from "./CalendarEvent";
+import CalendarDay from "./CalendarDay";
 import { useAuth } from "../../contexts/AuthContext";
 import "../../styles/calendar.css";
 
@@ -82,15 +82,12 @@ export default function Calendar() {
         for (let i = 0; i < 7; i++) {
           formattedDate = format(day, dateFormat);
           days.push(
-            <div className={`calendar-grid-col calendar-cell ${!isSameMonth(day, monthStart) ? "disabled" : ""} ${isSameDay(day, new Date()) ? "selected" : ""}`}
-              key={day}
-            >
-              <span className="calendar-number">{formattedDate}</span>
-              <span className="calendar-bg">{formattedDate}</span>
-              <ul className="calendar-event-list">
-                {renderEvents(day)}
-              </ul>
-            </div>
+            <CalendarDay 
+              classInfo={`calendar-grid-col calendar-cell ${!isSameMonth(day, monthStart) ? "disabled" : ""} ${isSameDay(day, new Date()) ? "selected" : ""}`} 
+              formattedDate={formattedDate}
+              day={day}
+              events={events}
+            />
           );
           day = addDays(day, 1);
         }
@@ -103,17 +100,6 @@ export default function Calendar() {
       }
 
       return <div className="calendar-body">{rows}</div>
-    }
-
-    function renderEvents(date) {
-      return events.map((event, index) => {
-        return (
-          <>
-            {isSameDay(Date.parse(event.eventDate), date) &&
-            <CalendarEvent key={index} eventData={event} />}
-          </>
-        )
-      })
     }
 
     const nextMonth = () => {

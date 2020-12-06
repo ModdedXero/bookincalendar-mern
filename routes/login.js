@@ -12,13 +12,9 @@ router.route("/signup").post((req, res) => {
         const uid = req.body.uid;
         const newUser = new User({ email, uid });
 
-        const checkUser = User.findOne({ "uid": uid });
-
-        if (checkUser) return res.json("User exists");
-
         newUser.save()
             .then(() => res.json("User Created!"))
-            .catch(err)
+            .catch((err) => {})
 })
 
 module.exports = router;

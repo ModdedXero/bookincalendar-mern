@@ -22,16 +22,16 @@ mongoose.connect(uri, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
-    useFindAndModify: true 
+    useFindAndModify: false
 });
 const connection = mongoose.connection;
 connection.once("open", () => {
     console.log("MongoDB database connection established");
 })
 
-// app.get("/*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "build", "index.html"));
-// })
+app.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+})
 
 app.use("/login", loginRouter);
 app.use("/calendar", calenadarRouter);

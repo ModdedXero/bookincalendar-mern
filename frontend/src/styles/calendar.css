@@ -152,7 +152,7 @@
   transition: 0.25s ease-out;
 }
 
-.calendar .calendar-body .calendar-cell .event {
+.calendar .calendar-body .calendar-cell div {
     align-self: center;
     text-align: center;
     justify-self: center;
@@ -226,7 +226,6 @@
 .calendar-event-list li {
   text-align: center;
   margin: 1px 0;
-  z-index: 15;
   width: 90%;
 }
 
@@ -242,7 +241,6 @@
 .calendar-event:hover {
   transform: scale(1.25);
   transition: .25s ease-out;
-  border: 1px solid black;
   z-index: 20;
   margin: 5px 5px;
 }

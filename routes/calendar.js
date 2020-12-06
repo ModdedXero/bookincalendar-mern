@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
 let User = require("../models/user");
-let CalendarEvent = require("../models/calendar");
 
 router.route("/events/:uid").get((req, res) => {
     User.findOne({ "uid": req.params.uid })
@@ -19,6 +18,15 @@ router.route("/events/:uid/add").post((req, res) => {
         )
         .then(doc => res.json(doc))
         .catch(err => console.log(err))
+})
+
+router.route("/events/:uid/:eid").delete((req, res) => {
+    User.findOneAndUpdate(
+        { uid: req.params.uid },
+        { $pull: { events: { _id: req.params.eid } }}
+    )
+    .then(doc => res.json(doc))
+    .catch(err => console.log(err))
 })
 
 module.exports = router;
