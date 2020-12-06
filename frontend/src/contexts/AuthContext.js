@@ -40,7 +40,7 @@ export function AuthProvider({ children }) {
         const unsubscribe = auth.onAuthStateChanged(user => {
             // If user isn't set try adding user to DB
             if (user !== currentUser) {
-                axios.post("http://localhost:5000/login/signup", { email: user.email, uid: user.uid } )
+                axios.post("/login/signup", { email: user.email, uid: user.uid } )
                 .then((res) => console.log(res.data))
             }
             setCurrentUser(user);
