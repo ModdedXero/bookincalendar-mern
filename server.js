@@ -3,15 +3,15 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const express = require("express");
-const cors = require("cors");
 const mongoose = require("mongoose");
 const path = require("path");
+const bodyParser = require("body-parser");
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "build")));
 
 const uri = process.env.MONGO_URI;
@@ -29,10 +29,10 @@ connection.once("open", () => {
 const loginRouter = require("./routes/login");
 const calenadarRouter = require("./routes/calendar");
 
-app.use("/a/login", loginRouter);
-app.use("/a/calendar", calenadarRouter);
+app.use("/api/login", loginRouter);
+app.use("/api/calendar", calenadarRouter);
 
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "build", "index.html"));
 })
 

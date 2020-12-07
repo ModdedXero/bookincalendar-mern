@@ -33,8 +33,8 @@ export default function SiteNavbar({ children }) {
                     </ul>
                     <form className="form-inline my-2 my-lg-0">
                         {currentUser == null ?
-                        <Link to="/l/login" className="btn btn-info my-2 my-sm-0">Login</Link> :
-                        <Link to="/l/calendar" className="btn btn-info my-2 my-sm-0">Admin Page</Link>}
+                        <Link to="/login" className="btn btn-info my-2 my-sm-0">Login</Link> :
+                        <Link to="/calendar" className="btn btn-info my-2 my-sm-0">Admin Page</Link>}
                     </form>
                 </div>
             </nav>

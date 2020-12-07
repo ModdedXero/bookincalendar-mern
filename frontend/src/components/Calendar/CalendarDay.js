@@ -14,7 +14,7 @@ import Modal from "../Modal";
 import "../../styles/form.css"
 import "../../styles/react-contextmenu.css";
 
-export default function CalendarDay({ classInfo, formattedDate, day, events }) {
+export default function CalendarDay({ classInfo, formattedDate, day, events = [] }) {
     const { currentUser } = useAuth();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date(day));
@@ -35,13 +35,12 @@ export default function CalendarDay({ classInfo, formattedDate, day, events }) {
             eventName: eventName.current.value,
             eventDate: selectedDate
         }
-        axios.post(`${process.env.REACT_APP_HOST_URL}/calendar/events/${currentUser.uid}/add`, newEvent)
-        .then((res) => console.log(res.data))
+        axios.post(`/api/calendar/events/${currentUser.uid}/add`, newEvent)
+            .then((res) => console.log(res.data.response))
     }
 
     function renderEvents(date) {
         if (events.length <= 0) return;
-        console.log(events);
 
         return events.map((event) => {
             return (

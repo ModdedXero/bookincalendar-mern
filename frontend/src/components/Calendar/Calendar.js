@@ -11,9 +11,8 @@ export default function Calendar() {
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
-      axios.get(`${process.env.REACT_APP_HOST_URL}/calendar/events/` + currentUser.uid)
-      .then(res => { console.log(res.data); setEvents(res.data) })
-      .catch((err) => { console.log(err) })
+      axios.get(`/api/calendar/events/${currentUser.uid}`)
+        .then(res => setEvents(res.data.events))
     }, [])
 
     function renderHeader() {

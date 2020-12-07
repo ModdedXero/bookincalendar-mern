@@ -19,12 +19,12 @@ function App() {
         <Router>
           <Switch>
             <DynamicRoute exact path="/" layout="SITE" component={Home} />
-            <DynamicRoute path="/l/login/signup" layout="SITE" component={Signup} />
-            <DynamicRoute path="/l/login/forgot-password" layout="SITE" component={ForgotPassword} />
-            <DynamicRoute path="/l/login" layout="SITE" component={Login} />
-            <DynamicRoute path="/l/calendar" layout="PROFILE" secure component={Calendar} />
-            <DynamicRoute path="/l/setup" layout="PROFILE" secure component={Setup} />
-            <DynamicRoute path="/l/profile" layout="PROFILE" secure component={Profile} />
+            <DynamicRoute path="/login/signup" layout="SITE" component={Signup} />
+            <DynamicRoute path="/login/forgot-password" layout="SITE" component={ForgotPassword} />
+            <DynamicRoute path="/login" layout="SITE" component={Login} />
+            <DynamicRoute path="/calendar" layout="PROFILE" secure component={Calendar} />
+            <DynamicRoute path="/setup" layout="PROFILE" secure component={Setup} />
+            <DynamicRoute path="/profile" layout="PROFILE" secure component={Profile} />
           </Switch>
         </Router>
       </AuthProvider>

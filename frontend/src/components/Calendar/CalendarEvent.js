@@ -15,8 +15,8 @@ export default function CalendarEvent({ eventData }) {
     function handleRemoveSession(e) {
         e.stopPropagation();
 
-        axios.delete(`${process.env.REACT_APP_HOST_URL}/calendar/events/${currentUser.uid}/${eventData._id}`)
-            .then((res) => console.log(res.data))
+        axios.delete(`/api/calendar/events/${currentUser.uid}/${eventData._id}`)
+            .then((res) => console.log(res.data.response))
 
         window.location.reload();
     }
