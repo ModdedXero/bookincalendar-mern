@@ -32,9 +32,11 @@ const calenadarRouter = require("./routes/calendar");
 app.use("/api/login", loginRouter);
 app.use("/api/calendar", calenadarRouter);
 
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
-})
+if (process.env.NODE_ENV === "production") {
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, "build", "index.html"));
+    })
+}
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

@@ -54,11 +54,29 @@
 
 /* Component Form */
 
+.component-grid-container-single, .component-grid-container-double, .component-grid-container-nth {
+    display: grid;
+    position: relative;
+    margin: 5rem auto auto auto;
+    width: 95%;
+    grid-template-columns: 50% 50%;
+    gap: 5px;
+}
+
+.component-grid-container-single {
+    grid-template-columns: 100%;
+}
+
+.component-grid-container-nth div:nth-child(3n) {
+    grid-column: 1 / -1;
+}
+
 .component-form {
     background: white;
     border-radius: 10px;
-    width: fit-content;
-    height: fit-content;
+    margin: 5px;
+    margin-right: 0;
+    padding: 20px;
 }
 
 /* Modal Form */

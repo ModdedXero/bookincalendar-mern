@@ -11,6 +11,7 @@ import ForgotPassword from "./Login/ForgotPassword";
 import Calendar from "./Calendar/Calendar";
 import Setup from "./Setup";
 import Profile from "./Profile";
+
 import "../styles/flatly.css";
 
 function App() {
