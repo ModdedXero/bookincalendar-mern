@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Calendar = require("./calendar");
 
 const Schema = mongoose.Schema;
 
@@ -7,7 +8,12 @@ const userSchema = new Schema({
         type: String,
         required: true,
         unique: true
-    }
+    },
+    uid: {
+        type: String,
+        required: true
+    },
+    events: [Calendar]
 }, {
     timestamps: true
 })

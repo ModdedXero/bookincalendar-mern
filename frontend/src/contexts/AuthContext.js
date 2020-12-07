@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { auth } from "../firebase";
+import axios from "axios";
 
 const AuthContext = React.createContext();
 
@@ -37,6 +38,11 @@ export function AuthProvider({ children }) {
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
+            // If user isn't set try adding user to DB
+            if (user !== currentUser) {
+                axios.post(`/api/login/signup`, { email: user.email, uid: user.uid } )
+                    .then((res) => console.log(res.data.response))
+            }
             setCurrentUser(user);
             setLoading(false);
         })

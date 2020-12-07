@@ -38,3 +38,15 @@
     from {transform: scale(0);}
     to {transform: scale(1);}
 }
+
+.modal-close-btn {
+    position: absolute;
+    align-self: flex-end;
+    margin: 10px;
+    width: fit-content;
+}
+
+.modal-content h1 {
+    text-align: center;
+    margin-top: 20px;
+}

@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import axios from "axios";
 import { useAuth } from "../../contexts/AuthContext";
 
 import "../../styles/form.css"
@@ -25,13 +24,6 @@ export default function Signup() {
             setError("");
             setLoading(true);
             await signup(emailRef.current.value, passwordRef.current.value);
-            
-            const email = emailRef.current.value;
-            
-            // Send User Data to Server for Creating DB User
-            axios.post("http://localhost:5000/login/add", { email } )
-                .then((res) => console.log(res.data))
-
             history.push("/");
         } catch (err) {
             setError(err);

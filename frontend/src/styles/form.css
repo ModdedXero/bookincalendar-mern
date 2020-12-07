@@ -60,3 +60,10 @@
     width: fit-content;
     height: fit-content;
 }
+
+/* Modal Form */
+
+.modal-form {
+    margin: 20px;
+    align-content: center;
+}

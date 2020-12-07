@@ -19,9 +19,9 @@ function App() {
         <Router>
           <Switch>
             <DynamicRoute exact path="/" layout="SITE" component={Home} />
+            <DynamicRoute path="/login/signup" layout="SITE" component={Signup} />
+            <DynamicRoute path="/login/forgot-password" layout="SITE" component={ForgotPassword} />
             <DynamicRoute path="/login" layout="SITE" component={Login} />
-            <DynamicRoute path="/signup" layout="SITE" component={Signup} />
-            <DynamicRoute path="/forgot-password" layout="SITE" component={ForgotPassword} />
             <DynamicRoute path="/calendar" layout="PROFILE" secure component={Calendar} />
             <DynamicRoute path="/setup" layout="PROFILE" secure component={Setup} />
             <DynamicRoute path="/profile" layout="PROFILE" secure component={Profile} />

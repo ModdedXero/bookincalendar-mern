@@ -43,7 +43,7 @@ export default function ForgotPassword() {
                 <div>
                     <button className="btn btn-primary btn-lg btn-block" type="submit" disabled={loading}>Reset Password</button>
                 </div>
-                <p className="form-link"><Link to="/signup">Sign Up</Link> | <Link to="/login">Login</Link></p>
+                <p className="form-link"><Link to="/login/signup">Sign Up</Link> | <Link to="/login">Login</Link></p>
             </form>
         </div>
     )

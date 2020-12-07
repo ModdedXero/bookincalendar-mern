@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { format, subMonths, startOfWeek, endOfWeek, addDays, startOfMonth, endOfMonth, isSameMonth, addMonths, isSameDay } from "date-fns";
-import CalendarEvent from "./CalendarEvent";
+import axios from "axios";
+import CalendarDay from "./CalendarDay";
+import { useAuth } from "../../contexts/AuthContext";
 import "../../styles/calendar.css";
 
 export default function Calendar() {
+    const { currentUser } = useAuth();
     const [currentMonth, setCurrentMonth] = useState(new Date());
+    const [events, setEvents] = useState([]);
 
-    const getEventData = (date) => {
-      
-    }
+    useEffect(() => {
+      axios.get(`/api/calendar/events/${currentUser.uid}`)
+        .then(res => setEvents(res.data.events))
+    }, [])
 
     function renderHeader() {
       const dateFormat = "MMMM yyyy";
@@ -68,16 +73,12 @@ export default function Calendar() {
         for (let i = 0; i < 7; i++) {
           formattedDate = format(day, dateFormat);
           days.push(
-            <div className={`calendar-grid-col calendar-cell ${!isSameMonth(day, monthStart) ? "disabled" : ""} ${isSameDay(day, new Date()) ? "selected" : ""}`}
-              key={day}
-            >
-              <span className="calendar-number">{formattedDate}</span>
-              <span className="calendar-bg">{formattedDate}</span>
-              {isSameDay(day, new Date()) && 
-              <ul className="calendar-event-list">
-                <CalendarEvent eventData={getEventData(day)} />
-              </ul>}
-            </div>
+            <CalendarDay 
+              classInfo={`calendar-grid-col calendar-cell ${!isSameMonth(day, monthStart) ? "disabled" : ""} ${isSameDay(day, new Date()) ? "selected" : ""}`} 
+              formattedDate={formattedDate}
+              day={day}
+              events={events}
+            />
           );
           day = addDays(day, 1);
         }
