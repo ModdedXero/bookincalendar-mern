@@ -32,7 +32,7 @@ const calenadarRouter = require("./routes/calendar");
 app.use("/a/login", loginRouter);
 app.use("/a/calendar", calenadarRouter);
 
-app.get("/l/*", (req, res) => {
+app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "build", "index.html"));
 })
 

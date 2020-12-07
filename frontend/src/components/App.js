@@ -18,7 +18,7 @@ function App() {
       <AuthProvider>
         <Router>
           <Switch>
-            <DynamicRoute exact path="/l/" layout="SITE" component={Home} />
+            <DynamicRoute exact path="/" layout="SITE" component={Home} />
             <DynamicRoute path="/l/login/signup" layout="SITE" component={Signup} />
             <DynamicRoute path="/l/login/forgot-password" layout="SITE" component={ForgotPassword} />
             <DynamicRoute path="/l/login" layout="SITE" component={Login} />
