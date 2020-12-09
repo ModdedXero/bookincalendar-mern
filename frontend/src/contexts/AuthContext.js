@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { auth } from "../firebase";
+import { auth, storage } from "../firebase";
 import axios from "axios";
 
 const AuthContext = React.createContext();
@@ -12,6 +12,7 @@ export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState(null);
     const [isLoading, setLoading] = useState(true);
 
+    // User Functions
     function signup(email, password) {
         return auth.createUserWithEmailAndPassword(email, password)
     }
@@ -36,6 +37,43 @@ export function AuthProvider({ children }) {
         return currentUser.updatePassword(password);
     }
 
+    // Storage Functions
+
+    function uploadFile(fileRef = { object, name, upload }) {
+        const sRef = storage.ref(`${currentUser.uid}/` + fileRef.name);
+        const task = sRef.put(fileRef.object);
+
+        task.on("state_changed",
+            function progress(snapshot) {
+                const percentage = (snapshot.bytesTransferred /
+                    snapshot.totalBytes) * 100;
+                fileRef.upload.value = percentage;
+            },
+            
+            function error(err) {
+                console.log(err);
+            },
+            
+            function complete() {
+
+            }
+        )
+    }
+
+    function downloadFile(path) {
+        const sRef = storage.ref(path);
+
+        sRef.getDownloadURL()
+            .then((url) => {
+                return (
+                    <img src={url}></img>
+                )
+            })
+            .catch((err) => console.log(err))
+
+        return <img></img>
+    }
+
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             // If user isn't set try adding user to DB
@@ -51,13 +89,18 @@ export function AuthProvider({ children }) {
     }, []);
 
     const value = {
+        // User Exports
         currentUser,
         login,
         signup,
         logout,
         resetPassword,
         updateEmail,
-        updatePassword
+        updatePassword,
+
+        // Storage Exports
+        uploadFile,
+        downloadFile
     };
 
     return (

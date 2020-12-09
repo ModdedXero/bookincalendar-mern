@@ -8,7 +8,7 @@ router.route("/signup").post((req, res) => {
 
         newUser.save()
             .then(() => res.json({ resposne: "User Created!" }))
-            .catch((err) => {})
+            .catch()
 })
 
 module.exports = router;
