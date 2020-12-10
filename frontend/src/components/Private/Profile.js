@@ -6,8 +6,6 @@ export default function Profile() {
 
     return (
         <div className="backdrop">
-            <GridContainer triple_nth>
-            </GridContainer>
         </div>
     )
 }

@@ -117,12 +117,12 @@
     height: 100%;
     width: 100%;
     display: block;
-    outline: 1px solid black;
+    outline: 2px solid black;
     justify-content: center;
     align-content: center;
 }
 .session-picture input {
-    padding-top: 40%;
+    padding-top: 50%;
 }
 .session-picture img {
     width: 100%;
@@ -131,6 +131,11 @@
 
 .session-info {
     padding-top: 30px;
+    justify-content: space-between;
+}
+
+.session-info div {
+    padding-bottom: 30px;
 }
 
 .session-info input {

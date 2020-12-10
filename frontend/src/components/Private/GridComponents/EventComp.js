@@ -65,11 +65,17 @@ export default function EventComp() {
                         : <img src={imagePreview} />}
                     </div>
                     <div className="session-info">
-                        <h3>Session Label</h3>
-                        <input
-                            type="text"
-                            ref={eventName}
-                        />
+                        <div>
+                            <h3>Session Label</h3>
+                            <input
+                                type="text"
+                                ref={eventName}
+                            />
+                        </div>
+                        <div>
+                            <h3>Session Color</h3>
+                            <input type="color" />
+                        </div>
                     </div>
                 </div>
             </Modal>
