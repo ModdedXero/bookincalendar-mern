@@ -32,13 +32,13 @@ export default function ProfileNavbar({ children }) {
                 <div className={isNavCollapsed ? "collapse navbar-collapse" : "navbar-collapse"} id="navbarColor01">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
-                            <Link className="nav-link" to="/calendar">Calendar</Link>
+                            <Link className="nav-link" to="/private/calendar">Calendar</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/setup">Setup</Link>
+                            <Link className="nav-link" to="/private/setup">Setup</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/profile">Profile</Link>
+                            <Link className="nav-link" to="/private/profile">Profile</Link>
                         </li>
                     </ul>
                     <form className="form-inline my-2 my-lg-0">

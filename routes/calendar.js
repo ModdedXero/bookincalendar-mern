@@ -35,7 +35,7 @@ router.route("/events/:uid/:eid").delete((req, res) => {
 // Event Type Routes
 
 router.route("/eventtype/:uid/add").post((req, res) => {
-    const name = req.body.name;
+    const name = req.body.eventName;
     const color = req.body.color;
     const description = req.body.description;
     const image = req.body.image;
@@ -57,7 +57,7 @@ router.route("/eventtype/:uid/add").post((req, res) => {
 
 router.route("/eventtype/:uid").get((req, res) => {
     User.findOne({ "uid": req.params.uid })
-    .then(doc => res.json({ response: doc.eventTypes }))
+    .then(doc => res.json({ eventTypes: doc.eventTypes }))
     .catch(err => res.status(400).json({ response: `Error: ${err}` }))
 })
 
@@ -66,7 +66,7 @@ router.route("/eventtype/:uid/:etid").get((req, res) => {
         .then(doc => {
             for (const eType in doc.eventTypes) {
                 if (eType._id === eq.params.etid) {
-                    res.json({ response: eType });
+                    res.json({ eventType: eType });
                     return;
                 }
             }

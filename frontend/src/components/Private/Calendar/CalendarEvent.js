@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 import axios from "axios";
-import Modal from "../Modal";
-import { useAuth } from "../../contexts/AuthContext";
+import Modal from "../../Modal";
+import EventDisplay from "./EventDisplay";
+import { useAuth } from "../../../contexts/AuthContext";
 
-export default function CalendarEvent({ eventData }) {
+export default function CalendarEvent({ eventData, eventType }) {
     const { currentUser } = useAuth();
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -24,7 +25,7 @@ export default function CalendarEvent({ eventData }) {
     return (
         <li onClick={toggleModal} key={eventData._id}>
             <ContextMenuTrigger id={eventData._id}>
-                <div className="calendar-event">{eventData.eventName}</div>
+                <div className="calendar-event">{eventType.name} - {eventData.eventStartTime}</div>
             </ContextMenuTrigger>
 
             <ContextMenu hideOnLeave id={eventData._id}>
@@ -34,9 +35,11 @@ export default function CalendarEvent({ eventData }) {
             </ContextMenu>
 
             <Modal open={isModalOpen} onClose={toggleModal}>
-                <div>
-                    {eventData.eventName}
-                </div>
+                <EventDisplay
+                    eventType={eventType}
+                    startTime={eventData.eventStartTime}
+                    endTime={eventData.eventEndTime}
+                />
             </Modal>
         </li>
     )

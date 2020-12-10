@@ -16,12 +16,20 @@
     padding-top: 60px;
 }
 
-.modal-background .modal-content {
+.modal-background .modal-content-c, .modal-content-c-sm {
+    position: relative;
     background-color: #fefefe;
     margin: 5% auto 15% auto;
     border: 1px solid #888888;
     width: 80%;
     height: 80%;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+}
+.modal-content-c-sm {
+    width: fit-content;
+    padding: 40px;
 }
 
 .animate {
@@ -41,9 +49,11 @@
 
 .modal-close-btn {
     position: absolute;
-    align-self: flex-end;
-    margin: 10px;
     width: fit-content;
+    padding: 0;
+    top: 10px;
+    right: 10px;
+    z-index: 100;
 }
 
 .modal-content h1 {

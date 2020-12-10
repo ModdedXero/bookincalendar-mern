@@ -39,9 +39,13 @@ export function AuthProvider({ children }) {
 
     // Storage Functions
 
-    function uploadFile(fileRef = { object, name, upload }) {
-        const sRef = storage.ref(`${currentUser.uid}/` + fileRef.name);
-        const task = sRef.put(fileRef.object);
+    function uploadFile(fileRef = {
+        file: "",
+        fileName: "",
+        upload: ""
+        }) {
+        const sRef = storage.ref(`${currentUser.uid}/` + fileRef.fileName);
+        const task = sRef.put(fileRef.file);
 
         task.on("state_changed",
             function progress(snapshot) {
@@ -66,12 +70,12 @@ export function AuthProvider({ children }) {
         sRef.getDownloadURL()
             .then((url) => {
                 return (
-                    <img src={url}></img>
+                    <img src={url} alt=""></img>
                 )
             })
             .catch((err) => console.log(err))
 
-        return <img></img>
+        return <img alt=""></img>
     }
 
     useEffect(() => {

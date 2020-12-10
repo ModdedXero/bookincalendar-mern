@@ -15,9 +15,12 @@ const userSchema = new Schema({
         required: true
     },
     events: [Event],
-    eventTypes: [EventType]
-}, {
-    timestamps: true
+    eventTypes: [EventType],
+    isTrial: {
+        type: Boolean,
+        default: true
+    },
+    expirationDate: Date
 })
 
 const User = mongoose.model("User", userSchema);

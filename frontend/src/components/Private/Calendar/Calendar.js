@@ -2,17 +2,21 @@ import React, { useState, useEffect } from "react";
 import { format, subMonths, startOfWeek, endOfWeek, addDays, startOfMonth, endOfMonth, isSameMonth, addMonths, isSameDay } from "date-fns";
 import axios from "axios";
 import CalendarDay from "./CalendarDay";
-import { useAuth } from "../../contexts/AuthContext";
-import "../../styles/calendar.css";
+import { useAuth } from "../../../contexts/AuthContext";
+import "../../../styles/calendar.css";
 
 export default function Calendar() {
     const { currentUser } = useAuth();
     const [currentMonth, setCurrentMonth] = useState(new Date());
     const [events, setEvents] = useState([]);
+    const [eventTypes, setEventTypes] = useState([]);
 
     useEffect(() => {
       axios.get(`/api/calendar/events/${currentUser.uid}`)
         .then(res => setEvents(res.data.events))
+
+      axios.get(`/api/calendar/eventtype/${currentUser.uid}`)
+        .then(res => setEventTypes(res.data.eventTypes))
     }, [])
 
     function renderHeader() {
@@ -78,6 +82,7 @@ export default function Calendar() {
               formattedDate={formattedDate}
               day={day}
               events={events}
+              eventTypes={eventTypes}
             />
           );
           day = addDays(day, 1);
