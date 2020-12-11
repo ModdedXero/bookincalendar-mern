@@ -35,13 +35,13 @@ router.route("/events/:uid/:eid").delete((req, res) => {
 // Event Type Routes
 
 router.route("/eventtype/:uid/add").post((req, res) => {
-    const name = req.body.eventName;
+    const eventName = req.body.eventName;
     const color = req.body.color;
     const description = req.body.description;
     const image = req.body.image;
 
     const newEventType = {
-        name,
+        eventName,
         color,
         description,
         image

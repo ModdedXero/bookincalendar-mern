@@ -107,9 +107,9 @@ export default function CalendarDay({ classInfo, formattedDate, day, events = []
                                     eventTypes.map((type) => {
                                         return (
                                             <option
-                                                key={type.name}
-                                                value={type.name}
-                                            >{type.name}</option>
+                                                key={type.eventName}
+                                                value={type.eventName}
+                                            >{type.eventName}</option>
                                         )
                                     })
                                 }
