@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
 const User = require("../models/user");
-const EventType = require("../models/eventType");
 
 // Event Routes
 
