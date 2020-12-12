@@ -49,9 +49,11 @@ export function AuthProvider({ children }) {
 
         task.on("state_changed",
             function progress(snapshot) {
-                const percentage = (snapshot.bytesTransferred /
-                    snapshot.totalBytes) * 100;
-                fileRef.upload.value = percentage;
+                if (fileRef.updload != null) {
+                    const percentage = (snapshot.bytesTransferred /
+                        snapshot.totalBytes) * 100;
+                    fileRef.upload.value = percentage;
+                }
             },
             
             function error(err) {
@@ -59,23 +61,17 @@ export function AuthProvider({ children }) {
             },
             
             function complete() {
-
+                console.log("File Uploaded!");
             }
         )
+
+        return task.then();
     }
 
     function downloadFile(path) {
-        const sRef = storage.ref(path);
+        const sRef = storage.ref(`${currentUser.uid}/` + path);
 
-        sRef.getDownloadURL()
-            .then((url) => {
-                return (
-                    <img src={url} alt=""></img>
-                )
-            })
-            .catch((err) => console.log(err))
-
-        return <img alt=""></img>
+        return sRef.getDownloadURL();
     }
 
     useEffect(() => {

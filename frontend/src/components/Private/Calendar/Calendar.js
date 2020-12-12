@@ -77,7 +77,8 @@ export default function Calendar() {
         for (let i = 0; i < 7; i++) {
           formattedDate = format(day, dateFormat);
           days.push(
-            <CalendarDay 
+            <CalendarDay
+              key={day}
               classInfo={`calendar-grid-col calendar-cell ${!isSameMonth(day, monthStart) ? "disabled" : ""} ${isSameDay(day, new Date()) ? "selected" : ""}`} 
               formattedDate={formattedDate}
               day={day}

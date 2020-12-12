@@ -8,12 +8,13 @@ import {
     KeyboardTimePicker,
     KeyboardDatePicker
 } from '@material-ui/pickers';
+
 import { useAuth } from "../../../contexts/AuthContext";
 import CalendarEvent from "./CalendarEvent";
-import Modal from "../../Modal";
+import Modal from "../../Utility/Modal";
+
 import "../../../styles/form.css"
 import "../../../styles/react-contextmenu.css";
-import { et } from "date-fns/locale";
 
 export default function CalendarDay({ classInfo, formattedDate, day, events = [], eventTypes = [] }) {
     const { currentUser } = useAuth();
@@ -43,11 +44,9 @@ export default function CalendarDay({ classInfo, formattedDate, day, events = []
         setEndDate(date);
     }
 
-    const handleModalSubmit = (e) => {
-        if (eventTypeRef.current.value !== null) return;
-
+    const handleModalSubmit = () => {
         const newEvent = {
-            eventType: eventTypes.filter(() => et === eventTypeRef.current.value),
+            eventType: eventTypes.filter((et) => et.eventName === eventTypeRef.current.value),
             eventStartTime: startDate,
             eventEndTime: endDate
         }
@@ -57,22 +56,22 @@ export default function CalendarDay({ classInfo, formattedDate, day, events = []
     }
 
     function renderEvents(date) {
-        if (events.length <= 0) return;
+        if (events.length === 0) return;
 
         return events.map((event) => {
-            const eType = eventTypes.map((type) => {
-                if (event.eventType === type._id) {
-                    return type;
-                }
-
+            if (!isSameDay(Date.parse(event.eventStartTime), date)) {
                 return null;
+            }
+
+            // eslint-disable-next-line
+            const tIndex = eventTypes.map((type, index) => {
+                if (event.eventType === type._id) {
+                    return index;
+                }
             })
             
             return (
-                <>
-                    {isSameDay(Date.parse(event.eventDate), date) &&
-                    <CalendarEvent eventData={event} eventType={eType} />}
-                </>
+                <CalendarEvent key={event._id} eventData={event} eventType={eventTypes[tIndex]} />
             )
         })
     }

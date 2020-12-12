@@ -12,14 +12,15 @@ router.route("/events/:uid").get((req, res) => {
 })
 
 router.route("/events/:uid/add").post((req, res) => {
-        const eventName = req.body.eventName;
-        const eventDate = req.body.eventDate;
+        const eventType = req.body.eventType[0]._id;
+        const eventStartTime = req.body.eventStartTime;
+        const eventEndTime = req.body.eventStartTime;
     
         User.findOneAndUpdate(
             { uid: req.params.uid },
-            { $push: { events: {eventDate, eventName} }}
+            { $push: { events: { eventType, eventStartTime, eventEndTime } }}
         )
-        .then(doc => res.json({ response: doc }))
+        .then(res.json({ response: "Event Added!"}))
         .catch(err => res.status(400).json({ response: `Error: ${err}` }))
 })
 
@@ -37,14 +38,14 @@ router.route("/events/:uid/:eid").delete((req, res) => {
 router.route("/eventtype/:uid/add").post((req, res) => {
     const eventName = req.body.eventName;
     const color = req.body.color;
+    const backgroundColor = req.body.backgroundColor;
     const description = req.body.description;
-    const image = req.body.image;
 
     const newEventType = {
         eventName,
         color,
-        description,
-        image
+        backgroundColor,
+        description
     }
 
     User.findOneAndUpdate(
@@ -53,6 +54,25 @@ router.route("/eventtype/:uid/add").post((req, res) => {
     )
     .then(res.json({ response: "Event Type added!" }))
     .catch(err => res.status(400).json({ response: `Error: ${err}` }))
+})
+
+router.route("/eventtype/:uid/update").post(async (req, res) => {
+    const eventID = req.body.eventID;
+
+    const doc = await User.findOne({ uid: req.params.uid });
+
+    doc.eventTypes.map((type, index) => {
+        if (type._id == eventID) {
+            doc.eventTypes[index].eventName = req.body.eventName;
+            doc.eventTypes[index].color = req.body.color;
+            doc.eventTypes[index].backgroundColor = req.body.backgroundColor;
+            doc.eventTypes[index].description = req.body.description;
+        }
+    })
+    
+    await doc.save()
+        .then(res.json({ response: "Event Type updated!" }))
+        .catch(err => res.status(400).json({ response: `Error: ${err}` }))
 })
 
 router.route("/eventtype/:uid").get((req, res) => {
@@ -79,7 +99,7 @@ router.route("/eventtype/:uid/:etid").get((req, res) => {
 router.route("/eventtype/:uid/:etid").delete((req, res) => {
     User.findOneAndUpdate(
         { uid: req.params.uid },
-        { $pull: { events: { _id: req.params.etid } }}
+        { $pull: { eventTypes: { _id: req.params.etid } }}
     )
     .then(res.json({ response: "Event Type removed!" }))
     .catch(err => res.status(400).json({ response: `Error: ${err}` }))

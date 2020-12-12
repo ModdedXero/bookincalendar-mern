@@ -35,7 +35,7 @@ export default function ProfileNavbar({ children }) {
                             <Link className="nav-link" to="/private/calendar">Calendar</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/private/setup">Setup</Link>
+                            <Link className="nav-link" to="/private/setup/sessions">Setup</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/private/profile">Profile</Link>

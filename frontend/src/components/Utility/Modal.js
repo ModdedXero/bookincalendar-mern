@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDom from "react-dom";
-import "../styles/modal.css";
+import "../../styles/modal.css";
 
 export default function Modal({ open, children, onClose, small }) {
     if (!open) return null;

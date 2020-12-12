@@ -14,11 +14,10 @@ const eventTypeSchema = new Schema({
         validate: [colorValidator, "Invalid Color"],
         required: true
     },
-    description: {
+    backgroundColor: {
         type: String,
-        required: true
     },
-    image: {
+    description: {
         type: String,
         required: true
     }

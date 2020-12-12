@@ -1,9 +1,9 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
 
-import SiteNavbar from "./SiteNavbar";
-import ProfileNavbar from "./ProfileNavbar";
-import { useAuth } from "../contexts/AuthContext";
+import SiteNavbar from "../SiteNavbar";
+import ProfileNavbar from "../ProfileNavbar";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function DynamicRoute({ component: Component, layout, secure, ...rest }) {
   const { currentUser } = useAuth();

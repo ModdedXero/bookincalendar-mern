@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
+import { format } from "date-fns";
 import axios from "axios";
-import Modal from "../../Modal";
+import Modal from "../../Utility/Modal";
 import EventDisplay from "./EventDisplay";
 import { useAuth } from "../../../contexts/AuthContext";
 
@@ -13,6 +14,8 @@ export default function CalendarEvent({ eventData, eventType }) {
         setIsModalOpen(!isModalOpen);
     }
 
+    Date.parse()
+
     function handleRemoveSession(e) {
         e.stopPropagation();
 
@@ -23,24 +26,33 @@ export default function CalendarEvent({ eventData, eventType }) {
     }
 
     return (
-        <li onClick={toggleModal} key={eventData._id}>
-            <ContextMenuTrigger id={eventData._id}>
-                <div className="calendar-event">{eventType.name} - {eventData.eventStartTime}</div>
-            </ContextMenuTrigger>
+        <>
+            {eventType && 
+            <li onClick={toggleModal} key={eventData._id}>
+                <ContextMenuTrigger id={eventData._id}>
+                    <div className="calendar-event"
+                        style={{ background: eventType.backgroundColor, color: eventType.color }}>
+                        {eventType.eventName} - {
+                        format(new Date(Date.parse(eventData.eventStartTime)), "h:mm")
+                        }
+                    </div>
+                </ContextMenuTrigger>
 
-            <ContextMenu hideOnLeave id={eventData._id}>
-                <MenuItem date={{ foo: "bar" }} onClick={handleRemoveSession}>
-                    Remove Session
-                </MenuItem>
-            </ContextMenu>
+                <ContextMenu hideOnLeave id={eventData._id}>
+                    <MenuItem date={{ foo: "bar" }} onClick={handleRemoveSession}>
+                        Remove Session
+                    </MenuItem>
+                </ContextMenu>
 
-            <Modal open={isModalOpen} onClose={toggleModal}>
-                <EventDisplay
-                    eventType={eventType}
-                    startTime={eventData.eventStartTime}
-                    endTime={eventData.eventEndTime}
-                />
-            </Modal>
-        </li>
+                <Modal open={isModalOpen} onClose={toggleModal}>
+                    <EventDisplay
+                        eventType={eventType}
+                        startTime={eventData.eventStartTime}
+                        endTime={eventData.eventEndTime}
+                    />
+                </Modal>
+            </li>
+            }
+        </>
     )
 }
