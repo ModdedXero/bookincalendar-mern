@@ -58,7 +58,7 @@ export default function TypeTableItem({ eventType }) {
         }
 
         try {
-            await uploadFile(fileRef);
+            if (image) await uploadFile(fileRef);
             axios.post(`/api/calendar/eventtype/${currentUser.uid}/update`, eventTypeData)
                 .then(res => console.log(res.data.response))
             window.location.reload();
