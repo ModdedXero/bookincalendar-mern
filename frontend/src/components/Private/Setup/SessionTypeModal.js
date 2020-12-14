@@ -66,8 +66,7 @@ export default function SessionTypeModal({ isModalOpen, toggleModal, updateType 
             eventName: eventName,
             color: eventColor,
             backgroundColor: eventBackgroundColor,
-            description: eventDescription,
-            descriptionHTML: eventDescription.root.innerHTML
+            description: eventDescription
         }
 
         if (eventName !== "") {
@@ -94,8 +93,7 @@ export default function SessionTypeModal({ isModalOpen, toggleModal, updateType 
     }
 
     return (
-        <Modal open={isModalOpen} onClose={toggleModal}>
-            {error && <div className="modal-error alert alert-danger">{error}</div>}
+        <Modal open={isModalOpen} onClose={toggleModal} error={error}>
             <form className="session-form" onSubmit={handleSubmit}>
                 <div className="session-picture">
                     <input type="file" className="x_file-upload" onChange={fileSelectorChange} />
