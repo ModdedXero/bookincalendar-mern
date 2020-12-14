@@ -81,7 +81,7 @@
     height: 100%;
 }
 
-.session-info {
+.session-info, .session-info-fancy {
     position: relative;
     padding-top: 30px;
     justify-content: space-between;
@@ -90,6 +90,11 @@
 .session-info .div-handle {
     padding-bottom: 30px;
     height: 15%;
+}
+
+.session-info-fancy .div-handle {
+    padding-bottom: 50px;
+    height: auto;
 }
 
 .session-info input {
@@ -102,6 +107,12 @@
     margin: auto;
 }
 
+.session-info-fancy .text-container {
+    position: relative;
+    height: 50%;
+    margin: auto;
+}
+
 .session-info .text-area {
     width: 90%;
     margin: auto auto 5% 5%;
@@ -109,7 +120,25 @@
     position: absolute;
 }
 
+.session-info-fancy .text-area-fancy {
+    width: 90%;
+    margin: auto auto 5% 5%;
+    height: 100%;
+    position: absolute;
+}
+
+.session-form .text-area-fancy {
+    border: 1px solid black;
+}
+
 .session-info .submit-btn {
+    position: absolute;
+    width: 80%;
+    bottom: 30px;
+    right: 10%;
+}
+
+.session-info-fancy .submit-btn {
     position: absolute;
     width: 80%;
     bottom: 30px;

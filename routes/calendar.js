@@ -13,7 +13,7 @@ router.route("/events/:uid").get((req, res) => {
 router.route("/events/:uid/add").post((req, res) => {
         const eventType = req.body.eventType[0]._id;
         const eventStartTime = req.body.eventStartTime;
-        const eventEndTime = req.body.eventStartTime;
+        const eventEndTime = req.body.eventEndTime;
     
         User.findOneAndUpdate(
             { uid: req.params.uid },

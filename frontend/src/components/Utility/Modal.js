@@ -8,7 +8,7 @@ export default function Modal({ open, children, onClose, small }) {
     return ReactDom.createPortal(
         <div className="modal-background" onContextMenu={(e) => {e.stopPropagation()}}>
             <div className={small ? "modal-content-c-sm animate" :
-                "modal-content-c animate"}>
+                "modal-content-c animate"} onClick={(e) => {e.stopPropagation()}}>
                 <button type="button" className="btn btn-outline-primary modal-close-btn" onClick={onClose}>X</button>
                 {children}
             </div>

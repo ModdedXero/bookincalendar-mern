@@ -44,12 +44,14 @@ export default function CalendarDay({ classInfo, formattedDate, day, events = []
         setEndDate(date);
     }
 
-    const handleModalSubmit = () => {
+    const handleModalSubmit = (e) => {
         const newEvent = {
             eventType: eventTypes.filter((et) => et.eventName === eventTypeRef.current.value),
             eventStartTime: startDate,
             eventEndTime: endDate
         }
+
+        console.log(newEvent);
 
         axios.post(`/api/calendar/events/${currentUser.uid}/add`, newEvent)
             .then((res) => console.log(res.data.response))
@@ -63,13 +65,14 @@ export default function CalendarDay({ classInfo, formattedDate, day, events = []
                 return null;
             }
 
+            var tIndex;
             // eslint-disable-next-line
-            const tIndex = eventTypes.map((type, index) => {
+            eventTypes.map((type, index) => {
                 if (event.eventType === type._id) {
-                    return index;
+                    tIndex = index;
                 }
             })
-            
+
             return (
                 <CalendarEvent key={event._id} eventData={event} eventType={eventTypes[tIndex]} />
             )

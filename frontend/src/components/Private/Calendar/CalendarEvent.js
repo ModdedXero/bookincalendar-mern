@@ -14,8 +14,6 @@ export default function CalendarEvent({ eventData, eventType }) {
         setIsModalOpen(!isModalOpen);
     }
 
-    Date.parse()
-
     function handleRemoveSession(e) {
         e.stopPropagation();
 
@@ -47,8 +45,9 @@ export default function CalendarEvent({ eventData, eventType }) {
                 <Modal open={isModalOpen} onClose={toggleModal}>
                     <EventDisplay
                         eventType={eventType}
-                        startTime={eventData.eventStartTime}
-                        endTime={eventData.eventEndTime}
+                        date={format(new Date(Date.parse(eventData.eventStartTime)), "EEE do, MMM yyyy")}
+                        startTime={format(new Date(Date.parse(eventData.eventStartTime)), "h:mm a")}
+                        endTime={format(new Date(Date.parse(eventData.eventEndTime)), "h:mm a")}
                     />
                 </Modal>
             </li>

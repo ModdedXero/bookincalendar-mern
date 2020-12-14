@@ -22,6 +22,18 @@
     padding-bottom: 0;
 }
 
+.x_list-header-container {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    flex: auto;
+    width: 100%;
+}
+
+.x_list-btn {
+    align-self: flex-end;
+}
+
 .x_color-block {
     width: 200px;
 }
