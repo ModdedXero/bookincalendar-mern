@@ -2,8 +2,6 @@ import React, { useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 
-import "../../styles/form.css"
-
 export default function Signup() {
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -15,6 +13,10 @@ export default function Signup() {
 
     async function handleSubmit(e) {
         e.preventDefault();
+
+        if (emailRef.current.value === "") {
+            return setError("Email is required");
+        }
 
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
             return setError("Passwords do not match");
@@ -45,14 +47,14 @@ export default function Signup() {
                 </div>
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control" ref={passwordRef} placeholder="Password" />
+                    <input type="password" minLength="8" required className="form-control" ref={passwordRef} placeholder="Password" />
                 </div>
                 <div className="form-group">
                     <label>Password Confirmation</label>
-                    <input type="password" className="form-control" ref={passwordConfirmRef} placeholder="Password" />
+                    <input type="password" minLength="8" required className="form-control" ref={passwordConfirmRef} placeholder="Password" />
                 </div>
                 <div>
-                    <button className="btn btn-primary btn-lg btn-block" type="submit" disabled={loading}>Signup</button>
+                    <button className="button" type="submit" disabled={loading}>Signup</button>
                     <p className="form-link">Already have an account? <Link to="/login">Login</Link></p>
                 </div>
             </form>

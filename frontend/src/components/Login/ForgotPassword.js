@@ -2,8 +2,6 @@ import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 
-import "../../styles/form.css"
-
 export default function ForgotPassword() {
     const emailRef = useRef();
     const { resetPassword } = useAuth();
@@ -38,10 +36,10 @@ export default function ForgotPassword() {
                 </div>}
                 <div className="form-group">
                     <label>Email address</label>
-                    <input type="email" className="form-control" ref={emailRef} placeholder="Enter email" />
+                    <input type="email" required className="form-control" ref={emailRef} placeholder="Enter email" />
                 </div>
                 <div>
-                    <button className="btn btn-primary btn-lg btn-block" type="submit" disabled={loading}>Reset Password</button>
+                    <button className="button" type="submit" disabled={loading}>Reset Password</button>
                 </div>
                 <p className="form-link"><Link to="/login/signup">Sign Up</Link> | <Link to="/login">Login</Link></p>
             </form>

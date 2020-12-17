@@ -2,8 +2,6 @@ import React, { useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 
-import "../../styles/form.css"
-
 export default function Login() {
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -27,7 +25,7 @@ export default function Login() {
     }
 
     return (
-        <div className="backdrop">
+        <div className="form-backdrop">
             <form className="login-form center" onSubmit={handleSubmit}>
                 <h1>Login</h1>
                 {error && <div className="alert alert-danger">
@@ -43,7 +41,7 @@ export default function Login() {
                     <p className="form-link"><Link to="/login/forgot-password">Forgot Password?</Link></p>
                 </div>
                 <div>
-                    <button className="btn btn-primary btn-lg btn-block" type="submit" disabled={loading}>Login</button>
+                    <button className="button" type="submit" disabled={loading}>Login</button>
                     <p className="form-link">Need an account? <Link to="/login/signup">Sign Up</Link></p>
                 </div>
             </form>

@@ -12,7 +12,7 @@ import Calendar from "./Private/Calendar/Calendar";
 import Sessions from "./Private/Setup/Sessions";
 import Profile from "./Private/Profile";
 
-import "../styles/flatly.css";
+import "../styles/style.css";
 
 function App() {
   return (

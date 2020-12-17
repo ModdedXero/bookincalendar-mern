@@ -13,7 +13,6 @@ import { useAuth } from "../../../contexts/AuthContext";
 import CalendarEvent from "./CalendarEvent";
 import Modal from "../../Utility/Modal";
 
-import "../../../styles/form.css"
 import "../../../styles/react-contextmenu.css";
 
 export default function CalendarDay({ classInfo, formattedDate, day, events = [], eventTypes = [] }) {
