@@ -11,25 +11,18 @@ export default function SiteNavbar({ children }) {
     return (
         <>
             <nav className="navbar">
-                <Link className="navbar-logo" to="/">BOOKBEAT</Link>
+                <Link className="navbar-logo" to="/">Bookbeat</Link>
 
-                <ul className="navbar-nav">
-                    <li>
-                        <Link className="navbar-link" to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link className="navbar-link" to="/">Features</Link>
-                    </li>
-                    <li>
-                        <Link className="navbar-link" to="/">Pricing</Link>
-                    </li>
-                    <li>
-                        <Link className="navbar-link" to="/">About</Link>
-                    </li>
-                </ul>
+                <div>
+                    <Link className="navbar-link" to="/">Home</Link>
+                    <Link className="navbar-link" to="/">Features</Link>
+                    <Link className="navbar-link" to="/">Pricing</Link>
+                    <Link className="navbar-link" to="/">About</Link>
+                </div>
+
                 {currentUser == null ?
                 <Link to="/login" className="button">Login</Link> :
-                <Link to="/private/calendar" className="button">Admin Page</Link>}
+                <Link to="/private/calendar" className="button">Profile</Link>}
             </nav>
             {children}
         </>

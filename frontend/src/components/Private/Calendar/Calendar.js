@@ -108,10 +108,12 @@ export default function Calendar() {
     }
 
     return (
-      <div className="calendar">
-          {renderHeader()}
-          {renderDays()}
-          {renderCells()}
+      <div className="component">
+        <div className="calendar">
+            {renderHeader()}
+            {renderDays()}
+            {renderCells()}
+        </div>
       </div>
     );
 };

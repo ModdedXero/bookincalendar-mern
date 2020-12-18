@@ -23,30 +23,25 @@ export default function ProfileNavbar({ children }) {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-primary" style={{ zIndex: "99" }}>
-                <Link className="navbar-brand" to="/">Admin Page</Link>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded={!isNavCollapsed ? true : false} aria-label="Toggle navigation" onClick={handleNavCollapse}>
-                    <span className="navbar-toggler-icon"></span>
-                </button>
+            <nav className="sidenav">
+                <Link className="sidenav-link" to="/private/calendar">
+                    <i className="ico far fa-calendar-alt"/>
+                    Calendar
+                </Link>
+                <Link className="sidenav-link" to="/private/setup/sessions">
+                    <i className="ico fas fa-camera"/>
+                    Sessions
+                </Link>
+                <Link className="sidenav-link" to="/private/profile">
+                    <i className="ico fas fa-user-cog" />
+                    Profile
+                </Link>
 
-                <div className={isNavCollapsed ? "collapse navbar-collapse" : "navbar-collapse"} id="navbarColor01">
-                    <ul className="navbar-nav mr-auto">
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/private/calendar">Calendar</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/private/setup/sessions">Setup</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/private/profile">Profile</Link>
-                        </li>
-                    </ul>
-                    <form className="form-inline my-2 my-lg-0">
-                        <button className="btn btn-info my-2 my-sm-0" onClick={handleLogout}>Sign Out</button>
-                    </form>
-                </div>
+                <Link className="sidenav-logo" to="/">Bookbeat</Link>
             </nav>
-            {children}
+            <div className="sidenav-content">
+                {children}
+            </div>
         </>
     )
 }

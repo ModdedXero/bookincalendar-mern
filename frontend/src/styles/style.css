@@ -1,12 +1,18 @@
+@import url(https://fonts.googleapis.com/css2?family=Bad+Script&family=Caveat&family=Pacifico&display=swap);
+
 :root {
     --font: black;
     --orange: #ff8000;
+    --orange-highlight: #ff800060;
     --blue: #2980b9;
     --off-white: #efefef;
+    --gray: #9c9c9c34;
 
     --danger: #e74c3c;
 
+    --logo-font: 'Caveat', cursive;
     --shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    --shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
  
 * {
@@ -93,6 +99,10 @@ a:hover {
     background-color: var(--danger);
 }
 
+.ico {
+    margin: .5rem;
+}
+
 /* Navbar */
 
 .navbar {
@@ -106,14 +116,16 @@ a:hover {
     box-shadow: var(--shadow);
     z-index: 100;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .navbar-logo {
+    font-family: var(--logo-font);
+    font-weight: bold;
+    font-size: 32px;
     text-decoration: none !important;
     cursor: pointer;
     color: black;
-    font-weight: bold;
 }
 
 .navbar-nav {
@@ -128,6 +140,7 @@ a:hover {
 .navbar-link {
     text-decoration: none !important;
     display: inline-block;
+    padding: 0px 20px;
     transition: all 0.3s ease 0s;
     color: var(--font);
 }
@@ -140,7 +153,54 @@ a:hover {
 
 /* Side Navbar */
 
+.sidenav {
+    margin: 20px;
+    padding: 0;
+    width: 200px;
+    background-color: white;
+    position: fixed;
+    overflow: hidden;
+    height: 95.5%;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
 
+.sidenav-logo {
+    font-family: var(--logo-font);
+    font-weight: bold;
+    font-size: 32px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    bottom: 0;
+    color: gray;
+    padding-bottom: 1rem;
+    text-decoration: none !important;
+}
+
+.sidenav-link {
+    display: block;
+    color: black;
+    padding: 12px 16px;
+    font-size: 20px;
+    overflow: hidden;
+    text-decoration: none !important;
+    transition: all 0.3s ease 0s;
+}
+
+.sidenav-link:hover {
+    background-color: var(--gray);
+    box-shadow: inset 4px 0 0 var(--orange);
+}
+
+.sidenav-link .active {
+    background-color: var(--gray);
+}
+
+.sidenav-content {
+    margin-left: 200px;
+    padding: 20px 20px 20px 40px;
+}
 
 /* Forms */
 
@@ -214,4 +274,11 @@ a:hover {
 
 .form-link a {
     color: var(--orange);
+}
+
+.component {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
 }
