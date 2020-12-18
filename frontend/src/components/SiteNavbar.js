@@ -1,28 +1,31 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
+import ListLink from "./Utility/ListLink";
+
 export default function SiteNavbar({ children }) {
+    const [currentIndex, setCurrentIndex] = useState(1);
     const [isNavCollapsed, setIsNavCollapsed] = useState(true)
     const { currentUser } = useAuth();
-
+    
+    // TODO: Setup and collapsed Site Navbar
     const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
 
     return (
         <>
             <nav className="navbar">
-                <Link className="navbar-logo" to="/">Bookbeat</Link>
+                <ListLink className="navbar-logo" to="/">Bookbeat</ListLink>
 
                 <div>
-                    <Link className="navbar-link" to="/">Home</Link>
-                    <Link className="navbar-link" to="/">Features</Link>
-                    <Link className="navbar-link" to="/">Pricing</Link>
-                    <Link className="navbar-link" to="/">About</Link>
+                    <ListLink className="navbar-link" to="/" myIndex={1} index={currentIndex} setIndex={setCurrentIndex}>Home</ListLink>
+                    <ListLink className="navbar-link" to="/" myIndex={2} index={currentIndex} setIndex={setCurrentIndex}>Features</ListLink>
+                    <ListLink className="navbar-link" to="/" myIndex={3} index={currentIndex} setIndex={setCurrentIndex}>Pricing</ListLink>
+                    <ListLink className="navbar-link" to="/" myIndex={4} index={currentIndex} setIndex={setCurrentIndex}>About</ListLink>
                 </div>
 
                 {currentUser == null ?
-                <Link to="/login" className="button">Login</Link> :
-                <Link to="/private/calendar" className="button">Profile</Link>}
+                <ListLink to="/login" className="button">Login</ListLink> :
+                <ListLink to="/private/calendar" className="button">Profile</ListLink>}
             </nav>
             {children}
         </>

@@ -11,6 +11,7 @@ export default function EventDisplay({ eventType, date, startTime, endTime }) {
 
     const description = new DOMParser().parseFromString(eventType.description, "text/xml");
 
+    // TODO: Have images load on component contruct instead of on refresh/useEffect (Looks Cleaner)
     useEffect(() => {
         downloadFile(eventType.eventName)
             .then((url) => {
@@ -21,22 +22,37 @@ export default function EventDisplay({ eventType, date, startTime, endTime }) {
 
     return (
         <div className="session-form">
-            <div className="session-picture">
-                <img src={imagePreview} />
-            </div>
-            <div className="session-info-fancy">
-                <div className="div-handle">
-                    <h3>{eventType.eventName}</h3>
-                </div>
-                <div className="div-handle">
-                    <h3>{date}</h3>
-                    <h3>{`${startTime} - ${endTime}`}</h3>
-                </div>
-                <div className="text-container">
-                    <ReactQuill className="text-area-fancy" value={eventType.description} readOnly={true} theme="bubble" />
-                </div>
-                <button type="button" className="btn btn-info submit-btn">Book Session</button>
+            <div className="session-form-content">
+                <section className="session-form-image">
+                    <img src={imagePreview} alt="Session Photo Cover" />
+                </section>
+                <section className="session-form-info">
+                    <h1>{eventType.eventName}</h1>
+                    <div>
+                        <h3>{date}</h3>
+                        <h3>{`${startTime} - ${endTime}`}</h3>
+                    </div>
+                    <ReactQuill className="session-form-desc" value={eventType.description} readOnly={true} theme="bubble" />
+                    <span className="session-form-total">Total: 300$</span>
+                    <button type="button" className="button">Book Session</button>
+                </section>
             </div>
         </div>
+        // <div className="session-form">
+        //     <img src={imagePreview} />
+        //     <div className="session-form-info">
+        //         <h1>{eventType.eventName}</h1>
+        //         <div className="session-form-time">
+        //             <h3>{date}</h3>
+        //             <h3>{`${startTime} - ${endTime}`}</h3>
+        //         </div>
+        //         <span className="session-form-info-desc">
+        //             <ReactQuill className="session-form-desc" value={eventType.description} readOnly={true} theme="bubble" />
+        //         </span>
+        //         <div className="session-form-button">
+        //             <button type="button" className="button">Book Session</button>
+        //         </div>
+        //     </div>
+        // </div>
     )
 }

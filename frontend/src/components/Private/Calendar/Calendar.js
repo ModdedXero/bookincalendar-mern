@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { format, subMonths, startOfWeek, endOfWeek, addDays, startOfMonth, endOfMonth, isSameMonth, addMonths, isSameDay } from "date-fns";
 import axios from "axios";
-import CalendarDay from "./CalendarDay";
+
 import { useAuth } from "../../../contexts/AuthContext";
+import CalendarDay from "./CalendarDay";
+
 import "../../../styles/calendar.css";
 
 export default function Calendar() {
@@ -25,19 +27,19 @@ export default function Calendar() {
       return (
         <div className="calendar-header calendar-grid-row flex-middle">
           <div className="calendar-grid-col calendar-grid-col-start">
-            <div className="calendar-icon" onClick={prevMonth}>
-              chevron_left
-            </div>
+            <button type="button" className="calendar-button" onClick={nextMonth}>
+              <i className="fas fa-chevron-left" />
+            </button>
           </div>
-          <div className="calendar-col calendar-col-center">
+          <div className="calendar-grid-col calendar-grid-col-center">
             <span>
               {format(currentMonth, dateFormat)}
             </span>
           </div>
           <div className="calendar-grid-col calendar-grid-col-end">
-            <div className="calendar-icon" onClick={nextMonth}>
-              chevron_right
-            </div>
+            <button type="button" className="calendar-button" onClick={nextMonth}>
+              <i className="fas fa-chevron-right" />
+            </button>
           </div>
         </div>
       );

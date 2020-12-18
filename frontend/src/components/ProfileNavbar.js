@@ -1,43 +1,31 @@
 import React, { useState } from "react";
-import { useHistory, Link } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+
+import ListLink from "./Utility/ListLink";
 
 export default function ProfileNavbar({ children }) {
-    const [error, setError] = useState("");
+    const [currentIndex, setCurrentIndex] = useState(1);
     const [isNavCollapsed, setIsNavCollapsed] = useState(true)
-    const { currentUser, logout } = useAuth();
-    const history = useHistory();
 
+    // TODO: Setup and collapsed Profile Navbar
     const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
-
-    async function handleLogout() {
-        setError("");
-
-        try {
-            await logout();
-            history.push("/login")
-        } catch {
-            setError("Failed to logout")
-        }
-    }
 
     return (
         <>
             <nav className="sidenav">
-                <Link className="sidenav-link" to="/private/calendar">
+                <ListLink className="sidenav-link" to="/private/calendar" myIndex={1} index={currentIndex} setIndex={setCurrentIndex}>
                     <i className="ico far fa-calendar-alt"/>
                     Calendar
-                </Link>
-                <Link className="sidenav-link" to="/private/setup/sessions">
+                </ListLink>
+                <ListLink className="sidenav-link" to="/private/setup/sessions" myIndex={2} index={currentIndex} setIndex={setCurrentIndex}>
                     <i className="ico fas fa-camera"/>
                     Sessions
-                </Link>
-                <Link className="sidenav-link" to="/private/profile">
+                </ListLink>
+                <ListLink className="sidenav-link" to="/private/profile" myIndex={3} index={currentIndex} setIndex={setCurrentIndex}>
                     <i className="ico fas fa-user-cog" />
                     Profile
-                </Link>
+                </ListLink>
 
-                <Link className="sidenav-logo" to="/">Bookbeat</Link>
+                <ListLink className="sidenav-logo" to="/">Bookbeat</ListLink>
             </nav>
             <div className="sidenav-content">
                 {children}
