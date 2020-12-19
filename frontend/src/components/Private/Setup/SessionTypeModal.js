@@ -95,34 +95,33 @@ export default function SessionTypeModal({ isModalOpen, toggleModal, updateType 
     return (
         <Modal open={isModalOpen} onClose={toggleModal} error={error}>
             <form className="session-form" onSubmit={handleSubmit}>
-                <div className="session-picture">
-                    <input type="file" className="x_file-upload" onChange={fileSelectorChange} />
-                    {imagePreview && <img src={imagePreview} />}
-                </div>
-                <div className="session-info">
-                    <div className="div-handle">
-                        <h3>Label</h3>
-                        <input type="text" value={eventName} onChange={(e) => setEventName(e.target.value)} />
-                    </div>
-                    <div className="div-handle">
-                        <h3>Text Color</h3>
-                        <input type="color" value={eventColor} onChange={(e) => setEventColor(e.target.value)} />
-                    </div>
-                    <div className="div-handle">
-                        <h3>Background Color</h3>
-                        <input type="color" value={eventBackgroundColor} onChange={(e) => setEventBackgroundColor(e.target.value)} />
-                    </div>
-                    <div className="text-container">
-                        <h3>Description</h3>
-                        <ReactQuill className="text-area"
+                <div className="session-form-content">
+                    <section className="session-form-image">
+                        <input type="file" className="session-form-image-upload" onChange={fileSelectorChange} />
+                        {imagePreview && <img src={imagePreview} alt="Session Photo Cover" />}
+                    </section>
+                    <section className="session-form-info">
+                        <div>
+                            <h3>Label</h3>
+                            <input type="text" value={eventName} onChange={(e) => setEventName(e.target.value)} />
+                        </div>
+                        <div className="div-handle">
+                            <h3>Text Color</h3>
+                            <input type="color" value={eventColor} onChange={(e) => setEventColor(e.target.value)} />
+                        </div>
+                        <div>
+                            <h3>Background Color</h3>
+                            <input type="color" value={eventBackgroundColor} onChange={(e) => setEventBackgroundColor(e.target.value)} />
+                        </div>
+                        <ReactQuill className="session-form-desc"
                             theme="snow" 
                             value={eventDescription || ""}
                             onChange={handleDescriptionChange} />
-                    </div>
-                    <button
-                        type="submit"
-                        className="btn btn-info submit-btn"
-                        >{updateType ? "Update Session Type" : "Add Session Type"}</button>
+                        <button
+                            type="submit"
+                            className="button"
+                            >{updateType ? "Update Session Type" : "Add Session Type"}</button>
+                    </section>
                 </div>
             </form>
         </Modal>

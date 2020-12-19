@@ -323,6 +323,22 @@ a:hover {
     width: auto;
 }
 
+.session-form-image-upload::before {
+    content: "Select a picture";
+    display: inline-block;
+    background: -webkit-linear-gradient(top,#f9f9f9,#e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+}
+
 .session-form-info {
     position: relative;
     text-align: left;
@@ -352,6 +368,7 @@ a:hover {
     bottom: 0;
     left: 0;
     width: 100%;
+    max-width: 500px;
 }
 
 /* Modal */
