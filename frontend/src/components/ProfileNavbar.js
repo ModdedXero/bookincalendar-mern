@@ -24,6 +24,10 @@ export default function ProfileNavbar({ children }) {
                     <i className="ico fas fa-user-cog" />
                     Profile
                 </ListLink>
+                <ListLink className="sidenav-link" to="/private/contracts" myIndex={4} index={currentIndex} setIndex={setCurrentIndex}>
+                    <i className="ico fas fa-user-cog" />
+                    Contracts
+                </ListLink>
 
                 <ListLink className="sidenav-logo" to="/">Bookbeat</ListLink>
             </nav>

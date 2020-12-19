@@ -11,6 +11,7 @@ import ForgotPassword from "./Login/ForgotPassword";
 import Calendar from "./Private/Calendar/Calendar";
 import Sessions from "./Private/Sessions/Sessions";
 import Profile from "./Private/Profile";
+import Contracts from "./Private/Contracts/Contracts";
 
 import "../styles/style.css";
 
@@ -26,6 +27,7 @@ function App() {
             <DynamicRoute path="/private/calendar" layout="PROFILE" secure component={Calendar} />
             <DynamicRoute path="/private/setup/sessions" layout="PROFILE" secure component={Sessions} />
             <DynamicRoute path="/private/profile" layout="PROFILE" secure component={Profile} />
+            <DynamicRoute path="/private/contracts" layout="PROFILE" secure component={Contracts} />
           </Switch>
         </Router>
       </AuthProvider>
