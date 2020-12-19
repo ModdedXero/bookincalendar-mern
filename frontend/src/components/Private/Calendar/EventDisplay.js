@@ -9,7 +9,6 @@ export default function EventDisplay({ eventType, date, startTime, endTime }) {
     const [imagePreview, setImagePreview] = useState();
     const { downloadFile } = useAuth();
 
-    // TODO: Have images load on component contruct instead of on refresh/useEffect (Looks Cleaner)
     useEffect(() => {
         downloadFile(eventType.eventName)
             .then((url) => {

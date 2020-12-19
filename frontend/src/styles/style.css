@@ -80,8 +80,8 @@ a:hover {
 }
 
 .button:hover {
-    transform: scale(1.1);
-    box-shadow: var(--shadow);
+    transform: scale(1.025);
+    box-shadow: var(--shadow-sm);
 }
 
 .alert {
@@ -313,7 +313,6 @@ a:hover {
     box-sizing: border-box;
     margin: 0 0 64px 0;
     float: left;
-    overflow: hidden;
     height: 100%;
 }
 
@@ -321,6 +320,18 @@ a:hover {
     margin: 1.4rem 0;
     height: 95%;
     width: auto;
+}
+
+.session-form-image-upload::-webkit-file-upload-button {
+    visibility: hidden;
+    display: none;
+}
+
+.session-form-image-upload {
+    width: 118px;
+    overflow-x: hidden;
+    position: absolute;
+    top: 22px;
 }
 
 .session-form-image-upload::before {
@@ -345,6 +356,10 @@ a:hover {
     margin:  15px 0 40px 25px;
 }
 
+.session-form-div {
+    margin-bottom: 10px;
+}
+
 .session-form-info h1 {
     font-size: 72px;
     font-weight: 500;
@@ -353,6 +368,14 @@ a:hover {
 .session-form-info h3 {
     font-size: 35px;
     font-weight: 500;
+}
+
+.session-info-title {
+    font-size: 32px;
+}
+
+.session-info-color {
+    min-width: 50%;
 }
 
 .session-form-info .session-form-desc {
@@ -408,8 +431,8 @@ a:hover {
 }
 
 .animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s;
+    -webkit-animation: animatezoom 0.9s;
+    animation: animatezoom 0.9s;
 }
 
 @-webkit-keyframes animatezoom {

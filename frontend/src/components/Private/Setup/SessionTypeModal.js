@@ -101,22 +101,25 @@ export default function SessionTypeModal({ isModalOpen, toggleModal, updateType 
                         {imagePreview && <img src={imagePreview} alt="Session Photo Cover" />}
                     </section>
                     <section className="session-form-info">
-                        <div>
+                        <div className="session-form-div">
                             <h3>Label</h3>
-                            <input type="text" value={eventName} onChange={(e) => setEventName(e.target.value)} />
+                            <input type="text" className="session-info-title" value={eventName} onChange={(e) => setEventName(e.target.value)} />
                         </div>
-                        <div className="div-handle">
-                            <h3>Text Color</h3>
-                            <input type="color" value={eventColor} onChange={(e) => setEventColor(e.target.value)} />
+                        <div className="session-form-div">
+                            <h3>Calendar Text Color</h3>
+                            <input type="color" className="session-info-color" value={eventColor} onChange={(e) => setEventColor(e.target.value)} />
                         </div>
-                        <div>
-                            <h3>Background Color</h3>
-                            <input type="color" value={eventBackgroundColor} onChange={(e) => setEventBackgroundColor(e.target.value)} />
+                        <div className="session-form-div">
+                            <h3>Calendar Background Color</h3>
+                            <input type="color" className="session-info-color" value={eventBackgroundColor} onChange={(e) => setEventBackgroundColor(e.target.value)} />
                         </div>
-                        <ReactQuill className="session-form-desc"
-                            theme="snow" 
-                            value={eventDescription || ""}
-                            onChange={handleDescriptionChange} />
+                        <div className="session-form-div">
+                            <h3>Description</h3>
+                            <ReactQuill className="session-form-desc"
+                                theme="snow" 
+                                value={eventDescription || ""}
+                                onChange={handleDescriptionChange} />
+                        </div>
                         <button
                             type="submit"
                             className="button"

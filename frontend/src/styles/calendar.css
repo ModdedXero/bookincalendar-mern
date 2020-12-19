@@ -242,7 +242,7 @@
 }
 
 .calendar-event:hover {
-  transform: scale(1.25);
+  transform: scale(1.1);
   transition: .25s ease-out;
   z-index: 20;
   margin: 5px 5px;
