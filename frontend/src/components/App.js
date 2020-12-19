@@ -9,7 +9,7 @@ import Login from "./Login/Login";
 import Signup from "./Login/Signup";
 import ForgotPassword from "./Login/ForgotPassword";
 import Calendar from "./Private/Calendar/Calendar";
-import Sessions from "./Private/Setup/Sessions";
+import Sessions from "./Private/Sessions/Sessions";
 import Profile from "./Private/Profile";
 
 import "../styles/style.css";

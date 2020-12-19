@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 import { useAuth } from "../../../contexts/AuthContext";
-import SessionTypeModal from "../Setup/SessionTypeModal";
+import SessionTypeModal from "./SessionTypeModal";
 
 export default function TypeTableItem({ eventType }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,13 +24,12 @@ export default function TypeTableItem({ eventType }) {
     return (
         <>
             <tr>
-                <th scope="row">{eventType.eventName}</th>
-                <td className="x_color-block" style={{ backgroundColor: eventType.backgroundColor }}></td>
-                <td className="x_color-block" style={{ backgroundColor: eventType.color }}></td>
-                <td>Click Edit to View</td>
-                <td>Click Edit to View</td>
-                <td><button className="btn btn-info submit-btn" onClick={toggleModal}>Edit</button></td>
-                <td><button className="btn btn-info submit-btn" onClick={handleDelete}>Delete</button></td>
+                <td>{eventType.eventName}</td>
+                <td style={{ backgroundColor: eventType.backgroundColor }}></td>
+                <td style={{ backgroundColor: eventType.color }}></td>
+                <td>$300</td>
+                <td><button className="button" onClick={toggleModal}>Edit</button></td>
+                <td><button className="button" onClick={handleDelete}>Delete</button></td>
             </tr>
             <SessionTypeModal isModalOpen={isModalOpen} toggleModal={toggleModal} updateType={eventType} />
         </>

@@ -98,11 +98,11 @@ export default function SessionTypeModal({ isModalOpen, toggleModal, updateType 
                 <div className="session-form-content">
                     <section className="session-form-image">
                         <input type="file" className="session-form-image-upload" onChange={fileSelectorChange} />
-                        {imagePreview && <img src={imagePreview} alt="Session Photo Cover" />}
+                        <img src={imagePreview} alt="" />
                     </section>
                     <section className="session-form-info">
                         <div className="session-form-div">
-                            <h3>Label</h3>
+                            <h3>Session Name</h3>
                             <input type="text" className="session-info-title" value={eventName} onChange={(e) => setEventName(e.target.value)} />
                         </div>
                         <div className="session-form-div">
