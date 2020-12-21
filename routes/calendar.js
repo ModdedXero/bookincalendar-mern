@@ -1,12 +1,19 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
 const User = require("../models/user");
+const EventsData = require("../models/eventsData");
 
 // Event Routes
 
 router.route("/events/:uid").get((req, res) => {
+    var eventsID;
+
     User.findOne({ "uid": req.params.uid })
-        .then(doc => res.send({ events: doc.events }))
+        .then(doc => eventsID = doc.eventsID)
+        .catch(err => res.status(400).json({ response: `Error: ${err}` }))
+
+    EventsData.findOne({ "uid": eventsID })
+        .then(doc => res.json({ events: doc.events }))
         .catch(err => res.status(400).json({ response: `Error: ${err}` }))
 })
 

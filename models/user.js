@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const Event = require("./event");
-const EventType = require("./eventType");
 
 const Schema = mongoose.Schema;
 
@@ -14,13 +12,22 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    events: [Event],
-    eventTypes: [EventType],
+    eventsID: {
+        type: String,
+        required: true
+    },
+    clientsID: {
+        type: String,
+        required: true
+    },
     isTrial: {
         type: Boolean,
         default: true
     },
-    expirationDate: Date
+    expirationDate: {
+        type: Date,
+        required: true
+    }
 })
 
 const User = mongoose.model("User", userSchema);

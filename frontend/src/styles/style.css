@@ -486,3 +486,9 @@ a:hover {
     position: absolute;
     right: 0;
 }
+
+/* Signature */
+
+.signature {
+    border: 1px solid black;
+}
