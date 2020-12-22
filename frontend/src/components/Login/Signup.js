@@ -1,5 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
+
 import { useAuth } from "../../contexts/AuthContext";
 
 export default function Signup() {
@@ -25,8 +27,12 @@ export default function Signup() {
         try {
             setError("");
             setLoading(true);
-            await signup(emailRef.current.value, passwordRef.current.value);
-            history.push("/");
+            await signup(emailRef.current.value, passwordRef.current.value)
+                    .then(usr => {
+                        axios.post(`/api/login/signup`, { email: usr.user.email, uid: usr.user.uid } )
+                            .then((res) => console.log(res.data.response))
+                    });
+            history.push("/private/calendar");
         } catch (err) {
             setError(err);
         }

@@ -14,7 +14,7 @@ export function AuthProvider({ children }) {
 
     // User Functions
     function signup(email, password) {
-        return auth.createUserWithEmailAndPassword(email, password)
+        return auth.createUserWithEmailAndPassword(email, password);
     }
 
     function login(email, password) {
@@ -76,11 +76,6 @@ export function AuthProvider({ children }) {
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
-            // If user isn't set try adding user to DB
-            if (user !== currentUser) {
-                axios.post(`/api/login/signup`, { email: user.email, uid: user.uid } )
-                    .then((res) => console.log(res.data.response))
-            }
             setCurrentUser(user);
             setLoading(false);
         })

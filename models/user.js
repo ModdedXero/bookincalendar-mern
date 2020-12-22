@@ -25,8 +25,7 @@ const userSchema = new Schema({
         default: true
     },
     expirationDate: {
-        type: Date,
-        required: true
+        type: Date
     }
 })
 
