@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 
-import { useAuth } from "../../../contexts/AuthContext";
+import { useAuth } from "../../../../contexts/AuthContext";
 
 import "react-quill/dist/quill.snow.css";
 

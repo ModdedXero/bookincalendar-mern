@@ -1,0 +1,29 @@
+Date : 2020-12-30 18:41:27
+Directory : e:\Programming\VisualStudio\Projects\bookingcalendar-mern\models
+Total : 5 files,  89 codes, 0 comments, 19 blanks, all 108 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |          5 |         89 |          0 |         19 |        108 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                            | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                               |          5 |         89 |          0 |         19 |        108 |
++---------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                        | language   | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| e:\Programming\VisualStudio\Projects\bookingcalendar-mern\models\clientsData.js | JavaScript |          9 |          0 |          4 |         13 |
+| e:\Programming\VisualStudio\Projects\bookingcalendar-mern\models\event.js       | JavaScript |         18 |          0 |          3 |         21 |
+| e:\Programming\VisualStudio\Projects\bookingcalendar-mern\models\eventType.js   | JavaScript |         22 |          0 |          4 |         26 |
+| e:\Programming\VisualStudio\Projects\bookingcalendar-mern\models\eventsData.js  | JavaScript |         10 |          0 |          4 |         14 |
+| e:\Programming\VisualStudio\Projects\bookingcalendar-mern\models\user.js        | JavaScript |         30 |          0 |          4 |         34 |
+| Total                                                                           |            |         89 |          0 |         19 |        108 |
++---------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

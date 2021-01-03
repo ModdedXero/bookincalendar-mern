@@ -8,10 +8,13 @@ import Home from "./Website/Home";
 import Login from "./Login/Login";
 import Signup from "./Login/Signup";
 import ForgotPassword from "./Login/ForgotPassword";
-import Calendar from "./Private/Calendar/Calendar";
-import Sessions from "./Private/Sessions/Sessions";
-import Profile from "./Private/Profile";
-import Contracts from "./Private/Contracts/Contracts";
+
+/* Booking Calendar Routes */
+import Calendar from "./Private/BookingCalendar/Calendar/Calendar";
+import ClientCalendar from "./Private/BookingCalendar/Calendar/Client/ClientCalendar";
+import Sessions from "./Private/BookingCalendar/Sessions/Sessions";
+import Profile from "./Private/BookingCalendar/Profile";
+import Contracts from "./Private/BookingCalendar/Contracts/Contracts";
 
 import "../styles/style.css";
 
@@ -24,6 +27,8 @@ function App() {
             <DynamicRoute path="/login/signup" layout="SITE" component={Signup} />
             <DynamicRoute path="/login/forgot-password" layout="SITE" component={ForgotPassword} />
             <DynamicRoute path="/login" layout="SITE" component={Login} />
+
+            <DynamicRoute path="/calendar/:calendarID" layout="NONE" component={ClientCalendar} />
             <DynamicRoute path="/private/calendar" layout="PROFILE" secure component={Calendar} />
             <DynamicRoute path="/private/setup/sessions" layout="PROFILE" secure component={Sessions} />
             <DynamicRoute path="/private/profile" layout="PROFILE" secure component={Profile} />

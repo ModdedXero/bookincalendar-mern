@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-import { useAuth } from "../../../contexts/AuthContext";
+import { useAuth } from "../../../../contexts/AuthContext";
 import SessionTypeModal from "./SessionTypeModal";
 
 export default function TypeTableItem({ eventType }) {

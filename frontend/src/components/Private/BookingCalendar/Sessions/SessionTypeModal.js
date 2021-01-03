@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ReactQuill from "react-quill";
 
-import { useAuth } from "../../../contexts/AuthContext";
-import Modal from "../../Utility/Modal";
+import { useAuth } from "../../../../contexts/AuthContext";
+import Modal from "../../../Utility/Modal";
 
 import "react-quill/dist/quill.snow.css";
 

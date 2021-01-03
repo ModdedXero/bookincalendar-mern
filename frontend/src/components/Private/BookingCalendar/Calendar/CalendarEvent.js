@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 import { format } from "date-fns";
 import axios from "axios";
-import Modal from "../../Utility/Modal";
+import Modal from "../../../Utility/Modal";
 import EventDisplay from "./EventDisplay";
-import { useAuth } from "../../../contexts/AuthContext";
+import { useAuth } from "../../../../contexts/AuthContext";
 
 export default function CalendarEvent({ eventData, eventType }) {
     const { currentUser } = useAuth();

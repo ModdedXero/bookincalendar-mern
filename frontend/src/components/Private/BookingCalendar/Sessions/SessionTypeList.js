@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import TypeTableItem from "./TypeTableItem";
-import { useAuth } from "../../../contexts/AuthContext";
+import { useAuth } from "../../../../contexts/AuthContext";
 
 export default function SessionTypeList() {
     const [eventTypes, setEventTypes] = useState([]);

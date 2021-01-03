@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { format, subMonths, startOfWeek, endOfWeek, addDays, startOfMonth, endOfMonth, isSameMonth, addMonths, isSameDay } from "date-fns";
 import axios from "axios";
 
-import { useAuth } from "../../../contexts/AuthContext";
+import { useAuth } from "../../../../contexts/AuthContext";
 import CalendarDay from "./CalendarDay";
 
-import "../../../styles/calendar.css";
+import "../../../../styles/calendar.css";
 
 export default function Calendar() {
     const { currentUser } = useAuth();
