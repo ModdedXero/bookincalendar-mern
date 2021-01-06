@@ -7,6 +7,7 @@
     --blue: #2980b9;
     --off-white: #efefef;
     --gray: #9c9c9c34;
+    --yellow: #EBB84D;
 
     --danger: #e74c3c;
 
@@ -56,7 +57,6 @@ a:hover {
 }
 
 .center {
-    margin: 0;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -103,20 +103,47 @@ a:hover {
     margin: .5rem;
 }
 
+.bg-img-paral {
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Home */
+
+.home-div {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.bg-img-home1 {
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/react-auth-dev-57b4d.appspot.com/o/SiteImages%2FHome%2FLogoBig.jpeg?alt=media&token=f70d0ccf-eb02-44d2-9f90-7cc638173a41);
+    height: 100%;
+    width: auto;
+}
+
+.bg-img-home2 {
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/react-auth-dev-57b4d.appspot.com/o/SiteImages%2FHome%2FBrylee.jpg?alt=media&token=521b928e-c639-4eb5-8f15-fa1b034ab5b6);
+    min-height: 100%;
+    background-attachment: fixed;
+}
+
 /* Navbar */
 
 .navbar {
     display: flex;
-    justify-content: space-between;
-    height: 80px;
+    justify-content: space-around;
+    min-height: 68px;
+    height: auto;
     width: 100%;
     align-items: center;
-    padding: 30px 10%;
     background-color: white;
-    box-shadow: var(--shadow);
-    z-index: 100;
-    position: relative;
-    margin-bottom: 0px;
+    position: absolute;
+    z-index: 1;
+    padding: 0px 30%;
 }
 
 .navbar-logo {
@@ -128,33 +155,25 @@ a:hover {
     color: black;
 }
 
-.navbar-nav {
-    list-style: none;
-}
-
-.navbar-nav li {
-    display: inline-block;
-    padding: 0px 20px;
-}
-
 .navbar-link {
     text-decoration: none !important;
     display: inline-block;
     padding: 0px 20px;
-    transition: all 0.3s ease 0s;
+    white-space: nowrap;
+    transition: all 0.35s ease 0s;
     color: var(--font);
+    font-weight: bolder;
+    font-size: 18px;
 }
 
 .navbar-link:hover {
     list-style: none;
-    transform: scale(1.3);
-    color: var(--orange);
+    color: var(--yellow);
 }
 
 .navbar-link.active {
     list-style: none;
-    transform: scale(1.3);
-    color: var(--orange);
+    color: var(--yellow);
 }
 
 /* Side Navbar */

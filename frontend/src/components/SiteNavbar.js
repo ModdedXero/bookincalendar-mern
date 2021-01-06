@@ -14,18 +14,12 @@ export default function SiteNavbar({ children }) {
     return (
         <>
             <nav className="navbar">
-                <ListLink className="navbar-logo" to="/">Bookbeat</ListLink>
-
-                <div>
-                    <ListLink className="navbar-link" to="/" myIndex={1} index={currentIndex} setIndex={setCurrentIndex}>Home</ListLink>
-                    <ListLink className="navbar-link" to="/" myIndex={2} index={currentIndex} setIndex={setCurrentIndex}>Features</ListLink>
-                    <ListLink className="navbar-link" to="/" myIndex={3} index={currentIndex} setIndex={setCurrentIndex}>Pricing</ListLink>
-                    <ListLink className="navbar-link" to="/" myIndex={4} index={currentIndex} setIndex={setCurrentIndex}>About</ListLink>
-                </div>
-
-                {currentUser == null ?
-                <ListLink to="/login" className="button">Login</ListLink> :
-                <ListLink to="/private/calendar" className="button">Profile</ListLink>}
+                <ListLink className="navbar-link" to="/" myIndex={1} index={currentIndex} setIndex={setCurrentIndex}>Home</ListLink>
+                <ListLink className="navbar-link" to="/" myIndex={2} index={currentIndex} setIndex={setCurrentIndex}>Things We Do</ListLink>
+                <ListLink className="navbar-link" to="/" myIndex={3} index={currentIndex} setIndex={setCurrentIndex}>Community</ListLink>
+                <ListLink className="navbar-link" to="/" myIndex={4} index={currentIndex} setIndex={setCurrentIndex}>Submit</ListLink>
+                <ListLink className="navbar-link" to="/" myIndex={4} index={currentIndex} setIndex={setCurrentIndex}>Follow Us</ListLink>
+                <ListLink className="navbar-link" to="/" myIndex={4} index={currentIndex} setIndex={setCurrentIndex}>Blog</ListLink>
             </nav>
             {children}
         </>
