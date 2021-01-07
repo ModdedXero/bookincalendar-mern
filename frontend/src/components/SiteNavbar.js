@@ -15,7 +15,7 @@ export default function SiteNavbar({ children }) {
         <>
             <nav className="navbar">
                 <ListLink className="navbar-link" to="/" myIndex={1} index={currentIndex} setIndex={setCurrentIndex}>Home</ListLink>
-                <ListLink className="navbar-link" to="/" myIndex={2} index={currentIndex} setIndex={setCurrentIndex}>Things We Do</ListLink>
+                <ListLink className="navbar-link" to="/" single={500} myIndex={2} index={currentIndex} setIndex={setCurrentIndex}>Things We Do</ListLink>
                 <ListLink className="navbar-link" to="/" myIndex={3} index={currentIndex} setIndex={setCurrentIndex}>Community</ListLink>
                 <ListLink className="navbar-link" to="/" myIndex={4} index={currentIndex} setIndex={setCurrentIndex}>Submit</ListLink>
                 <ListLink className="navbar-link" to="/" myIndex={4} index={currentIndex} setIndex={setCurrentIndex}>Follow Us</ListLink>
