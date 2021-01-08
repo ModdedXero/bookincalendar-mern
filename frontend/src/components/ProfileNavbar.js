@@ -10,7 +10,7 @@ export default function ProfileNavbar({ children }) {
     const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
 
     return (
-        <>
+        <div className="site-content">
             <nav className="sidenav">
                 <ListLink className="sidenav-link" to="/private/calendar" myIndex={1} index={currentIndex} setIndex={setCurrentIndex}>
                     <i className="ico far fa-calendar-alt"/>
@@ -34,6 +34,6 @@ export default function ProfileNavbar({ children }) {
             <div className="sidenav-content">
                 {children}
             </div>
-        </>
+        </div>
     )
 }

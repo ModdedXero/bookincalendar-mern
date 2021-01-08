@@ -1,7 +1,6 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
 
-import SiteNavbar from "../SiteNavbar";
 import ProfileNavbar from "../ProfileNavbar";
 import { useAuth } from "../../contexts/AuthContext";
 
@@ -22,9 +21,9 @@ export default function DynamicRoute({ component: Component, layout, secure, ...
     switch (layout) {
       case "SITE": {
         return (
-          <SiteNavbar>
+          <>
             {actualRouteComponent}
-          </SiteNavbar>
+          </>
         )
       }
       case "PROFILE": {

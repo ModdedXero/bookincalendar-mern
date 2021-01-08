@@ -99,6 +99,18 @@ a:hover {
     background-color: var(--danger);
 }
 
+.sticky {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.spacer {
+    height: 50vh;
+}
+
 .ico {
     margin: .5rem;
 }
@@ -113,37 +125,71 @@ a:hover {
 
 /* Home */
 
-.home-div {
-    position: absolute;
-    height: 100%;
-    width: 100%;
+.home-bg-img-1 {
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/react-auth-dev-57b4d.appspot.com/o/SiteImages%2FHome%2FTestLogoBig.png?alt=media&token=4a398ae7-19d2-4e99-bdd6-cf2d6c9a7fa6);
+    height: 100vh;
 }
 
-.bg-img-home1 {
-    background-image: url(https://firebasestorage.googleapis.com/v0/b/react-auth-dev-57b4d.appspot.com/o/SiteImages%2FHome%2FLogoBig.jpeg?alt=media&token=f70d0ccf-eb02-44d2-9f90-7cc638173a41);
-    height: 100%;
-    width: auto;
-}
-
-.bg-img-home2 {
+.home-bg-img-2 {
     background-image: url(https://firebasestorage.googleapis.com/v0/b/react-auth-dev-57b4d.appspot.com/o/SiteImages%2FHome%2FBrylee.jpg?alt=media&token=521b928e-c639-4eb5-8f15-fa1b034ab5b6);
-    min-height: 100%;
-    background-attachment: fixed;
+    height: 100vh;
+}
+
+.home-bg-img-3 {
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/react-auth-dev-57b4d.appspot.com/o/SiteImages%2FHome%2FBlankLogoBig.png?alt=media&token=937dadd4-17d8-4815-8a05-ceb36f76806d);
+    height: 100vh;
+}
+
+.home-bg-img-4 {
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/react-auth-dev-57b4d.appspot.com/o/SiteImages%2FHome%2FBlankLogoBig.png?alt=media&token=937dadd4-17d8-4815-8a05-ceb36f76806d);
+    height: 100vh;
+}
+
+.home-minilogo {
+    width: 200px;
+    height: 200px;
+}
+
+.home-twedo {
+    background-color: rgb(250, 250, 250);
+    height: 80vh;
+    text-align: center;
+}
+
+.home-twedo h1 {
+    padding-top: 100px;
+    font-weight: bolder;
+    font-size: 42px;
+}
+
+.home-twedo-body {
+    display: grid;
+    grid-template-columns: 195px 195px 195px;
+    justify-content: center;
+    padding: 80px 40px 40px 0;
+    gap: 30px;
+}
+
+.home-twedo-line {
+    width: 25px;
+    height: 1px;
+    margin: 10px 44%;
+    background-color: var(--yellow);
+}
+
+.home-twedo-body section {
+    width: 195px;
+    margin: 0 20px;
+    flex: 2;
 }
 
 /* Navbar */
 
 .navbar {
     display: flex;
-    justify-content: space-around;
-    min-height: 68px;
-    height: auto;
-    width: 100%;
-    align-items: center;
+    justify-content: center;
     background-color: white;
-    position: absolute;
-    z-index: 1;
-    padding: 0px 30%;
+    min-height: 68px;
 }
 
 .navbar-logo {
@@ -157,6 +203,9 @@ a:hover {
 
 .navbar-link {
     text-decoration: none !important;
+    border: none;
+    outline: none;
+    background-color: white;
     display: inline-block;
     padding: 0px 20px;
     white-space: nowrap;
