@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css2?family=Bad+Script&family=Caveat&family=Pacifico&display=swap);
+@import url(//db.onlinewebfonts.com/c/39a2c7f346d5cfae7045aeb2fb50d9ad?family=LuloCleanW01-OneBold);
 
 :root {
     --font: black;
@@ -12,8 +13,12 @@
     --danger: #e74c3c;
 
     --logo-font: 'Caveat', cursive;
+    --home-header-color: rgb(54, 54, 54);
+    --home-header-font: normal normal normal 40px/1.4em LuloCleanW01-OneBold,sans-serif;
     --shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     --shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+
+    --left-margin: calc((100% - 980px) * 0.5);
 }
  
 * {
@@ -137,7 +142,7 @@ a:hover {
 
 .home-bg-img-3 {
     background-image: url(https://firebasestorage.googleapis.com/v0/b/react-auth-dev-57b4d.appspot.com/o/SiteImages%2FHome%2FBlankLogoBig.png?alt=media&token=937dadd4-17d8-4815-8a05-ceb36f76806d);
-    height: 100vh;
+    height: 85vh;
 }
 
 .home-bg-img-4 {
@@ -158,8 +163,8 @@ a:hover {
 
 .home-twedo h1 {
     padding-top: 100px;
-    font-weight: bolder;
-    font-size: 42px;
+    font: var(--home-header-font);
+    color: var(--home-header-color);
 }
 
 .home-twedo-body {
@@ -181,6 +186,72 @@ a:hover {
     width: 195px;
     margin: 0 20px;
     flex: 2;
+}
+
+.home-community {
+    text-align: center;
+}
+
+.home-community h1 {
+    padding: 130px 0px;
+    font: var(--home-header-font);
+    color: var(--home-header-color);
+}
+
+.home-community-body {
+    display: flex;
+    height: 100%;
+    width: 50vw;
+    margin-left: var(--left-margin)
+}
+
+.home-community-body-img {
+    box-sizing: border-box;
+    margin: 0 0 64px 0;
+    float: left;
+    height: 100%;
+}
+
+.home-community-body-img img {
+    margin: 1.4rem 0;
+    width: 620px;
+    min-width: 200px;
+}
+
+.home-community-body-text {
+    position: relative;
+    text-align: left;
+    margin:  80px 0 40px 25px;
+    font-size: 20px;
+}
+
+.home-community-body-text p {
+    width: 300px;
+}
+
+.home-submit {
+    background-color: white;
+    text-align: center;
+    padding: 60px 0;
+}
+
+.home-submit h1 {
+    font: var(--home-header-font);
+    color: var(--home-header-color);
+}
+
+.home-submit-line {
+    width: 25px;
+    height: 1px;
+    margin: 25px 0 25px calc(50% - 25px);
+    background-color: var(--yellow);
+}
+
+.home-submit-text {
+    width: 450px;
+    margin-left: calc(50% - 220px);
+    text-align: left;
+    font-size: 17px;
 }
 
 /* Navbar */

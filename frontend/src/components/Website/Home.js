@@ -14,8 +14,7 @@ const getDimensions = ele => {
 }
 
 const scrollTo = (ele) => {
-    const yOffset = -67;
-    const y = ele.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    const y = ele.getBoundingClientRect().top + window.pageYOffset - 67;
 
     window.scrollTo({ top: y, behavior: "smooth" });
 }
@@ -138,8 +137,31 @@ export default function Home() {
                     src="https://firebasestorage.googleapis.com/v0/b/react-auth-dev-57b4d.appspot.com/o/SiteImages%2FHome%2FLOGO%20MINI.png?alt=media&token=b37f7015-8235-4485-b213-d7fac11f2d7a" 
                 />
             </div>
-            <div className="bg-img-paral home-bg-img-3" id="Community" ref={communityRef} />
-            <div className="bg-img-paral home-bg-img-2" id="Submit" ref={submitRef} />
+            <div className="bg-img-paral home-bg-img-3" id="Community" ref={communityRef}>
+                <div className="home-community">
+                    <h1>COMMUNITY.</h1>
+                    <div className="home-community-body">
+                        <section className="home-community-body-img">
+                            <img src="https://firebasestorage.googleapis.com/v0/b/react-auth-dev-57b4d.appspot.com/o/SiteImages%2FHome%2FManWithBaby.jpg?alt=media&token=5286288f-2961-4f80-a5da-2b6efca8c74d" />
+                        </section>
+                        <section className="home-community-body-text">
+                            <p>Welcome to Bold, Emotional, Colorful lifestyle photography blog. Highlighting artists by creating opportunities to be featured.</p>
+                            <br />
+                            <p>You can also find helpful information and tips on shooting and your photography business under Articles.</p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div className="home-submit" id="Submit" ref={submitRef}>
+                <h1>SUBMIT.</h1>
+                <p className="home-submit-line" />
+                <p className="home-submit-text">
+                    We are looking for photographers to write helpful tutorials and articles that are photography related to feature on our blog. Include 5-10 photographs that pertain to your article. Do you love to write? Submit your ideas below. 
+                </p>
+                <div>
+                    
+                </div>
+            </div>
             <div className="bg-img-paral home-bg-img-4" id="FollowUs" ref={followUsRef} />
         </div>
     )
