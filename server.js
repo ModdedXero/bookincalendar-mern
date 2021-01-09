@@ -14,7 +14,7 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, "frontend", "build")));
 
 const uri = process.env.MONGO_URI;
 mongoose.connect(uri, {
@@ -36,7 +36,7 @@ app.use("/api/calendar", calenadarRouter);
 
 if (process.env.NODE_ENV == "production") {
     app.get("*", (req, res) => {
-        res.sendFile(path.join(__dirname, "build", "index.html"));
+        res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
     })
 }
 
