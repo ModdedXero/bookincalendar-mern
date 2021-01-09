@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import DynamicLink from "../Utility/DynamicLink";
+import Footer from "./MainSite/Footer";
 
 export default function SiteNavbar({ children, component: Component }) {
     const [activePage, setActivePage] = useState();
@@ -17,6 +18,7 @@ export default function SiteNavbar({ children, component: Component }) {
                 </nav>
             </div>
             <Component setPage={setActivePage} />
+            <Footer />
         </div>
     )
 }

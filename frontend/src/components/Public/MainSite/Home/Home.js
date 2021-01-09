@@ -29,10 +29,6 @@ export default function Home({ setPage }) {
         setPage("Home");
     })
 
-    const scrollToTop = (e) => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
     return (
         <motion.div
             style={pageStyle}
@@ -48,17 +44,17 @@ export default function Home({ setPage }) {
                 <h1>INSPIRE. CREATE. EDUCATE.</h1>
                 <div className="home-twedo-body">
                     <section>
-                        <h2>FEATURE</h2>
-                        <p className="home-twedo-line" />
-                        <p>
-                            We feature bold, emotional, colorful artists on our blog and social media.
-                        </p>
-                    </section>
-                    <section>
                         <h2>COMMUNITY</h2>
                         <p className="home-twedo-line" />
                         <p>
                             We offer a community Facebook Group for lifestyle photographers to support each other.
+                        </p>
+                    </section>
+                    <section>
+                        <h2>FEATURE</h2>
+                        <p className="home-twedo-line" />
+                        <p>
+                            We feature bold, emotional, colorful artists on our blog and social media.
                         </p>
                     </section>
                     <section>
@@ -92,7 +88,7 @@ export default function Home({ setPage }) {
                                 <li>Organization (Booking System)</li>
                                 <li>Featuring Photographers</li>
                                 <li>Community</li>
-                                <li>Insparation</li>
+                                <li>Inspiration</li>
                             </ul>
                         </section>
                     </div>
@@ -109,11 +105,6 @@ export default function Home({ setPage }) {
                 </div>
             </div>
             <div className="bg-img-paral home-bg-img-3 home-last" />
-            <div className="home-footer">
-                <button type="button" onClick={scrollToTop}>Scroll To Top</button>
-                <br />
-                <span>© 2018 Bold Emotional Colorful Lifestyle Photography Blog</span>
-            </div>
         </motion.div>
     )
 }

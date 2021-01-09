@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 
+import ComingSoon from "./ComingSoon";
+
 const pageVariants = {
     initial: {
       opacity: 0,
@@ -36,7 +38,7 @@ export default function ECourses({ setPage }) {
             variants={pageVariants}
             transition={pageTransition}
         >
-            ECourses
+            <ComingSoon />
         </motion.div>
     )
 }

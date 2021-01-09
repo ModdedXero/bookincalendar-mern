@@ -7,6 +7,9 @@ import DynamicRoute from "./Utility/DynamicRoute";
 
 import Home from "./Public/MainSite/Home/Home";
 import ECourses from "./Public/MainSite/ECourses";
+import Booking from "./Public/MainSite/Booking";
+import Blog from "./Public/MainSite/Blog";
+import Presets from "./Public/MainSite/Presets";
 
 /* Login Routes */
 import Login from "./Public/Login/Login";
@@ -31,6 +34,9 @@ function App() {
                 <Switch location={location} key={location.pathname}>
                     <DynamicRoute exact path="/" layout="SITE" component={Home} />
                     <DynamicRoute path="/ecourses" layout="SITE" component={ECourses} />
+                    <DynamicRoute path="/booking" layout="SITE" component={Booking} />
+                    <DynamicRoute path="/blog" layout="SITE" component={Blog} />
+                    <DynamicRoute path="/presets" layout="SITE" component={Presets} />
 
                     <DynamicRoute path="/login/signup" layout="SITE" component={Signup} />
                     <DynamicRoute path="/login/forgot-password" layout="SITE" component={ForgotPassword} />
