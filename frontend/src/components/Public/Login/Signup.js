@@ -13,6 +13,8 @@ export default function Signup() {
     const [loading, setLoading] = useState(false);
     const history = useHistory();
 
+    console.log(process.env.REACT_APP_PROJECT_ID);
+
     async function handleSubmit(e) {
         e.preventDefault();
 
