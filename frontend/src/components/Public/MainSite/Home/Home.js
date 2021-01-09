@@ -45,9 +45,7 @@ export default function Home({ setPage }) {
             <div className="bg-img-paral home-bg-img-1" id="Home" />
             <div className="bg-img-paral home-bg-img-2" />
             <div className="home-twedo" id="ThWeDo">
-                <h1>
-                    THINGS WE DO.
-                </h1>
+                <h1>INSPIRE. CREATE. EDUCATE.</h1>
                 <div className="home-twedo-body">
                     <section>
                         <h2>FEATURE</h2>
@@ -79,15 +77,23 @@ export default function Home({ setPage }) {
             </div>
             <div className="bg-img-paral home-bg-img-3" id="Community">
                 <div className="home-community">
-                    <h1>COMMUNITY.</h1>
+                    <h1>THINGS WE DO.</h1>
                     <div className="home-community-body">
                         <section className="home-community-body-img">
                             <img alt="" src="https://firebasestorage.googleapis.com/v0/b/react-auth-dev-57b4d.appspot.com/o/SiteImages%2FHome%2FManWithBaby.jpg?alt=media&token=5286288f-2961-4f80-a5da-2b6efca8c74d" />
                         </section>
                         <section className="home-community-body-text">
-                            <p>Welcome to Bold, Emotional, Colorful lifestyle photography blog. Highlighting artists by creating opportunities to be featured.</p>
+                            <p>Welcome!!!</p>
                             <br />
-                            <p>You can also find helpful information and tips on shooting and your photography business under Articles.</p>
+                            <p>Here is some of the things we offer...</p>
+                            <br />
+                            <ul>
+                                <li>E-Courses</li>
+                                <li>Organization (Booking System)</li>
+                                <li>Featuring Photographers</li>
+                                <li>Community</li>
+                                <li>Insparation</li>
+                            </ul>
                         </section>
                     </div>
                 </div>
