@@ -79,9 +79,7 @@ export default function Home({ setPage }) {
                     </section>
                     <section className="home-community-body-text">
                         <p>Welcome!!!</p>
-                        <br />
                         <p>Here is some of the things we offer...</p>
-                        <br />
                         <ul>
                             <li>E-Courses</li>
                             <li>Organization (Booking System)</li>
