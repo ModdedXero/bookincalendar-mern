@@ -71,27 +71,25 @@ export default function Home({ setPage }) {
                     src="https://firebasestorage.googleapis.com/v0/b/bec-livesite.appspot.com/o/SiteImages%2FHome%2FLOGO%20MINI.png?alt=media&token=1e555dc3-23ab-4705-86c9-cfbe070890de" 
                 />
             </div>
-            <div className="bg-img-paral home-bg-img-3" id="Community">
-                <div className="home-community">
-                    <h1>THINGS WE DO.</h1>
-                    <div className="home-community-body">
-                        <section className="home-community-body-img">
-                            <img alt="" src="https://firebasestorage.googleapis.com/v0/b/bec-livesite.appspot.com/o/SiteImages%2FHome%2FManWithBaby.jpg?alt=media&token=07362e9e-0c21-445e-89db-0d9b658b3e09" />
-                        </section>
-                        <section className="home-community-body-text">
-                            <p>Welcome!!!</p>
-                            <br />
-                            <p>Here is some of the things we offer...</p>
-                            <br />
-                            <ul>
-                                <li>E-Courses</li>
-                                <li>Organization (Booking System)</li>
-                                <li>Featuring Photographers</li>
-                                <li>Community</li>
-                                <li>Inspiration</li>
-                            </ul>
-                        </section>
-                    </div>
+            <div className="bg-img-paral home-bg-img-3 home-community" id="Community">
+                <h1>THINGS WE DO.</h1>
+                <div className="home-community-body">
+                    <section className="home-community-body-img">
+                        <img alt="" src="https://firebasestorage.googleapis.com/v0/b/bec-livesite.appspot.com/o/SiteImages%2FHome%2FManWithBaby.jpg?alt=media&token=07362e9e-0c21-445e-89db-0d9b658b3e09" />
+                    </section>
+                    <section className="home-community-body-text">
+                        <p>Welcome!!!</p>
+                        <br />
+                        <p>Here is some of the things we offer...</p>
+                        <br />
+                        <ul>
+                            <li>E-Courses</li>
+                            <li>Organization (Booking System)</li>
+                            <li>Featuring Photographers</li>
+                            <li>Community</li>
+                            <li>Inspiration</li>
+                        </ul>
+                    </section>
                 </div>
             </div>
             <SubmitForm />
