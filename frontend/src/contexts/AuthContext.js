@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
 import { auth, storage } from "../firebase";
-import axios from "axios";
 
 const AuthContext = React.createContext();
 
@@ -39,7 +38,7 @@ export function AuthProvider({ children }) {
 
     // Storage Functions
 
-    function uploadFile(fileRef = {
+    async function uploadFile(fileRef = {
         file: "",
         fileName: "",
         upload: ""

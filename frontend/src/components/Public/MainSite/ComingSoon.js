@@ -5,25 +5,25 @@ export default function ComingSoon() {
         <div className="coming-soon bg-img-paral home-bg-img-3">
             <div className="coming-soon-container center">
                 <div className="coming-soon-backdrop" />
-                <div class='loader'>
-                    <div class='loader_cogs'>
-                        <div class='COGfirst'>
-                            <div class='firstPart'></div>
-                            <div class='firstPart'></div>
-                            <div class='firstPart'></div>
-                            <div class='firstHole'></div>
+                <div className='loader'>
+                    <div className='loader_cogs'>
+                        <div className='COGfirst'>
+                            <div className='firstPart'></div>
+                            <div className='firstPart'></div>
+                            <div className='firstPart'></div>
+                            <div className='firstHole'></div>
                         </div>
-                        <div class='COGsecond'>
-                            <div class='secondPart'></div>
-                            <div class='secondPart'></div>
-                            <div class='secondPart'></div>
-                            <div class='secondHole'></div>
+                        <div className='COGsecond'>
+                            <div className='secondPart'></div>
+                            <div className='secondPart'></div>
+                            <div className='secondPart'></div>
+                            <div className='secondHole'></div>
                         </div>
-                        <div class='COGthird'>
-                            <div class='thirdPart'></div>
-                            <div class='thirdPart'></div>
-                            <div class='thirdPart'></div>
-                            <div class='thirdHole'></div>
+                        <div className='COGthird'>
+                            <div className='thirdPart'></div>
+                            <div className='thirdPart'></div>
+                            <div className='thirdPart'></div>
+                            <div className='thirdHole'></div>
                         </div>
                     </div>
                 </div>

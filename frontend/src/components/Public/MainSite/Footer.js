@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="home-footer">
             <button type="button" onClick={scrollToTop}>Scroll To Top</button>
             <br />
-            <span>© 2018 Bold Emotional Colorful Lifestyle Photography Blog</span>
+            <span>© 2021 Bold Emotional Colorful Lifestyle Photography Blog</span>
         </div>
     )
 }

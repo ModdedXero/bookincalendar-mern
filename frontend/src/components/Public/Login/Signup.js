@@ -13,8 +13,6 @@ export default function Signup() {
     const [loading, setLoading] = useState(false);
     const history = useHistory();
 
-    console.log(process.env.REACT_APP_PROJECT_ID);
-
     async function handleSubmit(e) {
         e.preventDefault();
 
@@ -34,7 +32,7 @@ export default function Signup() {
                         axios.post(`/api/login/signup`, { email: usr.user.email, uid: usr.user.uid } )
                             .then((res) => console.log(res.data.response))
                     });
-            history.push("/private/calendar");
+            history.push("/");
         } catch (err) {
             setError(err);
         }

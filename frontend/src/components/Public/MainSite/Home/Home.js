@@ -1,28 +1,6 @@
 import React, { useEffect } from "react";
-import { motion } from "framer-motion";
 
 import SubmitForm from "./SubmitForm";
-
-const pageVariants = {
-    initial: {
-      opacity: 0,
-    },
-    in: {
-      opacity: 1,
-    },
-    out: {
-      opacity: 0,
-    }
-};
-
-const pageTransition = {
-    ease: "easeOut",
-    duration: .7
-};
-
-const pageStyle = {
-    position: "relative"
-};
 
 export default function Home({ setPage }) {
     useEffect(() => {
@@ -30,14 +8,7 @@ export default function Home({ setPage }) {
     })
 
     return (
-        <motion.div
-            style={pageStyle}
-            initial="initial"
-            animate="in"
-            exit="out"
-            variants={pageVariants}
-            transition={pageTransition}
-        >
+        <>
             <div className="bg-img-paral home-bg-img-1" id="Home" />
             <div className="bg-img-paral home-bg-img-2" />
             <div className="home-twedo" id="ThWeDo">
@@ -101,6 +72,6 @@ export default function Home({ setPage }) {
                 </div>
             </div>
             <div className="bg-img-paral home-bg-img-3 home-last" />
-        </motion.div>
+        </>
     )
 }
