@@ -9,12 +9,13 @@
     --off-white: #efefef;
     --gray: #9c9c9c34;
     --yellow: #EBBA4D;
-
+    --home-header-color: rgb(54, 54, 54);
     --danger: #e74c3c;
 
+
     --logo-font: 'Caveat', cursive;
-    --home-header-color: rgb(54, 54, 54);
     --home-header-font: normal normal normal 40px/1.4em LuloCleanW01-OneBold,sans-serif;
+
     --shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     --shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
@@ -64,6 +65,29 @@ button {
     outline: none;
     text-decoration: none;
     background-color: transparent;
+}
+
+.site-content {
+    padding-top: 68px;
+}
+
+.site-footer {
+    height: 150px;
+    background-color: rgb(48, 48, 48);
+    text-align: center;
+    padding-top: 25px;
+}
+
+.site-footer button {
+    background-color: transparent;
+    color: var(--yellow);
+    margin-bottom: 50px;
+}
+
+.site-footer span {
+    font-size: 13px;
+    font-style: italic;
+    color: white;
 }
 
 .center {
@@ -317,25 +341,6 @@ button {
     height: 350px;
 }
 
-.home-footer {
-    height: 150px;
-    background-color: rgb(48, 48, 48);
-    text-align: center;
-    padding-top: 25px;
-}
-
-.home-footer button {
-    background-color: transparent;
-    color: var(--yellow);
-    margin-bottom: 50px;
-}
-
-.home-footer span {
-    font-size: 13px;
-    font-style: italic;
-    color: white;
-}
-
 @media screen and (max-width:840px) {
     .home-bg-img-1 {
         height: auto;
@@ -425,6 +430,29 @@ button {
     .home-last {
         height: 25vh;
     }
+}
+
+/* Blog */
+
+.blog-admin {
+    text-align: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.blog-admin-content {
+    width: 45%;
+    position: relative;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.blog-admin-content p {
+    font-size: 18px;
+}
+
+.blog-text {
+    font-size: 18px;
 }
 
 /* Coming Soon */

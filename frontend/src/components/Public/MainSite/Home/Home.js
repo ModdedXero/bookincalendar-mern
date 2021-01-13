@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 import SubmitForm from "./SubmitForm";
+import Footer from "../Footer";
 
 export default function Home({ setPage }) {
     useEffect(() => {
@@ -72,6 +73,7 @@ export default function Home({ setPage }) {
                 </div>
             </div>
             <div className="bg-img-paral home-bg-img-3 home-last" />
+            <Footer />
         </>
     )
 }

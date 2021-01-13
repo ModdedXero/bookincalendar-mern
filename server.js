@@ -30,9 +30,11 @@ connection.once("open", () => {
 
 const loginRouter = require("./routes/login");
 const calenadarRouter = require("./routes/calendar");
+const blogRouter = require("./routes/blog");
 
 app.use("/api/login", loginRouter);
 app.use("/api/calendar", calenadarRouter);
+app.use("/api/blog", blogRouter);
 
 if (process.env.NODE_ENV == "production") {
     app.get("*", (req, res) => {

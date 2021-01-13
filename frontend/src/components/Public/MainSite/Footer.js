@@ -6,7 +6,7 @@ export default function Footer() {
     }
 
     return (
-        <div className="home-footer">
+        <div className="site-footer">
             <button type="button" onClick={scrollToTop}>Scroll To Top</button>
             <br />
             <span>© 2021 Bold Emotional Colorful Lifestyle Photography Blog</span>

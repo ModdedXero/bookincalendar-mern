@@ -1,6 +1,6 @@
 import React from "react";
 import { AuthProvider } from "../contexts/AuthContext";
-import { Switch, useLocation } from "react-router-dom";
+import { Switch } from "react-router-dom";
 
 import DynamicRoute from "./Utility/DynamicRoute";
 
@@ -17,7 +17,8 @@ import Signup from "./Public/Login/Signup";
 import ForgotPassword from "./Public/Login/ForgotPassword";
 
 /* Admin Routes */
-import BlogAdmin from "./Private/BlogAdmin/BlogAdmin";
+import CreateBlog from "./Private/Blog/CreateBlog";
+import BlogAdmin from "./Private/Blog/BlogAdmin";
 
 /* Booking Calendar Routes */
 import Calendar from "./Private/BookingCalendar/Calendar/Calendar";
@@ -29,8 +30,6 @@ import Contracts from "./Private/BookingCalendar/Contracts/Contracts";
 import "../styles/style.css";
 
 function App() {
-    const location = useLocation();
-
     return (
         <AuthProvider>
             <Switch>
@@ -44,17 +43,18 @@ function App() {
                 {/* Login Routes */}
                 <DynamicRoute path="/login/signup" layout="SITE" component={Signup} />
                 <DynamicRoute path="/login/forgot-password" layout="SITE" component={ForgotPassword} />
-                <DynamicRoute exact path="/login" layout="SITE" component={Login} />
+                <DynamicRoute path="/login" layout="SITE" component={Login} />
 
                 {/* Admin Routes */}
-                <DynamicRoute path="/admin/blog" layout="SITE" secure admin component={BlogAdmin} />
+                <DynamicRoute path="/private/admin/blog/create" layout="SITE" secure admin component={CreateBlog} />
+                <DynamicRoute path="/private/admin/blog" layout="SITE" secure admin component={BlogAdmin} />
 
                 {/* Booking Calendar Routes */}
-                <DynamicRoute path="/calendar/:calendarID" layout="NONE" component={ClientCalendar} />
-                <DynamicRoute path="/private/calendar" layout="PROFILE" secure component={Calendar} />
-                <DynamicRoute path="/private/setup/sessions" layout="PROFILE" secure component={Sessions} />
-                <DynamicRoute path="/private/profile" layout="PROFILE" secure component={Profile} />
-                <DynamicRoute path="/private/contracts" layout="PROFILE" secure component={Contracts} />
+                <DynamicRoute path="/client/calendar/:calendarID" layout="NONE" component={ClientCalendar} />
+                <DynamicRoute path="/private/booking/calendar" layout="PROFILE" secure component={Calendar} />
+                <DynamicRoute path="/private/booking/setup/sessions" layout="PROFILE" secure component={Sessions} />
+                <DynamicRoute path="/private/booking/profile" layout="PROFILE" secure component={Profile} />
+                <DynamicRoute path="/private/booking/contracts" layout="PROFILE" secure component={Contracts} />
             </Switch>
         </AuthProvider>
     );

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import DynamicLink from "../Utility/DynamicLink";
-import Footer from "./MainSite/Footer";
 
 export default function SiteNavbar({ children, component: Component }) {
     const [activePage, setActivePage] = useState();
@@ -12,7 +11,7 @@ export default function SiteNavbar({ children, component: Component }) {
     }
 
     return (
-        <div className="site-content">
+        <>
             <nav className="navbar">
                 <div
                     className={`navbar-links ${isNavCollapsed ? "" : "active"}`}
@@ -25,8 +24,9 @@ export default function SiteNavbar({ children, component: Component }) {
                 </div>
                 <button className="navbar-burger" onClick={toggleNav}><i className="fa fa-bars"></i></button>
             </nav>
-            <Component setPage={setActivePage} />
-            <Footer />
-        </div>
+            <div className="site-content">
+                <Component setPage={setActivePage} />
+            </div>
+        </>
     )
 }
