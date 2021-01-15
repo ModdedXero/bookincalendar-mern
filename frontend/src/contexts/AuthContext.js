@@ -41,30 +41,17 @@ export function AuthProvider({ children }) {
     async function uploadFile(fileRef = {
         file: "",
         fileName: "",
-        upload: ""
+        isAdmin: false
         }) {
-        const sRef = storage.ref(`${currentUser.uid}/` + fileRef.fileName);
-        const task = sRef.put(fileRef.file);
-
-        task.on("state_changed",
-            function progress(snapshot) {
-                if (fileRef.updload != null) {
-                    const percentage = (snapshot.bytesTransferred /
-                        snapshot.totalBytes) * 100;
-                    fileRef.upload.value = percentage;
-                }
-            },
-            
-            function error(err) {
-                console.log(err);
-            },
-            
-            function complete() {
-                console.log("File Uploaded!");
-            }
-        )
-
-        return task.then();
+        
+        var returnUrl;
+        const sRef = storage.ref(`${!fileRef.isAdmin ? currentUser.uid : ""}/` + fileRef.fileName);
+        await sRef.put(fileRef.file)
+        .then(snapshot => {
+            returnUrl = snapshot.ref.getDownloadURL();
+        })
+        
+        return returnUrl;
     }
 
     function downloadFile(path) {

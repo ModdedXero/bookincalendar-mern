@@ -11,6 +11,10 @@ const blogSchema = new Schema({
         type: String,
         required: true
     },
+    blogID: {
+        type: String,
+        required: true
+    },
     visible: {
         type: Boolean,
         default: false

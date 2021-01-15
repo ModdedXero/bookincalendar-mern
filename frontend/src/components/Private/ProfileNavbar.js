@@ -1,13 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 export default function ProfileNavbar({ children }) {
-    const [currentIndex, setCurrentIndex] = useState(1);
-    const [isNavCollapsed, setIsNavCollapsed] = useState(true)
-
-    // TODO: Setup and collapsed Profile Navbar
-    const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
-
     return (
         <div className="site-content">
             <nav className="sidenav">

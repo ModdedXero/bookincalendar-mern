@@ -16,24 +16,24 @@ export default function Home({ setPage }) {
                 <h1>INSPIRE. CREATE. EDUCATE.</h1>
                 <div className="home-twedo-body">
                     <section>
-                        <h2>COMMUNITY</h2>
+                        <h2>INSPIRE</h2>
                         <p className="home-twedo-line" />
                         <p>
-                            We offer a community Facebook Group for lifestyle photographers to support each other.
+                            Featuring sessions & BEC artists on our blog. Let's Inspire each other.
                         </p>
                     </section>
                     <section>
-                        <h2>FEATURE</h2>
+                        <h2>CREATE</h2>
                         <p className="home-twedo-line" />
                         <p>
-                            We feature bold, emotional, colorful artists on our blog and social media.
+                            Get all the tools you need to stay inspired, create beautiful portraits and run a successful business.
                         </p>
                     </section>
                     <section>
-                        <h2>BLOG</h2>
+                        <h2>EDUCATE</h2>
                         <p className="home-twedo-line" />
                         <p>
-                            We feature sessions & artists on our blog. Plus offer tips on shooting and business.
+                            Offering mini & full online e-courses for lifestyle photographers.
                         </p>
                     </section>
                 </div>
@@ -44,21 +44,15 @@ export default function Home({ setPage }) {
                 />
             </div>
             <div className="bg-img-paral home-bg-img-3 home-community" id="Community">
-                <h1>THINGS WE DO.</h1>
+                <h1>OUR COMMUNITY</h1>
                 <div className="home-community-body">
                     <section className="home-community-body-img">
                         <img alt="" src="https://firebasestorage.googleapis.com/v0/b/bec-livesite.appspot.com/o/SiteImages%2FHome%2FManWithBaby.jpg?alt=media&token=07362e9e-0c21-445e-89db-0d9b658b3e09" />
                     </section>
                     <section className="home-community-body-text">
-                        <p>Welcome!!!</p>
-                        <p>Here is some of the things we offer...</p>
-                        <ul>
-                            <li>E-Courses</li>
-                            <li>Organization (Booking System)</li>
-                            <li>Featuring Photographers</li>
-                            <li>Community</li>
-                            <li>Inspiration</li>
-                        </ul>
+                        <p>Bold, Emotional, Colorful is a photography community for lifestyle photographers.</p>
+                        <p>Want to learn from BEC Artists? </p>
+                        <p>We provide the tools you need to find your style and run a business. </p>
                     </section>
                 </div>
             </div>

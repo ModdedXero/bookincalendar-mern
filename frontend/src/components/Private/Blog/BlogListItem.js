@@ -1,9 +1,17 @@
 import React from "react";
 
-export default function BlogListItem({ blog }) {
+export default function BlogListItem({ post }) {
     return (
-        <div>
-            
-        </div>
+        <tr>
+            <td>
+                cover
+            </td>
+            <td>
+                {post.title}
+            </td>
+            <td>
+                {post.visible.toString()}
+            </td>
+        </tr>
     )
 }

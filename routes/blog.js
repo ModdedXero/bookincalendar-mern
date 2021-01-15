@@ -4,18 +4,25 @@ const Blog = require("../models/blog");
 router.route("/create").post((req, res) => {
     const title = req.body.title;
     const body = req.body.body;
+    const blogID = req.body.blogID;
     const visible = req.body.visible;
 
-    const newBlog = new Blog({ title, body, visible });
+    const newBlog = new Blog({ title, body, blogID, visible });
     newBlog.save()
         .then(res.json({ response: "Blog Created!" }))
-        .catch(err => res.status(400).json({ response: `Error: ${err}`}))
+        .catch(err => console.log(err))
 })
 
 router.route("/blogs").get((req, res) => {
     Blog.find()
         .then(doc => res.json({ blogs: doc }))
         .catch(err => res.status(400).json({ response: `Error: ${err}` }))
+})
+
+router.route("/:id").get((req, res) => {
+    Blog.findById(req.params.id)
+        .then(doc => res.json({ blog: doc }))
+        .catch(err => res.status(400).json({ response: `Error: ${err}`}))
 })
 
 router.route("/update/:id").post((req, res) => {

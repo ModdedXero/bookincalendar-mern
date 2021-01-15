@@ -98,6 +98,19 @@ button {
     transform: translate(-50%, -50%);
 }
 
+.generic-button {
+    background-color: #24a6fc;
+    color: white;
+    padding: 10px;
+    margin: 8px;
+    border-radius: 120px;
+    transition: all 0.35s ease 0s;
+}
+
+.generic-button:hover {
+    background-color: #218fd8;
+}
+
 .alert {
     color: white;
     background-color: var(--gray);
@@ -434,25 +447,78 @@ button {
 
 /* Blog */
 
-.blog-admin {
+.blog-admin-page {
+    padding: 30px 30%;
+}
+
+.blog-admin-title {
+    height: 60px;
+}
+
+.blog-admin-title-header {
+    float: left;
+}
+
+.blog-admin-title-button {
+    float: right;
+}
+
+.blog-admin-list {
+    display: flex;
+}
+
+.blog-create {
     text-align: center;
     justify-content: center;
     height: 100%;
 }
 
-.blog-admin-content {
-    width: 45%;
+.blog-create-title-container {
+    position: relative;
+    margin: 0 auto;
+    min-height: 82px;
+    width: 640px;
+    text-align: left;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.247);
+    border-bottom: none;
+}
+
+.blog-create-title {
+    font: var(--home-header-font);
+    background-color: white;
+    color: #474747;
+    min-height: 60px;
+    overflow: hidden;
+    line-height: 60px;
+    resize: none;
+    outline: none;
+    border: none;
+}
+
+.blog-create-content {
+    width: 640px;
     position: relative;
     margin: 0 auto;
     background-color: white;
 }
 
-.blog-admin-content p {
+.blog-create-content p {
     font-size: 18px;
 }
 
-.blog-text {
-    font-size: 18px;
+.blog-create-cover {
+    display: flex;
+    flex-direction: column;
+    width: 640px;
+    margin: 10px auto;
+}
+
+.blog-create-button {
+    position: fixed;
+    right: 20px;
+    top: 90px;
 }
 
 /* Coming Soon */
