@@ -4,10 +4,11 @@ const Blog = require("../models/blog");
 router.route("/create").post((req, res) => {
     const title = req.body.title;
     const body = req.body.body;
+    const coverImage = req.body.coverImage;
     const blogID = req.body.blogID;
     const visible = req.body.visible;
 
-    const newBlog = new Blog({ title, body, blogID, visible });
+    const newBlog = new Blog({ title, body, coverImage, blogID, visible });
     newBlog.save()
         .then(res.json({ response: "Blog Created!" }))
         .catch(err => console.log(err))

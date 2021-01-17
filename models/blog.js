@@ -11,6 +11,10 @@ const blogSchema = new Schema({
         type: String,
         required: true
     },
+    coverImage: {
+        type: String,
+        required: true
+    },
     blogID: {
         type: String,
         required: true

@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import ReactQuill from "react-quill";
+import TextareaAutosize from "react-textarea-autosize";
 import Axios from "axios";
 
 import { MakeID } from "../../Utility/RandomUtils";
@@ -23,8 +24,9 @@ export default function CreateBlog() {
 
     async function handleSubmit(e) {
         const postData = {
-            title: titleRef.current.firstChild.data,
+            title: titleRef.current.value,
             body: quill.state.value,
+            coverImage: "",
             blogID: blogID.current,
             visible: false
         }
@@ -35,7 +37,7 @@ export default function CreateBlog() {
             isAdmin: true
         }
 
-        await uploadFile(fileRef);
+        postData.coverImage = await uploadFile(fileRef);
         Axios.post("/api/blog/create", postData)
             .then(res => console.log(res.data.response))
     }
@@ -55,6 +57,7 @@ export default function CreateBlog() {
     }
     
     function quillImageHandler() {
+        console.log(titleRef);
         const input = document.createElement("input");
 
         input.setAttribute("type", "file");
@@ -99,25 +102,27 @@ export default function CreateBlog() {
 
     return (
         <div className="blog-create">
-            <h1>Blog title</h1>
-            <div className="blog-create-title-container">
-                <span ref={titleRef} className="blog-create-title" role="textbox" contentEditable="true"/>
+            <div className="blog-create-container">
+                <TextareaAutosize 
+                    ref={titleRef} 
+                    className="blog-create-title" 
+                    placeholder="Add a Title" 
+                />
+                
+                <ReactQuill
+                    className="blog-create-content"
+                    ref={el => setQuill(el)}
+                    theme="snow" 
+                    modules={quillModules}
+                    value={quill === undefined ? "" : quill.state.value}
+                />
+                <h1>Blog Cover</h1>
+                <div className="blog-create-cover">
+                    <input type="file" className="" onChange={fileSelectorChange} />
+                    <img src={coverImagePreview} alt="" />
+                </div>
+                <button className="generic-button blog-create-button" onClick={handleSubmit}>Create Post</button>
             </div>
-            
-            <h1>Blog Body</h1>
-            <ReactQuill
-                className="blog-create-content"
-                ref={el => setQuill(el)}
-                theme="snow" 
-                modules={quillModules}
-                value={quill === undefined ? "" : quill.state.value}
-            />
-            <h1>Blog Cover</h1>
-            <div className="blog-create-cover">
-                <input type="file" className="" onChange={fileSelectorChange} />
-                <img src={coverImagePreview} alt="" />
-            </div>
-            <button className="generic-button blog-create-button" onClick={handleSubmit}>Create Post</button>
         </div>
     )
 }

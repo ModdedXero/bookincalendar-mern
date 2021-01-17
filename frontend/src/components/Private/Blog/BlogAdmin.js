@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import BlogListItem from "./BlogListItem";
 
@@ -21,11 +22,11 @@ export default function BlogAdmin() {
                     <h1>Posts {blogs.length}</h1>
                 </div>
                 <div className="blog-admin-title-button">
-                    <button type="button" onClick={handleNewPost}>Create New Post</button>
+                    <Link className="generic-button" to="/private/admin/blog/create">Create New Post</Link>
                 </div>
             </div>
-            <div>
-                <table>
+            <div style={{ backgroundColor: "white", borderRadius: "10px" }}>
+                <table className="blog-admin-table">
                     <tbody>
                         {blogs.map((blog) => (
                             <BlogListItem post={blog} />

@@ -105,10 +105,15 @@ button {
     margin: 8px;
     border-radius: 120px;
     transition: all 0.35s ease 0s;
+    text-decoration: none !important;
 }
 
 .generic-button:hover {
     background-color: #218fd8;
+}
+
+.stripped-button {
+    cursor: pointer;
 }
 
 .alert {
@@ -448,7 +453,9 @@ button {
 /* Blog */
 
 .blog-admin-page {
-    padding: 30px 30%;
+    margin: 0 auto;
+    padding: 30px;
+    width: 800px;
 }
 
 .blog-admin-title {
@@ -463,38 +470,34 @@ button {
     float: right;
 }
 
-.blog-admin-list {
-    display: flex;
+.blog-admin-table {
+    width: 100%;
+}
+
+.blog-admin-table-row {
+    width: 640px;
+    height: 100px;
+    border-bottom: 5px solid black;
 }
 
 .blog-create {
-    text-align: center;
     justify-content: center;
     height: 100%;
 }
 
-.blog-create-title-container {
+.blog-create-container {
     position: relative;
-    margin: 0 auto;
-    min-height: 82px;
-    width: 640px;
-    text-align: left;
+    margin: 10px auto;
     background-color: white;
-    padding: 10px;
-    border: 1px solid rgba(128, 128, 128, 0.247);
-    border-bottom: none;
+    width: 640px;
 }
 
 .blog-create-title {
     font: var(--home-header-font);
     background-color: white;
     color: #474747;
-    min-height: 60px;
-    overflow: hidden;
-    line-height: 60px;
     resize: none;
-    outline: none;
-    border: none;
+    width: 100%;
 }
 
 .blog-create-content {
