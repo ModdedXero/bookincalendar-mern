@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
 import { auth, storage } from "../firebase";
-import axios from "axios";
 
 const AuthContext = React.createContext();
 
@@ -14,7 +13,7 @@ export function AuthProvider({ children }) {
 
     // User Functions
     function signup(email, password) {
-        return auth.createUserWithEmailAndPassword(email, password)
+        return auth.createUserWithEmailAndPassword(email, password);
     }
 
     function login(email, password) {
@@ -39,33 +38,20 @@ export function AuthProvider({ children }) {
 
     // Storage Functions
 
-    function uploadFile(fileRef = {
+    async function uploadFile(fileRef = {
         file: "",
         fileName: "",
-        upload: ""
+        isAdmin: false
         }) {
-        const sRef = storage.ref(`${currentUser.uid}/` + fileRef.fileName);
-        const task = sRef.put(fileRef.file);
-
-        task.on("state_changed",
-            function progress(snapshot) {
-                if (fileRef.updload != null) {
-                    const percentage = (snapshot.bytesTransferred /
-                        snapshot.totalBytes) * 100;
-                    fileRef.upload.value = percentage;
-                }
-            },
-            
-            function error(err) {
-                console.log(err);
-            },
-            
-            function complete() {
-                console.log("File Uploaded!");
-            }
-        )
-
-        return task.then();
+        
+        var returnUrl;
+        const sRef = storage.ref(`${!fileRef.isAdmin ? currentUser.uid : ""}/` + fileRef.fileName);
+        await sRef.put(fileRef.file)
+        .then(snapshot => {
+            returnUrl = snapshot.ref.getDownloadURL();
+        })
+        
+        return returnUrl;
     }
 
     function downloadFile(path) {
@@ -76,11 +62,6 @@ export function AuthProvider({ children }) {
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
-            // If user isn't set try adding user to DB
-            if (user !== currentUser) {
-                axios.post(`/api/login/signup`, { email: user.email, uid: user.uid } )
-                    .then((res) => console.log(res.data.response))
-            }
             setCurrentUser(user);
             setLoading(false);
         })

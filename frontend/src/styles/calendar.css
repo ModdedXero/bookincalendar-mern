@@ -25,7 +25,7 @@
 /* VARIABLES */
 
 :root {
-  --main-color: #1a8fff;
+  --main-color: #ff8000;
   --text-color: #777;
   --text-color-light: #ccc;
   --border-color: #eee;
@@ -115,23 +115,26 @@
   border-bottom: 1px solid var(--border-color);
 }
 
-.calendar .calendar-header .calendar-icon {
+.calendar .calendar-header .calendar-button {
   cursor: pointer;
   transition: .15s ease-out;
+  color: black;
+  outline: none;
+  border: none;
+  background-color: white;
 }
 
-.calendar .calendar-header .calendar-icon:hover {
+.calendar .calendar-header .calendar-button:hover {
   transform: scale(1.75);
   transition: .25s ease-out;
-  color: var(--main-color);
 }
 
-.calendar .calendar-header .calendar-icon:first-of-type {
-  margin-left: 1em;
+.calendar .calendar-header .calendar-button:first-of-type {
+  margin-left: 1.5rem;
 }
 
-.calendar .calendar-header .calendar-icon:last-of-type {
-  margin-right: 1em;
+.calendar .calendar-header .calendar-button:last-of-type {
+  margin-right: 1.5rem;
 }
 
 .calendar .calendar-days {
@@ -160,7 +163,7 @@
 
 .calendar .calendar-body .selected {
   border-left: 10px solid transparent;
-  border-image: linear-gradient(45deg, #1a8fff 0%,#53cbf1 40%);
+  border-image: linear-gradient(45deg, var(--main-color) 0%, var(--main-color) 40%);
   border-image-slice: 1;
 }
 
@@ -233,13 +236,13 @@
   text-align: center;
   color: white;
   border: none;
-  background: #2980b9;
+  background: var(--main-color);
   cursor: pointer;
   transition: .15s ease-out;
 }
 
 .calendar-event:hover {
-  transform: scale(1.25);
+  transform: scale(1.1);
   transition: .25s ease-out;
   z-index: 20;
   margin: 5px 5px;
