@@ -47,8 +47,8 @@ function App() {
 
                 {/* Admin Routes */}
                 <DynamicRoute path="/private/admin/blog/create" layout="SITE" secure admin component={CreateBlog} />
-                <DynamicRoute path="/private/admin/blog/edit/:postID" layout="SITE" secure admin component={CreateBlog} />
-                <DynamicRoute path="/private/admin/blog" layout="SITE" secure admin component={BlogAdmin} />
+                <DynamicRoute path="/private/admin/blog/edit/" layout="SITE" secure admin component={CreateBlog} />
+                <DynamicRoute exact path="/private/admin/blog" layout="SITE" secure admin component={BlogAdmin} />
 
                 {/* Booking Calendar Routes */}
                 <DynamicRoute path="/client/calendar/:calendarID" layout="NONE" component={ClientCalendar} />

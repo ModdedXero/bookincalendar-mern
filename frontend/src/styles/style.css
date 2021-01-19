@@ -521,6 +521,38 @@ button {
     margin: 10px auto;
 }
 
+.blog-create-cover img {
+    width: 100%;
+    height: auto;
+}
+
+.blog-create-cover input::-webkit-file-upload-button {
+    visibility: hidden;
+    display: none;
+}
+
+.blog-create-cover input {
+    width: 117px;
+    overflow-x: hidden;
+    top: 22px;
+}
+
+.blog-create-cover input::before {
+    content: "Select a picture";
+    display: inline-block;
+    background: -webkit-linear-gradient(top,#f9f9f9,#e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+}
+
 .blog-create-button {
     position: fixed;
     right: 20px;

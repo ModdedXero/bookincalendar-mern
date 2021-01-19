@@ -55,7 +55,7 @@ export function AuthProvider({ children }) {
     }
 
     function downloadFile(path) {
-        const sRef = storage.ref(`${currentUser.uid}/` + path);
+        const sRef = storage.ref(path);
 
         return sRef.getDownloadURL();
     }

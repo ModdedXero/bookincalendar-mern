@@ -21,7 +21,7 @@ export default function BlogListItem({ post }) {
 
         setIsVis(vis);
     }
-    
+
     const handleDelete = () => {
 
     }
@@ -45,7 +45,7 @@ export default function BlogListItem({ post }) {
                 {post.title}
             </td>
             <td style={{ width: "100px" }}>
-                <a className="stripped-button" href={`/private/admin/blog/edit/${post._id}`}>Edit</a> | <button className="stripped-button">Delete</button>
+                <a className="stripped-button" href={`/private/admin/blog/edit/?postid=${post._id}`}>Edit</a> | <button className="stripped-button">Delete</button>
             </td>
         </tr>
     )

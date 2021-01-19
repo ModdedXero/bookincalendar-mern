@@ -22,7 +22,7 @@ router.route("/blogs").get((req, res) => {
 
 router.route("/:id").get((req, res) => {
     Blog.findById(req.params.id)
-        .then(doc => res.json({ blog: doc }))
+        .then(doc => res.json({ postDoc: doc }))
         .catch(err => res.status(400).json({ response: `Error: ${err}`}))
 })
 
