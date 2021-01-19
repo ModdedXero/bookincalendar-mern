@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import Modal from "../../Utility/Modal";
+
 export default function BlogListItem({ post }) {
     const [isVis, setIsVis] = useState(post.visible);
+    const [isModal, setIsModal] = useState(false);
 
     const toggleVisible = (vis) => {
         if (vis === true) {
@@ -22,8 +25,15 @@ export default function BlogListItem({ post }) {
         setIsVis(vis);
     }
 
-    const handleDelete = () => {
+    const toggleDeleteModal = () => {
+        setIsModal(!isModal);
+    }
 
+    const handleDelete = () => {
+        axios.delete(`/api/blog/delete/${post._id}`)
+            .then(res => console.log(res.data.response))
+
+        window.location.reload();
     }
 
     return (
@@ -45,8 +55,12 @@ export default function BlogListItem({ post }) {
                 {post.title}
             </td>
             <td style={{ width: "100px" }}>
-                <a className="stripped-button" href={`/private/admin/blog/edit/?postid=${post._id}`}>Edit</a> | <button className="stripped-button">Delete</button>
+                <a className="stripped-button" href={`/private/admin/blog/edit/?postid=${post._id}`}>Edit</a> | <button className="stripped-button" onClick={toggleDeleteModal}>Delete</button>
             </td>
+
+            <Modal open={isModal} onClose={toggleDeleteModal} small>
+                Are you sure? <button className="generic-button" onClick={handleDelete}>Yes</button> <button className="generic-button" onClick={toggleDeleteModal}>No</button>
+            </Modal>
         </tr>
     )
 }
