@@ -47,6 +47,7 @@ function App() {
 
                 {/* Admin Routes */}
                 <DynamicRoute path="/private/admin/blog/create" layout="SITE" secure admin component={CreateBlog} />
+                <DynamicRoute path="/private/admin/blog/edit/:postID" layout="SITE" secure admin component={CreateBlog} />
                 <DynamicRoute path="/private/admin/blog" layout="SITE" secure admin component={BlogAdmin} />
 
                 {/* Booking Calendar Routes */}

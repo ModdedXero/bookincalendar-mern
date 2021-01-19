@@ -1,4 +1,5 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import ReactQuill from "react-quill";
 import TextareaAutosize from "react-textarea-autosize";
 import Axios from "axios";
@@ -8,14 +9,24 @@ import { useAuth } from "../../../contexts/AuthContext";
 
 export default function CreateBlog() {
     const { uploadFile } = useAuth();
+    const { postID } = useParams();
+    const history = useHistory();
 
     const [quill, setQuill] = useState();
-    const [imageCounter, setImageCounter] = useState(0);
     const [coverImage, setCoverImage] = useState();
     const [coverImagePreview, setCoverImagePreview] = useState(null);
     
     const blogID = useRef(MakeID(24));
     const titleRef = useRef("");
+
+    useEffect(() => {
+        if (postID !== undefined) {
+            console.log("It worked");
+        }
+
+        console.log("It didn't work");
+        console.log(postID);
+    })
 
     const fileSelectorChange = (e) => {
         setCoverImage(e.target.files[0]);
@@ -40,6 +51,7 @@ export default function CreateBlog() {
         postData.coverImage = await uploadFile(fileRef);
         Axios.post("/api/blog/create", postData)
             .then(res => console.log(res.data.response))
+        history.push("/private/admin/blog");
     }
 
     const quillModules = {
@@ -91,11 +103,10 @@ export default function CreateBlog() {
         // Data returns selected image file
         const fileRef = {
             file: data.values().next().value,
-            fileName: `SiteImages/Blog/${blogID.current}/${imageCounter}`,
+            fileName: `SiteImages/Blog/${blogID.current}/${MakeID(12)}`,
             isAdmin: true
         }
         
-        setImageCounter(imageCounter + 1);
         // Return download URL
         return await uploadFile(fileRef);
     }

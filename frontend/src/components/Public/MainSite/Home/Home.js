@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 
 import SubmitForm from "./SubmitForm";
 import Footer from "../Footer";
+import { Link } from "react-router-dom";
 
 export default function Home({ setPage }) {
     useEffect(() => {
@@ -61,9 +62,9 @@ export default function Home({ setPage }) {
                 <h1>Let's get Social</h1>
                 <p className="home-follow-line" />
                 <div className="home-follow-body">
-                    <button>FB PAGE</button>
-                    <button>FB GROUP</button>
-                    <button>INSTAGRAM</button>
+                    <a href="https://www.facebook.com/boldemotionalcolorful">FB PAGE</a>
+                    <a href="https://www.facebook.com/groups/1765869786763760">FB GROUP</a>
+                    <a href="https://www.instagram.com/boldemotionalcolorful/">INSTAGRAM</a>
                 </div>
             </div>
             <div className="bg-img-paral home-bg-img-3 home-last" />
