@@ -9,6 +9,7 @@ import Home from "./Public/MainSite/Home/Home";
 import ECourses from "./Public/MainSite/ECourses";
 import Booking from "./Public/MainSite/Booking";
 import Blog from "./Public/MainSite/Inspire/Blog";
+import PostView from "./Public/MainSite/Inspire/PostView";
 import Presets from "./Public/MainSite/Presets";
 
 /* Login Routes */
@@ -35,7 +36,8 @@ function App() {
             <Switch>
                 {/* Main Site Routes */}
                 <DynamicRoute exact path="/" layout="SITE" component={Home} />
-                <DynamicRoute path="/inspire" layout="SITE" component={Blog} />
+                <DynamicRoute exact path="/inspire" layout="SITE" component={Blog} />
+                <DynamicRoute path="/inspire/" layout="SITE" component={PostView} />
                 <DynamicRoute path="/create" layout="SITE" component={Booking} />
                 <DynamicRoute path="/educate" layout="SITE" component={ECourses} />
                 <DynamicRoute path="/submit" layout="SITE" component={Presets} />
