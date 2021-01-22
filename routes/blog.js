@@ -6,9 +6,10 @@ router.route("/create").post((req, res) => {
     const body = req.body.body;
     const coverImage = req.body.coverImage;
     const blogID = req.body.blogID;
+    const blogCategory = req.body.blogCategory;
     const visible = req.body.visible;
 
-    const newBlog = new Blog({ title, body, coverImage, blogID, visible });
+    const newBlog = new Blog({ title, body, coverImage, blogID, blogCategory, visible });
     newBlog.save()
         .then(res.json({ response: "Blog Created!" }))
         .catch(err => console.log(err))

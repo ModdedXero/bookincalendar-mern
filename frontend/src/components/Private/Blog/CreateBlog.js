@@ -6,18 +6,19 @@ import Axios from "axios";
 
 import { MakeID, ReadParam } from "../../Utility/RandomUtils";
 import { useAuth } from "../../../contexts/AuthContext";
+import CreateNavbar from "./CreateNavbar";
 
 export default function CreateBlog() {
-    const { uploadFile, downloadFile } = useAuth();
+    const { uploadFile } = useAuth();
     const postID = useRef(ReadParam(window, "postid"));
     const history = useHistory();
 
     const [postDoc, setPostDoc] = useState();
     const [quill, setQuill] = useState();
-    const [quillDefault, setQuillDefault] = useState(" ");
     const [coverImage, setCoverImage] = useState();
     const [coverImagePreview, setCoverImagePreview] = useState(null);
     
+    const quillBody = useRef("");
     const blogID = useRef(MakeID(24));
     const titleRef = useRef("");
 
@@ -28,7 +29,7 @@ export default function CreateBlog() {
                 .then(res => {
                     setPostDoc(res.data.postDoc);
                     titleRef.current.value = res.data.postDoc.title;
-                    setQuillDefault(res.data.postDoc.body);
+                    quillBody.current = res.data.postDoc.body;
                     setCoverImagePreview(res.data.postDoc.coverImage);
                     blogID.current = res.data.postDoc.blogID;
                 })
@@ -40,11 +41,11 @@ export default function CreateBlog() {
         setCoverImagePreview(URL.createObjectURL(e.target.files[0]));
     }
 
-    async function handleSubmit(e) {
+    async function handleSubmit() {
         if (postID.current === undefined) {
             const postData = {
                 title: titleRef.current.value,
-                body: quill.state.value,
+                body: quillBody.current,
                 coverImage: "",
                 blogID: blogID.current,
                 visible: false
@@ -63,7 +64,7 @@ export default function CreateBlog() {
         } else {
             const postData = {
                 title: titleRef.current.value,
-                body: quill.state.value,
+                body: quillBody.current,
                 coverImage: postDoc.coverImage,
                 blogID: postDoc.blogID,
                 visible: postDoc.visible
@@ -124,7 +125,7 @@ export default function CreateBlog() {
 
             // Insert uploaded image
             quill.getEditor().insertEmbed(range.index + 1, "image", res);
-            quill.getEditor().setSelection(range.index + 1);
+            quill.getEditor().setSelection(range.index + 2);
 
         }
     }
@@ -141,8 +142,16 @@ export default function CreateBlog() {
         return await uploadFile(fileRef);
     }
 
+    const handleChange = (val) => {
+        quillBody.current = val;
+    }
+
     return (
         <div className="blog-create">
+            <CreateNavbar 
+                coverImagePreview={coverImagePreview} 
+                fileSelectorChange={fileSelectorChange} 
+            />
             <div className="blog-create-container">
                 <TextareaAutosize 
                     ref={titleRef} 
@@ -155,13 +164,9 @@ export default function CreateBlog() {
                     ref={el => setQuill(el)}
                     theme="snow" 
                     modules={quillModules}
-                    value={quillDefault || quill.state.value}
+                    value={quillBody.current || ""}
+                    onChange={handleChange}
                 />
-                <h1>Blog Cover</h1>
-                <div className="blog-create-cover">
-                    <input type="file" className="" onChange={fileSelectorChange} />
-                    <img src={coverImagePreview} alt="" />
-                </div>
                 <button className="generic-button blog-create-button" onClick={handleSubmit}>
                     {postDoc !== undefined ? "Update Post" : "Create Post"}
                 </button>

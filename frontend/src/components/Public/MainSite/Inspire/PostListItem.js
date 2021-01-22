@@ -10,7 +10,7 @@ export default function PostListItem({ post }) {
     }
 
     const openBlog = () => {
-        window.location.href = window.location.href + `/${post._id}`;
+        window.location.href = window.location.origin + `/inspire/post/?postid=${post._id}`;
     }
 
     return (

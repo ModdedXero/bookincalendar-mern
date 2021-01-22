@@ -19,6 +19,9 @@ const blogSchema = new Schema({
         type: String,
         required: true
     },
+    blogCategory: {
+        type: String,
+    },
     visible: {
         type: Boolean,
         default: false

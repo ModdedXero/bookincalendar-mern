@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 
 import SubmitForm from "./SubmitForm";
 import Footer from "../Footer";
-import { Link } from "react-router-dom";
 
 export default function Home({ setPage }) {
     useEffect(() => {

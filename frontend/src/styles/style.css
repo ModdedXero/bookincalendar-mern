@@ -496,6 +496,16 @@ button {
 .blog-create {
     justify-content: center;
     height: 100%;
+    display: flex;
+}
+
+.blog-create-navbar {
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    width: 500px;
+    background-color: white;
+    border: 1px solid black;
 }
 
 .blog-create-container {
@@ -527,7 +537,7 @@ button {
 .blog-create-cover {
     display: flex;
     flex-direction: column;
-    width: 640px;
+    width: 100%;
     margin: 10px auto;
 }
 
@@ -645,6 +655,36 @@ button {
 .inspire-blog-list-item-quill span {
     color: #5c5c5c !important;
     cursor: pointer;
+}
+
+/* Post */
+
+.inspire-post {
+    width: 940px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 60px 100px;
+    text-align: left;
+    background-color: white;
+}
+
+.inspire-post-title {
+    font: var(--home-header-font);
+    color: var(--home-header-color);
+    margin-bottom: 40px;
+}
+
+.inspire-post-quill img {
+    width: 100%;
+    height: auto;
+}
+
+.inspire-post-quill span {
+    font-size: 18px;
+}
+
+.inspire-post-quill .ql-editor {
+    padding: 0;
 }
 
 /* Coming Soon */
