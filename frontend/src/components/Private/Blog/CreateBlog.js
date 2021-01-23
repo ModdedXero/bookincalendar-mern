@@ -1,18 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import ReactQuill from "react-quill";
 import TextareaAutosize from "react-textarea-autosize";
 import Axios from "axios";
 
-import { MakeID } from "../../Utility/RandomUtils";
+import { MakeID, ReadParam } from "../../Utility/RandomUtils";
 import { useAuth } from "../../../contexts/AuthContext";
 
 export default function CreateBlog() {
-    const { uploadFile } = useAuth();
-    const { postID } = useParams();
+    const { uploadFile, downloadFile } = useAuth();
+    const postID = useRef(ReadParam(window, "postid"));
     const history = useHistory();
 
+    const [postDoc, setPostDoc] = useState();
     const [quill, setQuill] = useState();
+    const [quillDefault, setQuillDefault] = useState(" ");
     const [coverImage, setCoverImage] = useState();
     const [coverImagePreview, setCoverImagePreview] = useState(null);
     
@@ -20,13 +22,18 @@ export default function CreateBlog() {
     const titleRef = useRef("");
 
     useEffect(() => {
-        if (postID !== undefined) {
-            console.log("It worked");
+        // Get Post data from backend server
+        if (postID.current !== null) {
+            Axios.get(`/api/blog/${postID.current}`)
+                .then(res => {
+                    setPostDoc(res.data.postDoc);
+                    titleRef.current.value = res.data.postDoc.title;
+                    setQuillDefault(res.data.postDoc.body);
+                    setCoverImagePreview(res.data.postDoc.coverImage);
+                    blogID.current = res.data.postDoc.blogID;
+                })
         }
-
-        console.log("It didn't work");
-        console.log(postID);
-    })
+    }, [postID.current])
 
     const fileSelectorChange = (e) => {
         setCoverImage(e.target.files[0]);
@@ -34,24 +41,48 @@ export default function CreateBlog() {
     }
 
     async function handleSubmit(e) {
-        const postData = {
-            title: titleRef.current.value,
-            body: quill.state.value,
-            coverImage: "",
-            blogID: blogID.current,
-            visible: false
-        }
+        if (postID.current === undefined) {
+            const postData = {
+                title: titleRef.current.value,
+                body: quill.state.value,
+                coverImage: "",
+                blogID: blogID.current,
+                visible: false
+            }
 
-        const fileRef = {
-            file: coverImage,
-            fileName: `SiteImages/Blog/${blogID.current}/coverImage`,
-            isAdmin: true
-        }
+            const fileRef = {
+                file: coverImage,
+                fileName: `SiteImages/Blog/${blogID.current}/coverImage`,
+                isAdmin: true
+            }
 
-        postData.coverImage = await uploadFile(fileRef);
-        Axios.post("/api/blog/create", postData)
-            .then(res => console.log(res.data.response))
-        history.push("/private/admin/blog");
+            postData.coverImage = await uploadFile(fileRef);
+            Axios.post("/api/blog/create", postData)
+                .then(res => console.log(res.data.response))
+            history.push("/private/admin/blog");
+        } else {
+            const postData = {
+                title: titleRef.current.value,
+                body: quill.state.value,
+                coverImage: postDoc.coverImage,
+                blogID: postDoc.blogID,
+                visible: postDoc.visible
+            };
+
+            const fileRef = {
+                file: coverImage,
+                fileName: `SiteImages/Blog/${blogID.current}/coverImage`,
+                isAdmin: true
+            }
+
+            if (coverImage !== undefined) {
+                postData.coverImage = await uploadFile(fileRef);
+            }
+
+            Axios.post(`/api/blog/update/${postID.current}`, postData)
+                .then(res => console.log(res.data.response))
+            history.push("/private/admin/blog");
+        }
     }
 
     const quillModules = {
@@ -69,7 +100,6 @@ export default function CreateBlog() {
     }
     
     function quillImageHandler() {
-        console.log(titleRef);
         const input = document.createElement("input");
 
         input.setAttribute("type", "file");
@@ -125,14 +155,16 @@ export default function CreateBlog() {
                     ref={el => setQuill(el)}
                     theme="snow" 
                     modules={quillModules}
-                    value={quill === undefined ? "" : quill.state.value}
+                    value={quillDefault || quill.state.value}
                 />
                 <h1>Blog Cover</h1>
                 <div className="blog-create-cover">
                     <input type="file" className="" onChange={fileSelectorChange} />
                     <img src={coverImagePreview} alt="" />
                 </div>
-                <button className="generic-button blog-create-button" onClick={handleSubmit}>Create Post</button>
+                <button className="generic-button blog-create-button" onClick={handleSubmit}>
+                    {postDoc !== undefined ? "Update Post" : "Create Post"}
+                </button>
             </div>
         </div>
     )

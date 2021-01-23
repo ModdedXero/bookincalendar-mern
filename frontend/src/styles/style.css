@@ -114,6 +114,8 @@ button {
 
 .stripped-button {
     cursor: pointer;
+    color: black;
+    text-decoration: none !important;
 }
 
 .alert {
@@ -170,6 +172,14 @@ button {
 .home-bg-img-3 {
     background-image: url(https://firebasestorage.googleapis.com/v0/b/bec-livesite.appspot.com/o/SiteImages%2FHome%2FBECBlankLogoHeader1.8.21.png?alt=media&token=d3eeadf3-8dbc-4ce6-9fbf-52e7d8a022d6);
     height: 85vh;
+}
+
+.home-bg-img-3-fixed {
+    background: url(https://firebasestorage.googleapis.com/v0/b/bec-livesite.appspot.com/o/SiteImages%2FHome%2FBECBlankLogoHeader1.8.21.png?alt=media&token=d3eeadf3-8dbc-4ce6-9fbf-52e7d8a022d6) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .home-minilogo {
@@ -521,10 +531,120 @@ button {
     margin: 10px auto;
 }
 
+.blog-create-cover img {
+    width: 100%;
+    height: auto;
+}
+
+.blog-create-cover input::-webkit-file-upload-button {
+    visibility: hidden;
+    display: none;
+}
+
+.blog-create-cover input {
+    width: 117px;
+    overflow-x: hidden;
+    top: 22px;
+}
+
+.blog-create-cover input::before {
+    content: "Select a picture";
+    display: inline-block;
+    background: -webkit-linear-gradient(top,#f9f9f9,#e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+}
+
 .blog-create-button {
     position: fixed;
     right: 20px;
     top: 90px;
+}
+
+/* Blog */
+
+.inspire-blog {
+    width: 980px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 40px 0;
+    text-align: center;
+    background-color: white;
+}
+
+.inspire-blog h1 {
+    font: var(--home-header-font);
+    font-size: 60px;
+    color: #363636;
+    margin-bottom: 60px;
+}
+
+.inspire-blog-list-item {
+    display: flex;
+    height: 340px;
+    width: 940px;
+    margin: 40px auto;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.inspire-blog-list-item-image {
+    width: 454px;
+}
+
+.inspire-blog-list-item-image img {
+    width: 100%;
+    height: 100%;
+}
+
+.inspire-blog-list-item-body {
+    position: relative;
+    width: 486px;
+    padding: 24px 36px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.inspire-blog-list-item-body h1 {
+    font: var(--home-header-font);
+    font-size: 28px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.inspire-blog-list-item-body h1:hover {
+    color: var(--yellow);
+}
+
+.inspire-blog-list-item-body button:hover {
+    color: var(--yellow);
+}
+
+.inspire-blog-list-item-quill {
+    height: 150px;
+    resize: none;
+}
+
+.inspire-blog-list-item-quill div {
+    margin: 10px 0;
+    padding: 0;
+    color: #5c5c5c !important;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.inspire-blog-list-item-quill span {
+    color: #5c5c5c !important;
+    cursor: pointer;
 }
 
 /* Coming Soon */
@@ -1109,25 +1229,32 @@ button {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-.modal-background .modal-content, .modal-content-sm {
+.modal-background .modal-content, .modal-content-md, .modal-content-sm {
     position: relative;
     background-color: #fefefe;
     border: 1px solid #888888;
     width: 100%;
     height: 100%;
 }
-.modal-content-sm {
+.modal-content-md {
     width: fit-content;
     padding: 40px;
+    margin: auto;
+}
+.modal-content-sm {
+    width: fit-content;
+    height: fit-content;
+    padding: 40px;
+    margin: auto;
 }
 
 .modal-button {
     position: absolute;
-    width: 45px;
-    height: 35px;
-    padding: 0;
-    top: 10px;
-    right: 10px;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px 10px;
+    top: 5px;
+    right: 5px;
     z-index: 100;
 }
 

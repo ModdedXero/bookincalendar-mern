@@ -7,7 +7,7 @@ import Login from "../Public/Login/Login";
 
 const adminUsers = ["blakekw00@gmail.com", "ericawilliamsphotography@yahoo.com"];
 
-export default function DynamicRoute({ component: Component, layout, secure, admin, ...rest }) {
+export default function DynamicRoute({ component: Component, layout, secure, admin }) {
   const { currentUser } = useAuth();
 
   const actualRouteComponent = () => {

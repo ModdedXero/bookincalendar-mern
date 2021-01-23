@@ -9,3 +9,9 @@ export function MakeID(length) {
 
     return result;
 }
+
+export function ReadParam(wind, param) {
+    const queryString = wind.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    return urlParams.get(param);
+}

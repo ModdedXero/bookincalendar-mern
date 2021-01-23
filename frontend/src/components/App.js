@@ -9,6 +9,7 @@ import Home from "./Public/MainSite/Home/Home";
 import ECourses from "./Public/MainSite/ECourses";
 import Booking from "./Public/MainSite/Booking";
 import Blog from "./Public/MainSite/Inspire/Blog";
+import PostView from "./Public/MainSite/Inspire/PostView";
 import Presets from "./Public/MainSite/Presets";
 
 /* Login Routes */
@@ -35,7 +36,8 @@ function App() {
             <Switch>
                 {/* Main Site Routes */}
                 <DynamicRoute exact path="/" layout="SITE" component={Home} />
-                <DynamicRoute path="/inspire" layout="SITE" component={Blog} />
+                <DynamicRoute exact path="/inspire" layout="SITE" component={Blog} />
+                <DynamicRoute path="/inspire/" layout="SITE" component={PostView} />
                 <DynamicRoute path="/create" layout="SITE" component={Booking} />
                 <DynamicRoute path="/educate" layout="SITE" component={ECourses} />
                 <DynamicRoute path="/submit" layout="SITE" component={Presets} />
@@ -47,8 +49,8 @@ function App() {
 
                 {/* Admin Routes */}
                 <DynamicRoute path="/private/admin/blog/create" layout="SITE" secure admin component={CreateBlog} />
-                <DynamicRoute path="/private/admin/blog/edit/:postID" layout="SITE" secure admin component={CreateBlog} />
-                <DynamicRoute path="/private/admin/blog" layout="SITE" secure admin component={BlogAdmin} />
+                <DynamicRoute path="/private/admin/blog/edit/" layout="SITE" secure admin component={CreateBlog} />
+                <DynamicRoute exact path="/private/admin/blog" layout="SITE" secure admin component={BlogAdmin} />
 
                 {/* Booking Calendar Routes */}
                 <DynamicRoute path="/client/calendar/:calendarID" layout="NONE" component={ClientCalendar} />
