@@ -22,6 +22,10 @@ const blogSchema = new Schema({
     blogCategory: {
         type: String,
     },
+    featured: {
+        type: Boolean,
+        default: false
+    },
     visible: {
         type: Boolean,
         default: false

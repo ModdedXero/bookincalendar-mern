@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import PostListItem from "./PostListItem";
-import Footer from "../Footer";
+import SiteFooter from "../SiteFooter";
 
 export default function Blog({ setPage }) {
     const [blogs, setBlogs] = useState([]);
@@ -26,7 +26,7 @@ export default function Blog({ setPage }) {
                     })}
                 </ul>
             </div>
-            <Footer />
+            <SiteFooter />
         </div>
     )
 }

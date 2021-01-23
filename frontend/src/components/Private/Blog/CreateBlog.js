@@ -6,7 +6,8 @@ import Axios from "axios";
 
 import { MakeID, ReadParam } from "../../Utility/RandomUtils";
 import { useAuth } from "../../../contexts/AuthContext";
-import CreateNavbar from "./CreateNavbar";
+import { BlogPostTypes } from "../../../global";
+import CreatePostNavbar from "./CreatePostNavbar";
 
 export default function CreateBlog() {
     const { uploadFile } = useAuth();
@@ -17,6 +18,7 @@ export default function CreateBlog() {
     const [quill, setQuill] = useState();
     const [coverImage, setCoverImage] = useState();
     const [coverImagePreview, setCoverImagePreview] = useState(null);
+    const [category, setCategory] = useState(BlogPostTypes[0]);
     
     const quillBody = useRef("");
     const blogID = useRef(MakeID(24));
@@ -31,6 +33,7 @@ export default function CreateBlog() {
                     titleRef.current.value = res.data.postDoc.title;
                     quillBody.current = res.data.postDoc.body;
                     setCoverImagePreview(res.data.postDoc.coverImage);
+                    setCategory(res.data.postDoc.blogCategory);
                     blogID.current = res.data.postDoc.blogID;
                 })
         }
@@ -42,12 +45,13 @@ export default function CreateBlog() {
     }
 
     async function handleSubmit() {
-        if (postID.current === undefined) {
+        if (postID.current === null) {
             const postData = {
                 title: titleRef.current.value,
                 body: quillBody.current,
                 coverImage: "",
                 blogID: blogID.current,
+                blogCategory: category,
                 visible: false
             }
 
@@ -56,6 +60,8 @@ export default function CreateBlog() {
                 fileName: `SiteImages/Blog/${blogID.current}/coverImage`,
                 isAdmin: true
             }
+
+            console.log(postData);
 
             postData.coverImage = await uploadFile(fileRef);
             Axios.post("/api/blog/create", postData)
@@ -67,6 +73,7 @@ export default function CreateBlog() {
                 body: quillBody.current,
                 coverImage: postDoc.coverImage,
                 blogID: postDoc.blogID,
+                blogCategory: category,
                 visible: postDoc.visible
             };
 
@@ -90,6 +97,7 @@ export default function CreateBlog() {
         toolbar: {
             container: [
                 ["bold", "italic", "underline","strike", "blockquote"],
+                [{ "align": []}],
                 [{"list": "ordered"}, {"list": "bullet"}, {"indent": "-1"}, {"indent": "+1"}],
                 ["link", "image"],
                 ["clean"]
@@ -146,11 +154,17 @@ export default function CreateBlog() {
         quillBody.current = val;
     }
 
+    const handleCategoryChange = (e) => {
+        setCategory(e.target.value);
+    }
+
     return (
         <div className="blog-create">
-            <CreateNavbar 
+            <CreatePostNavbar 
                 coverImagePreview={coverImagePreview} 
-                fileSelectorChange={fileSelectorChange} 
+                fileSelectorChange={fileSelectorChange}
+                defaultCategory={category}
+                handleCatgory={handleCategoryChange}
             />
             <div className="blog-create-container">
                 <TextareaAutosize 

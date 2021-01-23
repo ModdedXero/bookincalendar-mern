@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Footer() {
+export default function SiteFooter() {
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
