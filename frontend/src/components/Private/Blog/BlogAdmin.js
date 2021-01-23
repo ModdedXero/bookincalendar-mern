@@ -11,10 +11,6 @@ export default function BlogAdmin() {
             .then(res => setBlogs(res.data.blogs))
     }, [])
 
-    const handleNewPost = () => {
-
-    }
-
     return (
         <div className="blog-admin-page">
             <div className="blog-admin-title">

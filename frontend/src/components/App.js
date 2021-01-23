@@ -36,8 +36,8 @@ function App() {
             <Switch>
                 {/* Main Site Routes */}
                 <DynamicRoute exact path="/" layout="SITE" component={Home} />
-                <DynamicRoute exact path="/inspire" layout="SITE" component={Blog} />
-                <DynamicRoute path="/inspire/" layout="SITE" component={PostView} />
+                <DynamicRoute path="/inspire/post/" layout="SITE" component={PostView} />
+                <DynamicRoute path="/inspire" layout="SITE" component={Blog} />
                 <DynamicRoute path="/create" layout="SITE" component={Booking} />
                 <DynamicRoute path="/educate" layout="SITE" component={ECourses} />
                 <DynamicRoute path="/submit" layout="SITE" component={Presets} />

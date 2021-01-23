@@ -496,6 +496,25 @@ button {
 .blog-create {
     justify-content: center;
     height: 100%;
+    display: flex;
+    padding-left: 400px;
+}
+
+.blog-create-navbar {
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    width: 400px;
+    height: 100%;
+    background-color: white;
+    box-shadow: var(--shadow-sm);
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.blog-create-navbar div {
+    padding-bottom: 20px;
+    border-bottom: 1px solid black;
 }
 
 .blog-create-container {
@@ -527,7 +546,7 @@ button {
 .blog-create-cover {
     display: flex;
     flex-direction: column;
-    width: 640px;
+    width: 100%;
     margin: 10px auto;
 }
 
@@ -645,6 +664,43 @@ button {
 .inspire-blog-list-item-quill span {
     color: #5c5c5c !important;
     cursor: pointer;
+}
+
+/* Post */
+
+.inspire-post {
+    width: 940px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 60px 100px;
+    text-align: left;
+    background-color: white;
+}
+
+.inspire-post-title {
+    font: var(--home-header-font);
+    color: var(--home-header-color);
+    margin-bottom: 40px;
+}
+
+.inspire-post-quill img {
+    width: 100%;
+    height: auto;
+}
+
+.inspire-post-quill span {
+    font-size: 18px;
+}
+
+.inspire-post-quill .ql-editor {
+    padding: 0;
+}
+
+.inspire-post-navbar {
+    width: 940px;
+    margin: auto;
+    background: white;
+    border: 1px solid var(--off-white);
 }
 
 /* Coming Soon */
@@ -920,6 +976,7 @@ button {
     background-color: white;
     min-height: 68px;
     overflow: hidden;
+    box-shadow: var(--shadow-sm);
 }
 
 .navbar-link {

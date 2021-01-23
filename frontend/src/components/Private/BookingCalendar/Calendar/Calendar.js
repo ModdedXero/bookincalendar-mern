@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { format, subMonths, startOfWeek, endOfWeek, addDays, startOfMonth, endOfMonth, isSameMonth, addMonths, isSameDay } from "date-fns";
 import axios from "axios";
 
@@ -28,7 +27,7 @@ export default function Calendar() {
       return (
         <div className="calendar-header calendar-grid-row flex-middle">
           <div className="calendar-grid-col calendar-grid-col-start">
-            <button type="button" className="calendar-button" onClick={nextMonth}>
+            <button type="button" className="calendar-button" onClick={prevMonth}>
               <i className="fas fa-chevron-left" />
             </button>
           </div>
