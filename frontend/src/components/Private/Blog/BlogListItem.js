@@ -40,9 +40,9 @@ export default function BlogListItem({ post }) {
         <tr className="blog-admin-table-row">
             <td style={{ width: "72px", textAlign: "center" }}>
                 {isVis ?
-                <button style={{ color: "green", cursor: "pointer" }} onClick={() => toggleVisible(false)}>Visible</button>
+                <button style={{ color: "green", cursor: "pointer" }} onClick={() => toggleVisible(false)}>Published</button>
                 : 
-                <button style={{ color: "red", cursor: "pointer" }} onClick={() => toggleVisible(true)}>Hidden</button>}
+                <button style={{ color: "red", cursor: "pointer" }} onClick={() => toggleVisible(true)}>Draft</button>}
             </td>
             <td>
                 <img 

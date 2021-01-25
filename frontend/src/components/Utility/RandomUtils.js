@@ -15,3 +15,7 @@ export function ReadParam(wind, param) {
     const urlParams = new URLSearchParams(queryString);
     return urlParams.get(param);
 }
+
+export function GenerateLocalURL(path) {
+    return process.env.REACT_APP_CURRENT_ORIGIN + path;
+}

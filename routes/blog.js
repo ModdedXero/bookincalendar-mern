@@ -7,9 +7,18 @@ router.route("/create").post((req, res) => {
     const coverImage = req.body.coverImage;
     const blogID = req.body.blogID;
     const blogCategory = req.body.blogCategory;
+    const featured = req.body.featured;
     const visible = req.body.visible;
 
-    const newBlog = new Blog({ title, body, coverImage, blogID, blogCategory, visible });
+    const newBlog = new Blog({ 
+        title, 
+        body, 
+        coverImage, 
+        blogID, 
+        blogCategory,
+        featured,
+        visible
+    });
     newBlog.save()
         .then(res.json({ response: "Blog Created!" }))
         .catch(err => console.log(err))
@@ -17,6 +26,18 @@ router.route("/create").post((req, res) => {
 
 router.route("/blogs").get((req, res) => {
     Blog.find()
+        .then(doc => res.json({ blogs: doc }))
+        .catch(err => res.status(400).json({ response: `Error: ${err}` }))
+})
+
+router.route("/blogs/featured").get((req, res) => {
+    Blog.find({ featured: true, visible: true })
+        .then(doc => res.json({ blogs: doc }))
+        .catch(err => res.status(400).json({ response: `Error: ${err}` }))
+})
+
+router.route("/blogs/category/:category").get((req, res) => {
+    Blog.find({ blogCategory: req.params.category })
         .then(doc => res.json({ blogs: doc }))
         .catch(err => res.status(400).json({ response: `Error: ${err}` }))
 })

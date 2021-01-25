@@ -5,13 +5,13 @@ import PostListItem from "./PostListItem";
 import SiteFooter from "../SiteFooter";
 import PostViewNav from "./PostView/PostViewNav";
 
-export default function Blog({ setPage }) {
+export default function BlogArtists({ setPage }) {
     const [blogs, setBlogs] = useState([]);
 
     useEffect(() => {
         setPage("Inspire");
 
-        axios.get("/api/blog/blogs")
+        axios.get(`/api/blog/blogs/category/${"Featured Artists"}`)
             .then(res => setBlogs(res.data.blogs))
     })
 

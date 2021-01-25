@@ -8,9 +8,14 @@ import DynamicRoute from "./Utility/DynamicRoute";
 import Home from "./Public/MainSite/Home/Home";
 import ECourses from "./Public/MainSite/ECourses";
 import Booking from "./Public/MainSite/Booking";
-import Blog from "./Public/MainSite/Inspire/Blog";
-import PostView from "./Public/MainSite/Inspire/PostView";
 import Presets from "./Public/MainSite/Presets";
+
+/* Blog Routes */
+import Blog from "./Public/MainSite/Inspire/Blog";
+import BlogFeatured from "./Public/MainSite/Inspire/BlogFeatured";
+import BlogArtists from "./Public/MainSite/Inspire/BlogArtists";
+import BlogBusiness from "./Public/MainSite/Inspire/BlogBusiness";
+import PostView from "./Public/MainSite/Inspire/PostView/PostView";
 
 /* Login Routes */
 import Login from "./Public/Login/Login";
@@ -36,7 +41,10 @@ function App() {
             <Switch>
                 {/* Main Site Routes */}
                 <DynamicRoute exact path="/" layout="SITE" component={Home} />
-                <DynamicRoute path="/inspire/post/" layout="SITE" component={PostView} />
+                <DynamicRoute path="/inspire/post" layout="SITE" component={PostView} />
+                <DynamicRoute path="/inspire/featured" layout="SITE" component={BlogFeatured} />
+                <DynamicRoute path="/inspire/artists" layout="SITE" component={BlogArtists} />
+                <DynamicRoute path="/inspire/business" layout="SITE" component={BlogBusiness} />
                 <DynamicRoute path="/inspire" layout="SITE" component={Blog} />
                 <DynamicRoute path="/create" layout="SITE" component={Booking} />
                 <DynamicRoute path="/educate" layout="SITE" component={ECourses} />

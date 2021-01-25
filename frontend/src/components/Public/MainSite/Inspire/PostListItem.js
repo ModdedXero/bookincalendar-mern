@@ -26,7 +26,7 @@ export default function PostListItem({ post }) {
                     theme="bubble"
                     value={post.body}
                 />
-                <button className="modal-button" onClick={toggleModal}>S</button>
+                <button className="modal-button" onClick={toggleModal}><i className="fas fa-ellipsis-v"></i></button>
             </div>
         </li>
     )

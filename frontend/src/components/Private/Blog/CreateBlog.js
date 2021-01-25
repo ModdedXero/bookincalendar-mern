@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import ReactQuill from "react-quill";
 import TextareaAutosize from "react-textarea-autosize";
@@ -19,10 +19,13 @@ export default function CreateBlog() {
     const [coverImage, setCoverImage] = useState();
     const [coverImagePreview, setCoverImagePreview] = useState(null);
     const [category, setCategory] = useState(BlogPostTypes[0]);
-    
+    const [isPublished, setIsPublished] = useState(false);
+    const [isFeatured, setIsFeatured] = useState(false);
+
     const quillBody = useRef("");
     const blogID = useRef(MakeID(24));
     const titleRef = useRef("");
+    const windowPosition = useRef({});
 
     useEffect(() => {
         // Get Post data from backend server
@@ -34,15 +37,18 @@ export default function CreateBlog() {
                     quillBody.current = res.data.postDoc.body;
                     setCoverImagePreview(res.data.postDoc.coverImage);
                     setCategory(res.data.postDoc.blogCategory);
+                    setIsPublished(res.data.postDoc.visible);
+                    setIsFeatured(res.data.postDoc.featured);
                     blogID.current = res.data.postDoc.blogID;
                 })
         }
     }, [postID.current])
 
-    const fileSelectorChange = (e) => {
-        setCoverImage(e.target.files[0]);
-        setCoverImagePreview(URL.createObjectURL(e.target.files[0]));
-    }
+    useLayoutEffect(() => {
+        if (windowPosition !== null) {
+            window.scrollTo(windowPosition.current.x, windowPosition.current.y);
+        }
+    })
 
     async function handleSubmit() {
         if (postID.current === null) {
@@ -52,7 +58,8 @@ export default function CreateBlog() {
                 coverImage: "",
                 blogID: blogID.current,
                 blogCategory: category,
-                visible: false
+                featured: isFeatured,
+                visible: isPublished
             }
 
             const fileRef = {
@@ -74,7 +81,8 @@ export default function CreateBlog() {
                 coverImage: postDoc.coverImage,
                 blogID: postDoc.blogID,
                 blogCategory: category,
-                visible: postDoc.visible
+                featured: isFeatured,
+                visible: isPublished
             };
 
             const fileRef = {
@@ -154,17 +162,38 @@ export default function CreateBlog() {
         quillBody.current = val;
     }
 
-    const handleCategoryChange = (e) => {
-        setCategory(e.target.value);
+    const saveNavbarData = (e, type) => {
+        windowPosition.current = { x: window.scrollX, y: window.scrollY };
+
+        switch (type) {
+            case "COVER":
+                setCoverImage(e.target.files[0]);
+                setCoverImagePreview(URL.createObjectURL(e.target.files[0]));
+                break;
+            case "CATEGORY":
+                setCategory(e.target.value);
+                break;
+            case "PUBLISHED":
+                setIsPublished(!isPublished);
+                break;
+            case "FEATURED":
+                setIsFeatured(!isFeatured);
+                break;
+            default:
+                return null;
+        }
     }
 
     return (
         <div className="blog-create">
             <CreatePostNavbar 
-                coverImagePreview={coverImagePreview} 
-                fileSelectorChange={fileSelectorChange}
-                defaultCategory={category}
-                handleCatgory={handleCategoryChange}
+                defaults={{ 
+                    coverImagePreview: coverImagePreview,
+                    category: category,
+                    featured: isFeatured,
+                    visible: isPublished
+                }}
+                saveDefaults={saveNavbarData}
             />
             <div className="blog-create-container">
                 <TextareaAutosize 

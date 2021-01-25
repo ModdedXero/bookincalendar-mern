@@ -16,11 +16,11 @@ export default function SiteNavbar({ component: Component }) {
                 <div
                     className={`navbar-links ${isNavCollapsed ? "" : "active"}`}
                 >
-                    <DynamicLink className="navbar-link" to="/" name="Home" activeName={activePage}>Home</DynamicLink>
-                    <DynamicLink className="navbar-link" to="/inspire" name="Inspire" activeName={activePage}>Inspire</DynamicLink>
-                    <DynamicLink className="navbar-link" to="/create" name="Create" activeName={activePage}>Create</DynamicLink>
-                    <DynamicLink className="navbar-link" to="/educate" name="Educate" activeName={activePage}>Educate</DynamicLink>
-                    <DynamicLink className="navbar-link" to="/submit" name="Submit" activeName={activePage}>Submit</DynamicLink>
+                    <DynamicLink className="navbar-link" to="/" root>Home</DynamicLink>
+                    <DynamicLink className="navbar-link" to="/inspire" root>Inspire</DynamicLink>
+                    <DynamicLink className="navbar-link" to="/create" root>Create</DynamicLink>
+                    <DynamicLink className="navbar-link" to="/educate" root>Educate</DynamicLink>
+                    <DynamicLink className="navbar-link" to="/submit" root>Submit</DynamicLink>
                 </div>
                 <button className="navbar-burger" onClick={toggleNav}><i className="fa fa-bars"></i></button>
             </nav>
