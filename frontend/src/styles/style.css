@@ -1,6 +1,3 @@
-@import url(https://fonts.googleapis.com/css2?family=Bad+Script&family=Caveat&family=Pacifico&display=swap);
-@import url('https://db.onlinewebfonts.com/c/39a2c7f346d5cfae7045aeb2fb50d9ad?family=LuloCleanW01-OneBold');
-@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap);
 
 :root {
     --font: black;
@@ -13,8 +10,6 @@
     --home-header-color: rgb(54, 54, 54);
     --danger: #e74c3c;
 
-
-    --logo-font: 'Caveat', cursive;
     --home-header-font: normal normal normal 40px/1.4em LuloCleanW01-OneBold,sans-serif;
 
     --shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
