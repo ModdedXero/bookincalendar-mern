@@ -1,6 +1,7 @@
 import React from "react";
 import { AuthProvider } from "../contexts/AuthContext";
 import { Switch } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import DynamicRoute from "./Utility/DynamicRoute";
 
@@ -38,6 +39,11 @@ import "../styles/style.css";
 function App() {
     return (
         <AuthProvider>
+            <Helmet>
+                <title>Bold Emotional Colorful</title>
+                <meta name="description" content="Photography Resources"/>
+                <meta name="theme-color" content="#EBBA4D"/>
+            </Helmet>
             <Switch>
                 {/* Main Site Routes */}
                 <DynamicRoute exact path="/" layout="SITE" component={Home} />

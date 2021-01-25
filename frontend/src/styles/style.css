@@ -68,6 +68,10 @@ button {
     background-color: transparent;
 }
 
+.no-decor {
+    text-decoration: none !important;
+}
+
 .site-content {
     padding-top: 68px;
 }
