@@ -22,6 +22,10 @@ export default function CreateBlog() {
     const [isPublished, setIsPublished] = useState(false);
     const [isFeatured, setIsFeatured] = useState(false);
 
+    const seoTitle = useRef("");
+    const seoDescription = useRef("");
+    const slug = useRef("");
+
     const quillBody = useRef("");
     const blogID = useRef(MakeID(24));
     const titleRef = useRef("");
@@ -35,11 +39,14 @@ export default function CreateBlog() {
                     setPostDoc(res.data.postDoc);
                     titleRef.current.value = res.data.postDoc.title;
                     quillBody.current = res.data.postDoc.body;
+                    seoTitle.current = res.data.postDoc.seoTitle;
+                    slug.current = res.data.postDoc.slug;
+                    seoDescription.current = res.data.postDoc.seoDescription;
+                    blogID.current = res.data.postDoc.blogID;
                     setCoverImagePreview(res.data.postDoc.coverImage);
                     setCategory(res.data.postDoc.blogCategory);
                     setIsPublished(res.data.postDoc.visible);
                     setIsFeatured(res.data.postDoc.featured);
-                    blogID.current = res.data.postDoc.blogID;
                 })
         }
     }, [postID.current])
@@ -59,7 +66,10 @@ export default function CreateBlog() {
                 blogID: blogID.current,
                 blogCategory: category,
                 featured: isFeatured,
-                visible: isPublished
+                visible: isPublished,
+                seoTitle: seoTitle.current,
+                slug: slug.current,
+                seoDescription: seoDescription.current
             }
 
             const fileRef = {
@@ -67,8 +77,6 @@ export default function CreateBlog() {
                 fileName: `SiteImages/Blog/${blogID.current}/coverImage`,
                 isAdmin: true
             }
-
-            console.log(postData);
 
             postData.coverImage = await uploadFile(fileRef);
             Axios.post("/api/blog/create", postData)
@@ -82,8 +90,13 @@ export default function CreateBlog() {
                 blogID: postDoc.blogID,
                 blogCategory: category,
                 featured: isFeatured,
-                visible: isPublished
+                visible: isPublished,
+                seoTitle: seoTitle.current,
+                slug: slug.current,
+                seoDescription: seoDescription.current
             };
+
+            console.log(postData);
 
             const fileRef = {
                 file: coverImage,
@@ -180,6 +193,15 @@ export default function CreateBlog() {
             case "FEATURED":
                 setIsFeatured(!isFeatured);
                 break;
+            case "SEOTITLE":
+                seoTitle.current = e.target.value;
+                break;
+            case "SEODESC":
+                seoDescription.current = e.target.value;
+                break;
+            case "SLUG":
+                slug.current = e.target.value;
+                break;
             default:
                 return null;
         }
@@ -192,7 +214,10 @@ export default function CreateBlog() {
                     coverImagePreview: coverImagePreview,
                     category: category,
                     featured: isFeatured,
-                    visible: isPublished
+                    visible: isPublished,
+                    seoTitle: seoTitle.current,
+                    slug: slug.current,
+                    seoDescription: seoDescription.current
                 }}
                 saveDefaults={saveNavbarData}
             />
@@ -210,6 +235,7 @@ export default function CreateBlog() {
                     modules={quillModules}
                     value={quillBody.current || ""}
                     onChange={handleChange}
+                    tabIndex={-1}
                 />
                 <button className="generic-button blog-create-button" onClick={handleSubmit}>
                     {postDoc !== undefined ? "Update Post" : "Create Post"}

@@ -9,6 +9,9 @@ router.route("/create").post((req, res) => {
     const blogCategory = req.body.blogCategory;
     const featured = req.body.featured;
     const visible = req.body.visible;
+    const seoTitle = req.body.seoTitle;
+    const slug = req.body.slug;
+    const seoDescription = req.body.seoDescription;
 
     const newBlog = new Blog({ 
         title, 
@@ -17,7 +20,10 @@ router.route("/create").post((req, res) => {
         blogID, 
         blogCategory,
         featured,
-        visible
+        visible,
+        seoTitle,
+        slug,
+        seoDescription
     });
     newBlog.save()
         .then(res.json({ response: "Blog Created!" }))
@@ -44,6 +50,12 @@ router.route("/blogs/category/:category").get((req, res) => {
 
 router.route("/:id").get((req, res) => {
     Blog.findById(req.params.id)
+        .then(doc => res.json({ postDoc: doc }))
+        .catch(err => res.status(400).json({ response: `Error: ${err}`}))
+})
+
+router.route("/public/:slug").get((req, res) => {
+    Blog.findOne({ slug: req.params.slug })
         .then(doc => res.json({ postDoc: doc }))
         .catch(err => res.status(400).json({ response: `Error: ${err}`}))
 })

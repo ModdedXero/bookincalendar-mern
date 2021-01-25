@@ -28,17 +28,22 @@ export default function CreatePostNavbar({ defaults, saveDefaults}) {
                 <h3>Featured</h3>
                 <input type="checkbox" onClick={(e) => saveDefaults("", "FEATURED")} checked={defaults.featured} />
             </div>
-            <div>
+            <div className="blog-create-navbar-seo">
                 <h1>SEO</h1>
 
                 <h3>Title</h3>
-                <input />
+                <input onChange={(e) => saveDefaults(e, "SEOTITLE")} value={defaults.seoTitle} />
 
                 <h3>Slug</h3>
-                <input />
+                <input onChange={(e) => saveDefaults(e, "SLUG")} value={defaults.slug} />
 
                 <h3>Description</h3>
-                <input />
+                <textarea 
+                    onChange={(e) => 
+                    saveDefaults(e, "SEODESC")} 
+                    value={defaults.seoDescription}
+                    maxLength="130"
+                />
             </div>
         </div>
     )

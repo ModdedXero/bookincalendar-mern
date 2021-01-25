@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 import { ReadParam } from "../../../../Utility/RandomUtils";
 import SiteFooter from "../../SiteFooter";
@@ -9,10 +10,10 @@ import PostViewFoot from "./PostViewFoot";
 
 export default function PostView() {
     const [postData, setPostData] = useState("");
-    const postID = useRef(ReadParam(window, "postid"));
+    const postID = useRef(ReadParam(window, ""));
 
     useEffect(() => {
-        axios.get(`/api/blog/${postID.current}`)
+        axios.get(`/api/blog/public/${postID.current}`)
             .then(res => setPostData(res.data.postDoc))
             .catch(err => {})
     }, [postID.current])
@@ -21,6 +22,11 @@ export default function PostView() {
     // TODO: Fix Copied Notification
     return (
         <div className="home-bg-img-3-fixed">
+            <Helmet>
+                <title>{postData.seoTitle}</title>
+                <meta name="description" content={postData.seoDescription} />
+                <meta name="og:image" content={postData.coverImage} />
+            </Helmet>
             <PostViewNav />
             <PostViewBody postData={postData} />
             <PostViewFoot category="FEATURED" />

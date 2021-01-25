@@ -33,7 +33,7 @@ const blogSchema = new Schema({
     seoTitle: {
         type: String
     },
-    seoSlug: {
+    slug: {
         type: String,
         unique: true
     },

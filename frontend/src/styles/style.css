@@ -154,6 +154,10 @@ button {
     float: right;
 }
 
+.ql-container {
+    font-size: 18px;
+}
+
 .bg-img-paral {
     position: relative;
     background-attachment: fixed;
@@ -526,6 +530,19 @@ button {
     margin-top: 10px;
 }
 
+.blog-create-navbar-seo input {
+    font-size: 18px;
+    width: 100%;
+}
+
+.blog-create-navbar-seo textarea {
+    background-color: white;
+    border: 1px solid black;
+    font-size: 18px;
+    width: 100%;
+    resize: vertical;
+}
+
 .blog-create-container {
     position: relative;
     margin: 10px auto;
@@ -546,10 +563,6 @@ button {
     position: relative;
     margin: 0 auto;
     background-color: white;
-}
-
-.blog-create-content p {
-    font-size: 18px;
 }
 
 .blog-create-cover {
@@ -702,7 +715,7 @@ button {
     height: auto;
 }
 
-.inspire-post-quill span {
+.ql-container {
     font-size: 18px;
 }
 

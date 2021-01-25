@@ -11,9 +11,14 @@ export function MakeID(length) {
 }
 
 export function ReadParam(wind, param) {
-    const queryString = wind.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    return urlParams.get(param);
+    if (param !== "") {
+        const queryString = wind.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        return urlParams.get(param);
+    } else {
+        const ret = wind.location.pathname.split("/");
+        return ret[ret.length - 1];
+    }
 }
 
 export function GenerateLocalURL(path) {

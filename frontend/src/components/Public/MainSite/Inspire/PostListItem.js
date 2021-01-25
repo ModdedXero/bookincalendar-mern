@@ -12,10 +12,10 @@ export default function PostListItem({ post }) {
     return (
         <li className="inspire-blog-list-item">
             <div className="inspire-blog-list-item-image">
-                <a href={window.location.origin + `/inspire/post/?postid=${post._id}`}><img src={post.coverImage} alt="coverImage"></img></a>
+                <a href={window.location.origin + `/inspire/post/${post.slug}`}><img src={post.coverImage} alt="coverImage"></img></a>
             </div>
             <div className="inspire-blog-list-item-body">
-                <a className="no-decor" href={window.location.origin + `/inspire/post/?postid=${post._id}`}>
+                <a className="no-decor" href={window.location.origin + `/inspire/post/${post.slug}`}>
                     <h1>{post.title}</h1>
                     <ReactQuill
                         className="inspire-blog-list-item-quill"
