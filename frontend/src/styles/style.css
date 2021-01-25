@@ -1,3 +1,7 @@
+@font-face {
+    font-family: "LuloCleanW01-OneBold";
+    src: local("LuloCleanW01-OneBold"), url(../fonts/LuloCleanBold.ttf) format("truetype");
+}
 
 :root {
     --font: black;
