@@ -105,6 +105,7 @@ export default function CreateBlog() {
         toolbar: {
             container: [
                 ["bold", "italic", "underline","strike", "blockquote"],
+                [{ "size": ["small", false, "large", "huge"] }],
                 [{ "align": []}],
                 [{"list": "ordered"}, {"list": "bullet"}, {"indent": "-1"}, {"indent": "+1"}],
                 ["link", "image"],

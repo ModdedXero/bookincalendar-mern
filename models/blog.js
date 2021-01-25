@@ -29,6 +29,16 @@ const blogSchema = new Schema({
     visible: {
         type: Boolean,
         default: false
+    },
+    seoTitle: {
+        type: String
+    },
+    seoSlug: {
+        type: String,
+        unique: true
+    },
+    seoDescription: {
+        type: String
     }
 })
 

@@ -28,6 +28,18 @@ export default function CreatePostNavbar({ defaults, saveDefaults}) {
                 <h3>Featured</h3>
                 <input type="checkbox" onClick={(e) => saveDefaults("", "FEATURED")} checked={defaults.featured} />
             </div>
+            <div>
+                <h1>SEO</h1>
+
+                <h3>Title</h3>
+                <input />
+
+                <h3>Slug</h3>
+                <input />
+
+                <h3>Description</h3>
+                <input />
+            </div>
         </div>
     )
 }
