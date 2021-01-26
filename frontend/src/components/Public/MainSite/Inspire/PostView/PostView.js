@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 
-import { ReadParam } from "../../../../Utility/RandomUtils";
+import { GenerateLocalURL, ReadParam } from "../../../../Utility/RandomUtils";
 import SiteFooter from "../../SiteFooter";
 import PostViewNav from "./PostViewNav";
 import PostViewBody from "./PostViewBody";
@@ -26,10 +26,16 @@ export default function PostView() {
                 <title>{postData.seoTitle}</title>
                 <meta name="title" content={postData.title} />
                 <meta name="description" content={postData.seoDescription} />
+                <meta name="image" content={postData.coverImage} />
+                <meta name="url" content={`https://www.boldemotionalcolorful.com/inspire/post/${postData.slug}`} />
                 <meta name="og:description" content={postData.seoDescription} />
+                <meta name="og:type" content="article" />
+                <meta 
+                    name="og:url" 
+                    content={`https://www.boldemotionalcolorful.com/inspire/post/${postData.slug}`} 
+                />
                 <meta name="og:title" content={postData.title} />
                 <meta name="og:image" content={postData.coverImage} />
-                <meta name="og:image:secure_url" content={postData.coverImage} />
             </Helmet>
             <PostViewNav />
             <PostViewBody postData={postData} />

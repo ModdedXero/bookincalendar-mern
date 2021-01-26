@@ -38,7 +38,7 @@ app.use("/api/calendar", calenadarRouter);
 app.use("/api/blog", blogRouter);
 app.use("/api/submit", submitRouter);
 
-if (process.env.NODE_ENV == "production") {
+if (process.env.NODE_ENV === "production") {
     app.get("*", (req, res) => {
         res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
     })

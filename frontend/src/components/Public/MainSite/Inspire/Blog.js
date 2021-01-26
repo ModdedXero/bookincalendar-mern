@@ -3,14 +3,16 @@ import axios from "axios";
 
 import PostListItem from "./PostListItem";
 import SiteFooter from "../SiteFooter";
+import { GenerateLocalURL } from "../../../Utility/RandomUtils";
 import PostViewNav from "./PostView/PostViewNav";
 
 export default function Blog() {
     const [blogs, setBlogs] = useState([]);
 
     useEffect(() => {
-        axios.get("/api/blog/blogs")
-            .then(res => setBlogs(res.data.blogs.reverse()))
+        axios("/api/blog/blogs")
+            .then(res => setBlogs(res.data.blogs))
+            .catch(err => console.log(err))
     })
 
     return (
