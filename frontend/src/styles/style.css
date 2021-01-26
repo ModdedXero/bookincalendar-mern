@@ -341,6 +341,19 @@ button {
     background-color: #7B736F;
     font-size: 17px;
     border-radius: 0 0 10px 0;
+    cursor: pointer;
+}
+
+.home-submit-btn:disabled {
+    background-color: #d8ccc5;
+}
+
+.home-submit-btn:disabled:hover {
+    background-color: #d8ccc5;
+}
+
+.home-submit-btn:hover {
+    background-color: #69625e;
 }
 
 .home-follow {

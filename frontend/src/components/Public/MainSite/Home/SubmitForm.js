@@ -10,10 +10,13 @@ export default function SubmitForm() {
     const articleRef = useRef("");
     const aboutRef = useRef("");
 
+    const [submitText, setSubmitText] = useState("Submit");
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        setSubmitText("Submitting...")
 
         const blogSubmit = {
             name: nameRef.current.value,
@@ -75,7 +78,7 @@ export default function SubmitForm() {
                     <label>Tell Us About the Session or Article</label>
                     <textarea ref={aboutRef}></textarea>
                 </div>
-                <button onClick={handleSubmit} className="home-submit-btn">Send</button>
+                <button onClick={handleSubmit} disabled={submitText !== "Submit"} className="home-submit-btn">{submitText}</button>
             </form>
         </div>
     )
