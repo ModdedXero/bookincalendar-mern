@@ -24,8 +24,12 @@ export default function PostView() {
         <div className="home-bg-img-3-fixed">
             <Helmet>
                 <title>{postData.seoTitle}</title>
+                <meta name="title" content={postData.title} />
                 <meta name="description" content={postData.seoDescription} />
+                <meta name="og:description" content={postData.seoDescription} />
+                <meta name="og:title" content={postData.title} />
                 <meta name="og:image" content={postData.coverImage} />
+                <meta name="og:image:secure_url" content={postData.coverImage} />
             </Helmet>
             <PostViewNav />
             <PostViewBody postData={postData} />

@@ -36,20 +36,20 @@ export default function SocialMedia({ post }) {
                 <FacebookIcon size={42} round />
             </FacebookShareButton>
             <TwitterShareButton
-                url={GenerateLocalURL(`/inspire/post/${post.slug}`)}
+                url={`www.boldemotionalcolorful.com/inspire/post/${post.slug}`}
                 title={post.title}
             >
                 <TwitterIcon size={42} round />
             </TwitterShareButton>
             <PinterestShareButton
-                url={GenerateLocalURL(`/inspire/post/${post.slug}`)}
+                url={`www.boldemotionalcolorful.com/inspire/post/${post.slug}`}
                 media={post.coverImage}
                 description={post.title}
             >
                 <PinterestIcon size={42} round />
             </PinterestShareButton>
             <CopyToClipboard 
-                text={GenerateLocalURL(`/inspire/post/${post.slug}`)} 
+                text={`www.boldemotionalcolorful.com/inspire/post/${post.slug}`} 
                 onCopy={handleCopy}
             >
                 <button className="stripped-button">
