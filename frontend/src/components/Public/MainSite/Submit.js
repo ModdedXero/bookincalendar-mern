@@ -1,13 +1,13 @@
 import React from "react";
 
-import ComingSoon from "./ComingSoon";
+import SubmitForm from "./Home/SubmitForm";
 import SiteFooter from "./SiteFooter";
 
-export default function Booking() {
+export default function Submit() {
 
     return (
         <>
-            <ComingSoon />
+            <SubmitForm />
             <SiteFooter />
         </>
     )

@@ -12,7 +12,7 @@ export default function BlogBusiness({ setPage }) {
         setPage("Inspire");
 
         axios.get(`/api/blog/blogs/category/${"Business"}`)
-            .then(res => setBlogs(res.data.blogs))
+            .then(res => setBlogs(res.data.blogs.reverse()))
     })
 
     return (

@@ -8,7 +8,7 @@ import DynamicRoute from "./Utility/DynamicRoute";
 import Home from "./Public/MainSite/Home/Home";
 import ECourses from "./Public/MainSite/ECourses";
 import Booking from "./Public/MainSite/Booking";
-import Presets from "./Public/MainSite/Presets";
+import Submit from "./Public/MainSite/Submit";
 
 /* Blog Routes */
 import Blog from "./Public/MainSite/Inspire/Blog";
@@ -48,7 +48,7 @@ function App() {
                 <DynamicRoute path="/inspire" layout="SITE" component={Blog} />
                 <DynamicRoute path="/create" layout="SITE" component={Booking} />
                 <DynamicRoute path="/educate" layout="SITE" component={ECourses} />
-                <DynamicRoute path="/submit" layout="SITE" component={Presets} />
+                <DynamicRoute path="/submit" layout="SITE" component={Submit} />
 
                 {/* Login Routes */}
                 <DynamicRoute path="/login/signup" layout="SITE" component={Signup} />

@@ -44,7 +44,7 @@ export default function PostViewFoot({ category }) {
 
                     return (
                         <div>
-                            <a href={GenerateLocalURL(`/inspire/post/?postid=${post._id}`)}>
+                            <a href={GenerateLocalURL(`/inspire/post/${post.slug}`)}>
                                 <img 
                                     src={post.coverImage} 
                                     alt=""
@@ -53,7 +53,7 @@ export default function PostViewFoot({ category }) {
                             <h4>
                                 <a 
                                     className="stripped-button"
-                                    href={GenerateLocalURL(`/inspire/post/?postid=${post._id}`)}
+                                    href={GenerateLocalURL(`/inspire/post/${post.slug}`)}
                                 >
                                     {post.title}
                                 </a>

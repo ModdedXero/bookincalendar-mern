@@ -142,6 +142,10 @@ button {
     background-color: var(--danger);
 }
 
+.alert-success {
+    background-color: green;
+}
+
 .sticky {
     position: sticky;
     top: 0;
@@ -563,6 +567,13 @@ button {
     position: relative;
     margin: 0 auto;
     background-color: white;
+}
+
+.blog-create-content .ql-toolbar {
+    position: sticky;
+    top: 68px;
+    background-color: white;
+    z-index: 10;
 }
 
 .blog-create-cover {

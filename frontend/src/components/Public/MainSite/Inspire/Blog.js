@@ -5,14 +5,12 @@ import PostListItem from "./PostListItem";
 import SiteFooter from "../SiteFooter";
 import PostViewNav from "./PostView/PostViewNav";
 
-export default function Blog({ setPage }) {
+export default function Blog() {
     const [blogs, setBlogs] = useState([]);
 
     useEffect(() => {
-        setPage("Inspire");
-
         axios.get("/api/blog/blogs")
-            .then(res => setBlogs(res.data.blogs))
+            .then(res => setBlogs(res.data.blogs.reverse()))
     })
 
     return (

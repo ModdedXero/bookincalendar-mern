@@ -12,7 +12,7 @@ export default function BlogFeatured({ setPage }) {
         setPage("Inspire");
 
         axios.get("/api/blog/blogs/featured")
-            .then(res => setBlogs(res.data.blogs))
+            .then(res => setBlogs(res.data.blogs.reverse()))
     }, [blogs])
 
     return (

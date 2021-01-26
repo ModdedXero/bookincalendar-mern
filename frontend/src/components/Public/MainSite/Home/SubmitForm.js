@@ -1,8 +1,46 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import axios from "axios";
 
 export default function SubmitForm() {
+    const nameRef = useRef("");
+    const emailRef = useRef("");
+    const businessRef = useRef("");
+    const websiteRef = useRef("");
+    const galleryRef = useRef("");
+    const articleRef = useRef("");
+    const aboutRef = useRef("");
+
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const blogSubmit = {
+            name: nameRef.current.value,
+            email: emailRef.current.value,
+            business: businessRef.current.value,
+            website: websiteRef.current.value,
+            gallery: galleryRef.current.value,
+            article: articleRef.current.value,
+            about: aboutRef.current.value
+        }
+
+        axios.post("/api/submit/blog", blogSubmit)
+            .then(res => {
+                if (res.data.response === "SUCCESS") {
+                    setIsSubmitted(true);
+                }
+            })
+    }
+
     return (
         <div className="home-submit">
+            {isSubmitted && (
+                <div 
+                    className="alert alert-success"
+                    style={{ width: "450px", margin: "0 auto 20px" }}
+                >Blog Submitted!</div>
+            )}
             <h1>SUBMIT.</h1>
             <p className="home-submit-line" />
             <p className="home-submit-text">
@@ -11,33 +49,33 @@ export default function SubmitForm() {
             <form>
                 <div className="home-submit-input">
                     <label>Name *</label>
-                    <input type="text" required></input>
+                    <input ref={nameRef} type="text" required></input>
                 </div>
                 <div className="home-submit-input">
                     <label>Email *</label>
-                    <input type="text" required></input>
+                    <input ref={emailRef} type="text" required></input>
                 </div>
                 <div className="home-submit-input">
-                    <label>Busines</label>
-                    <input type="text"></input>
+                    <label>Business</label>
+                    <input ref={businessRef} type="text"></input>
                 </div>
                 <div className="home-submit-input">
                     <label>Website</label>
-                    <input type="url"></input>
+                    <input ref={websiteRef} type="url"></input>
                 </div>
                 <div className="home-submit-input">
                     <label>Link to Gallery</label>
-                    <input type="url"></input>
+                    <input ref={galleryRef} type="url"></input>
                 </div>
                 <div className="home-submit-input">
                     <label>Link to Tutorial/Article</label>
-                    <input type="url"></input>
+                    <input ref={articleRef} type="url"></input>
                 </div>
                 <div className="home-submit-input">
                     <label>Tell Us About the Session or Article</label>
-                    <textarea ></textarea>
+                    <textarea ref={aboutRef}></textarea>
                 </div>
-                <button type="submit" className="home-submit-btn">Send</button>
+                <button onClick={handleSubmit} className="home-submit-btn">Send</button>
             </form>
         </div>
     )

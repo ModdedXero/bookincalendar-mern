@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 
+import Modal from "../../../Utility/Modal";
+import SocialMedia from "./SocialMedia";
+
 export default function PostListItem({ post }) {
     const [isModal, setIsModal] = useState(false);
 
     const toggleModal = (e) => {
         e.stopPropagation();
+        console.log("modal");
         setIsModal(!isModal);
     }
 
@@ -26,6 +30,9 @@ export default function PostListItem({ post }) {
                 </a>
                 <button className="modal-button" onClick={toggleModal}><i className="fas fa-ellipsis-v"></i></button>
             </div>
+            <Modal open={isModal} onClose={toggleModal} small>
+                <SocialMedia post={post} />
+            </Modal>
         </li>
     )
 }

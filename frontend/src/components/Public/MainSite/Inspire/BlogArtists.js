@@ -12,7 +12,7 @@ export default function BlogArtists({ setPage }) {
         setPage("Inspire");
 
         axios.get(`/api/blog/blogs/category/${"Featured Artists"}`)
-            .then(res => setBlogs(res.data.blogs))
+            .then(res => setBlogs(res.data.blogs.reverse()))
     })
 
     return (

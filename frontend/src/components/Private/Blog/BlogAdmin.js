@@ -8,7 +8,7 @@ export default function BlogAdmin() {
 
     useEffect(() => {
         axios.get("/api/blog/blogs")
-            .then(res => setBlogs(res.data.blogs))
+            .then(res => setBlogs(res.data.blogs.reverse()))
     }, [])
 
     return (
