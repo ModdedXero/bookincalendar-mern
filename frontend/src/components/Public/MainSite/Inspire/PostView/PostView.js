@@ -28,14 +28,14 @@ export default function PostView() {
                 <meta name="description" content={postData.seoDescription} />
                 <meta name="image" content={postData.coverImage} />
                 <meta name="url" content={`https://www.boldemotionalcolorful.com/inspire/post/${postData.slug}`} />
-                <meta name="og:description" content={postData.seoDescription} />
-                <meta name="og:type" content="article" />
+                <meta propery="og:description" content={postData.seoDescription} />
+                <meta propery="og:type" content="article" />
                 <meta 
-                    name="og:url" 
+                    propery="og:url" 
                     content={`https://www.boldemotionalcolorful.com/inspire/post/${postData.slug}`} 
                 />
-                <meta name="og:title" content={postData.title} />
-                <meta name="og:image" content={postData.coverImage} />
+                <meta propery="og:title" content={postData.title} />
+                <meta propery="og:image" content={postData.coverImage} />
             </Helmet>
             <PostViewNav />
             <PostViewBody postData={postData} />
