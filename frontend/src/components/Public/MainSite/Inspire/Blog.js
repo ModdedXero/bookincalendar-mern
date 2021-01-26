@@ -10,7 +10,7 @@ export default function Blog() {
     const [blogs, setBlogs] = useState([]);
 
     useEffect(() => {
-        axios("/api/blog/blogs")
+        axios("https://www.boldemotionalcolorful.com/api/blog/blogs")
             .then(res => setBlogs(res.data.blogs))
             .catch(err => console.log(err))
     })

@@ -13,7 +13,7 @@ export default function PostView() {
     const postID = useRef(ReadParam(window, ""));
 
     useEffect(() => {
-        axios.get(`/api/blog/public/${postID.current}`)
+        axios.get(`https://www.boldemotionalcolorful.com/api/blog/public/${postID.current}`)
             .then(res => setPostData(res.data.postDoc))
             .catch(err => {})
     }, [postID.current])
@@ -28,14 +28,14 @@ export default function PostView() {
                 <meta name="description" content={postData.seoDescription} />
                 <meta name="image" content={postData.coverImage} />
                 <meta name="url" content={`https://www.boldemotionalcolorful.com/inspire/post/${postData.slug}`} />
-                <meta propery="og:description" content={postData.seoDescription} />
-                <meta propery="og:type" content="article" />
+                <meta property="og:description" content={postData.seoDescription} />
+                <meta property="og:type" content="article" />
                 <meta 
-                    propery="og:url" 
+                    property="og:url" 
                     content={`https://www.boldemotionalcolorful.com/inspire/post/${postData.slug}`} 
                 />
-                <meta propery="og:title" content={postData.title} />
-                <meta propery="og:image" content={postData.coverImage} />
+                <meta property="og:title" content={postData.title} />
+                <meta property="og:image" content={postData.coverImage} />
             </Helmet>
             <PostViewNav />
             <PostViewBody postData={postData} />
