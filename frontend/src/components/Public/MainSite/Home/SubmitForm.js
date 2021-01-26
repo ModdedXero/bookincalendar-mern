@@ -32,6 +32,7 @@ export default function SubmitForm() {
             .then(res => {
                 if (res.data.response === "SUCCESS") {
                     setIsSubmitted(true);
+                    setSubmitText("Submitted!")
                 }
             })
     }
@@ -49,14 +50,14 @@ export default function SubmitForm() {
             <p className="home-submit-text">
                 We are looking for photographers to write helpful tutorials and articles that are photography related to feature on our blog. Include 5-10 photographs that pertain to your article. Do you love to write? Submit your ideas below. 
             </p>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="home-submit-input">
                     <label>Name *</label>
                     <input ref={nameRef} type="text" required></input>
                 </div>
                 <div className="home-submit-input">
                     <label>Email *</label>
-                    <input ref={emailRef} type="text" required></input>
+                    <input ref={emailRef} type="email" required></input>
                 </div>
                 <div className="home-submit-input">
                     <label>Business</label>
@@ -64,21 +65,21 @@ export default function SubmitForm() {
                 </div>
                 <div className="home-submit-input">
                     <label>Website</label>
-                    <input ref={websiteRef} type="url"></input>
+                    <input ref={websiteRef} type="text"></input>
                 </div>
                 <div className="home-submit-input">
                     <label>Link to Gallery</label>
-                    <input ref={galleryRef} type="url"></input>
+                    <input ref={galleryRef} type="text"></input>
                 </div>
                 <div className="home-submit-input">
                     <label>Link to Tutorial/Article</label>
-                    <input ref={articleRef} type="url"></input>
+                    <input ref={articleRef} type="text"></input>
                 </div>
                 <div className="home-submit-input">
                     <label>Tell Us About the Session or Article</label>
                     <textarea ref={aboutRef}></textarea>
                 </div>
-                <button onClick={handleSubmit} disabled={submitText !== "Submit"} className="home-submit-btn">{submitText}</button>
+                <button type="submit" disabled={submitText !== "Submit"} className="home-submit-btn">{submitText}</button>
             </form>
         </div>
     )
