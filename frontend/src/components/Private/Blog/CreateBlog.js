@@ -96,8 +96,6 @@ export default function CreateBlog() {
                 seoDescription: seoDescription.current
             };
 
-            console.log(postData);
-
             const fileRef = {
                 file: coverImage,
                 fileName: `SiteImages/Blog/${blogID.current}/coverImage`,

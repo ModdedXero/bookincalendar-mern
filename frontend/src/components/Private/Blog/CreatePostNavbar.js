@@ -32,16 +32,16 @@ export default function CreatePostNavbar({ defaults, saveDefaults}) {
                 <h1>SEO</h1>
 
                 <h3>Title</h3>
-                <input onChange={(e) => saveDefaults(e, "SEOTITLE")} value={defaults.seoTitle} />
+                <input onChange={(e) => saveDefaults(e, "SEOTITLE")} defaultValue={defaults.seoTitle} />
 
                 <h3>Slug</h3>
-                <input onChange={(e) => saveDefaults(e, "SLUG")} value={defaults.slug} />
+                <input onChange={(e) => saveDefaults(e, "SLUG")} defaultValue={defaults.slug} />
 
                 <h3>Description</h3>
                 <textarea 
                     onChange={(e) => 
                     saveDefaults(e, "SEODESC")} 
-                    value={defaults.seoDescription}
+                    defaultValue={defaults.seoDescription}
                     maxLength="130"
                 />
             </div>
