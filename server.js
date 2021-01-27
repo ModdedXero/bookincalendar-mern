@@ -39,7 +39,7 @@ app.use("/api/calendar", calenadarRouter);
 app.use("/api/blog", blogRouter);
 app.use("/api/submit", submitRouter);
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "production") {
     app.get("/inspire/post/*", (req, res) => {
       metaRender.RenderMetaTags(req, res, metaRender.types.BLOG);
     })
