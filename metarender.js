@@ -12,15 +12,28 @@ function RenderMetaTags(req, res, source) {
         }
 
         switch (source) {
+            case 0:
+                return RenderSiteMeta(req, res, data);
             case 1:
                 return RenderBlogMeta(req, res, data);
             default:
-                return res.send(data);
+                return RenderSiteMeta(req, res, data);
         }
     })
 }
 
-function RenderBlogMeta(req, res, data) {
+function RenderSiteMeta(req, res, data) {
+    data = data
+        .replace(MetaSourceID.Title, "Bold Emotional Colorful")
+        .replace(MetaSourceID.Desc, "Bold Emotional Colorful")
+        .replace(MetaSourceID.Image, "https://firebasestorage.googleapis.com/v0/b/bec-livesite.appspot.com/o/SiteImages%2FHome%2FBECLogoHeader1.8.21.jpg?alt=media&token=c12d18ad-af39-4e71-a390-d0b34197713e")
+        .replace(MetaSourceID.Url, "https://www.boldemotionalcolorful.com")
+        .replace(MetaSourceID.Type, "website")
+
+    res.send(data);
+}
+
+async function RenderBlogMeta(req, res, data) {
     const str = req.path.split("/");
     const slug = str[str.length - 1];
 

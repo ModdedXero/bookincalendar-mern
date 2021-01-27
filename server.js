@@ -44,7 +44,15 @@ if (process.env.NODE_ENV === "production") {
       metaRender.RenderMetaTags(req, res, metaRender.types.BLOG);
     })
 
-    app.get("/", (req, res) => {
+    app.get("/login*", (req, res) => {
+        metaRender.RenderMetaTags(req, res, metaRender.types.Default);
+    })
+
+    app.get("/private*", (req, res) => {
+        metaRender.RenderMetaTags(req, res, metaRender.types.Default);
+    })
+
+    app.get("/*", (req, res) => {
       metaRender.RenderMetaTags(req, res, metaRender.types.Default);
     })
 }
