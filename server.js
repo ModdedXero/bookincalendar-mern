@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const metaRender = require("./metarender");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -38,9 +39,13 @@ app.use("/api/calendar", calenadarRouter);
 app.use("/api/blog", blogRouter);
 app.use("/api/submit", submitRouter);
 
-if (process.env.NODE_ENV === "production") {
-    app.get("*", (req, res) => {
-        res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+if (process.env.NODE_ENV !== "production") {
+    app.get("/inspire/post/*", (req, res) => {
+      metaRender.RenderMetaTags(req, res, metaRender.types.BLOG);
+    })
+
+    app.get("/", (req, res) => {
+      metaRender.RenderMetaTags(req, res, metaRender.types.Default);
     })
 }
 
