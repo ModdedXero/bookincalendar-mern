@@ -3,7 +3,6 @@ import axios from "axios";
 
 import PostListItem from "./PostListItem";
 import SiteFooter from "../SiteFooter";
-import { GenerateLocalURL } from "../../../Utility/RandomUtils";
 import PostViewNav from "./PostView/PostViewNav";
 
 export default function Blog() {
@@ -13,7 +12,7 @@ export default function Blog() {
         axios("/api/blog/blogs")
             .then(res => setBlogs(res.data.blogs))
             .catch(err => console.log(err))
-    })
+    }, [blogs])
 
     return (
         <div className="home-bg-img-3-fixed">

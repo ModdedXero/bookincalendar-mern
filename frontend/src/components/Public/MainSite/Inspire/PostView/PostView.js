@@ -22,9 +22,11 @@ export default function PostView() {
     // TODO: Fix Copied Notification
     return (
         <div className="home-bg-img-3-fixed">
-            <PostViewNav />
-            <PostViewBody postData={postData} />
-            <PostViewFoot category="FEATURED" />
+            <div className="inspire-post-container">
+                <PostViewNav />
+                <PostViewBody postData={postData} />
+                <PostViewFoot category="FEATURED" />
+            </div>
             <SiteFooter />
         </div>
     )

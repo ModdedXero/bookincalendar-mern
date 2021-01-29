@@ -71,6 +71,11 @@ button {
     text-decoration: none !important;
 }
 
+.no-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .site-content {
     padding-top: 68px;
 }
@@ -655,14 +660,14 @@ button {
 .inspire-blog-list-item {
     display: flex;
     height: 340px;
-    width: 940px;
+    width: 95%;
     margin: 40px auto;
     border: 1px solid black;
     cursor: pointer;
 }
 
 .inspire-blog-list-item-image {
-    width: 454px;
+    width: 50%;
 }
 
 .inspire-blog-list-item-image img {
@@ -673,10 +678,9 @@ button {
 
 .inspire-blog-list-item-body {
     position: relative;
-    width: 486px;
+    width: 50%;
     padding: 24px 36px;
     text-align: left;
-    cursor: pointer;
 }
 
 .inspire-blog-list-item-body h1 {
@@ -717,15 +721,53 @@ button {
     z-index: 1;
 }
 
+@media screen and (max-width:840px) {
+    .inspire-blog {
+        width: 100%;
+    }
+
+    .inspire-blog h1 {
+        font-size: 48px;
+    }
+
+    .inspire-blog-list {
+        margin-top: 50px;
+    }
+
+    .inspire-blog-list-item {
+        height: 220px;
+        margin: 20px auto;
+    }
+
+    .inspire-blog-list-item-body {
+        padding: 3px 5px;
+    }
+
+    .inspire-blog-list-item-body .no-overflow {
+        height: 55%;
+    }
+
+    .inspire-blog-list-item-body h1 {
+        font: var(--home-header-font);
+        font-size: 12px;
+        margin: 10px 0;
+        cursor: pointer;
+    }
+}
+
 /* Post */
 
 .inspire-post {
-    width: 940px;
     height: 100%;
     margin: 0 auto;
     padding: 60px 100px;
     text-align: left;
     background-color: white;
+}
+
+.inspire-post-container {
+    width: 940px;
+    margin: 0 auto;
 }
 
 .inspire-post-title {
@@ -748,7 +790,7 @@ button {
 }
 
 .inspire-post-navbar {
-    width: 940px;
+    width: 100%;
     height: 40px;
     margin: auto;
     padding: 10px;
