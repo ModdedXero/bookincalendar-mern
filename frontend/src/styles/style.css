@@ -872,6 +872,42 @@ button {
     text-overflow: ellipsis;
 }
 
+@media screen and (max-width:840px) {
+    .inspire-post {
+        padding: 60px 20px;
+    }
+
+    .inspire-post-container {
+        width: 100%;
+    }
+
+    .inspire-post-share {
+        text-align: center;
+    }
+
+    .featured-container {
+        width: 100%;
+        padding: 0;
+    }
+
+    .inspire-post-featured {
+        flex-direction: column;
+        padding: 0 20px 20px 20px;
+    }
+
+    .inspire-post-featured div {
+        padding: 20px 10px;
+    }
+
+    .inspire-post-featured img {
+        width: 100%;
+    }
+    
+    .inspire-post-featured h4 {
+        width: 100%;
+    }
+} 
+
 /* Coming Soon */
 
 .coming-soon {
