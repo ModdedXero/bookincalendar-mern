@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDom from "react-dom";
 
-export default function Modal({ open, children, onClose, small, medium, error }) {
+export default function Modal({ open, children, onClose, noBack, small, medium, error }) {
     if (!open) return null;
 
     const getModalClass = () => {
@@ -15,10 +15,10 @@ export default function Modal({ open, children, onClose, small, medium, error })
     }
 
     return ReactDom.createPortal(
-        <div className="modal-background" onContextMenu={(e) => {e.stopPropagation()}}>
+        <div className={noBack ? "" : "modal-background"} onContextMenu={(e) => {e.stopPropagation()}}>
             {error && <div className="modal-error alert alert-danger">{error}</div>}
             <div className={getModalClass()} onClick={(e) => {e.stopPropagation()}}>
-                <button type="button" className="stripped-button modal-button" onClick={onClose}>X</button>
+                <button type="button" className="stripped-button modal-button" onClick={onClose}><i className="far fa-times-circle" /></button>
                 {children}
             </div>
         </div>,

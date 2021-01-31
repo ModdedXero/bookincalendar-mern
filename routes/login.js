@@ -1,4 +1,6 @@
 const router = require("express").Router();
+const request = require("superagent");
+
 const User = require("../models/user");
 const EventsData = require("../models/eventsData");
 const ClientsData = require("../models/clientsData");
@@ -31,6 +33,28 @@ router.route("/signup").post((req, res) => {
             .then()
             .catch(err => {})
     }
+})
+
+router.route("/newsletter").post((req, res) => {
+    request
+        .post(`https://${process.env.MAILCHIMP_INSTANCE}.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LISTID}/members/`)
+        .set("Content-Type", "application/json;charset=utf-8")
+        .set("Authorization", "Basic " + Buffer.from("anystring:" + process.env.MAILCHIMP_APIKEY).toString("base64"))
+        .send({
+            "email_address": req.body.email,
+            "status": "subscribed",
+            "merge_fields": {
+                "FNAME": req.body.firstName,
+                "LNAME": req.body.lastName
+            }
+        })
+        .end((err, response) => {
+            if (response.status < 300 || (response.status === 400 && response.body.title === "Member Exists")) {
+                res.json({ response: "SUCCESS" });
+            } else {
+                res.json({ response: "FAILURE" });
+            }
+        })
 })
 
 module.exports = router;

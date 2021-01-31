@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 
 import SubmitForm from "./SubmitForm";
 import SiteFooter from "../SiteFooter";
+import NewsletterPop from "../../NewsletterPop";
 
 export default function Home({ setPage }) {
     useEffect(() => {
@@ -10,6 +11,7 @@ export default function Home({ setPage }) {
 
     return (
         <>
+            <NewsletterPop />
             <div className="bg-img-paral home-bg-img-1" id="Home" />
             <div className="bg-img-paral home-bg-img-2" />
             <div className="home-twedo" id="ThWeDo">
