@@ -290,16 +290,13 @@ button {
 .home-community-body-text {
     text-align: left;
     font-size: 20px;
+    width: 300px;
     margin: 80px 40px;
 }
 
 .home-community-body-text p {
     width: 300px;
     margin: 10px 0;
-}
-
-.home-community-body-text ul {
-    list-style-type: disc;
 }
 
 .home-submit {
@@ -714,7 +711,8 @@ button {
     height: 45%;
 }
 
-.inspire-blog-list-item-body span,p {
+.inspire-blog-list-item-body span,
+.inspire-blog-list-item-body p {
     height: 100%;
     overflow: hidden;
 }
