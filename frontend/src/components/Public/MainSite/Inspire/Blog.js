@@ -10,7 +10,7 @@ export default function Blog() {
 
     useEffect(() => {
         axios("/api/blog/blogs")
-            .then(res => setBlogs(res.data.blogs))
+            .then(res => setBlogs(res.data.blogs.reverse()))
             .catch(err => console.log(err))
     }, [blogs])
 

@@ -1,8 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const Blog = require("./models/blog");
-const { post } = require("./routes/blog");
+const Blog = require("./models/posts/blog");
 
 function RenderMetaTags(req, res, source) {
     const filePath = path.join(__dirname, "frontend", "build", "index.html");

@@ -1,5 +1,8 @@
 const router = require("express").Router();
-const Blog = require("../models/blog");
+const Blog = require("../models/posts/blog");
+const CommentContainer = require("../models/posts/commentContainer");
+
+/* Blog Post Routes */
 
 router.route("/create").post((req, res) => {
     const title = req.body.title;
@@ -13,6 +16,10 @@ router.route("/create").post((req, res) => {
     const slug = req.body.slug;
     const seoDescription = req.body.seoDescription;
 
+    const newCommentContainer = new CommentContainer();
+
+    const commentsID = newCommentContainer._id;
+
     const newBlog = new Blog({ 
         title, 
         body, 
@@ -23,11 +30,16 @@ router.route("/create").post((req, res) => {
         visible,
         seoTitle,
         slug,
-        seoDescription
+        seoDescription,
+        commentsID
     });
+
     newBlog.save()
         .then(res.json({ response: "Blog Created!" }))
         .catch(err => console.log(err))
+    newCommentContainer.save()
+        .then()
+        .catch(err => {})
 })
 
 router.route("/blogs").get((req, res) => {
@@ -77,6 +89,105 @@ router.route("/delete/:id").delete((req, res) => {
     Blog.findByIdAndDelete(blogID)
         .then(res.json({ response: "Blog Deleted!" }))
         .catch(err => res.status(400).json({ response: `Error: ${err}` }))
+})
+
+/* Comment Routes */
+
+router.route("/comment/add/:id").post((req, res) => {
+    const newComment = {
+        authorName: req.body.name,
+        authorEmail: req.body.email,
+        authorWebsite: req.body.website,
+        isApproved: false,
+        createdDate: new Date()
+    }
+    
+    CommentContainer.findByIdAndUpdate(req.params.id, {
+        $push: { comments: newComment }
+    })
+    .then(doc => res.json({ response: "SUCCESS" }))
+})
+
+router.route("/comment/sub/add/:id").post(async (req, res) => {
+    const commentID = req.body.commentID;
+
+    const newSubComment = {
+        authorName: req.body.name,
+        authorEmail: req.body.email,
+        authorWebsite: req.body.website,
+        isApproved: false,
+        createdDate: new Date()
+    }
+
+    const doc = await CommentContainer.findById(req.params.id);
+
+    doc.comments.map((comment, index) => {
+        if (comment._id == commentID) {
+            doc.comments[index].subComments.push(newSubComment);
+        }
+    })
+
+    doc.save()
+        .then(() => res.json({ response: "SUCCESS" }))
+})
+
+router.route("/comment/delete/:id/:commentId").delete((req, res) => {
+    const commentID = req.params.commentId;
+
+    CommentContainer.findByIdAndUpdate(req.params.id, {
+        $pull: { comments: { _id: commentID } }
+    })
+    .then(() => res.json({ response: "SUCCESS" }))
+})
+
+router.route("/comment/sub/delete/:id/:commentId/:subComId").delete(async (req, res) => {
+    const commentId = req.params.commentId;
+    const subComId = req.params.subComId;
+
+    const doc = await CommentContainer.findById(req.params.id);
+
+    doc.comments.map((comment, i) => {
+        if (comment._id == commentId) {
+            comment.subComments.map((subCom, j) => {
+                if (subCom._id == subComId) {
+                    doc.comments[i].subComments.splice(j, 1);
+                }
+            })
+        }
+    })
+
+    doc.save()
+        .then(() => res.json({ response: "SUCCESS" }))
+})
+
+router.route("/comment/approve/:id").post(async (req, res) => {
+    const doc = await CommentContainer.findById(req.params.id);
+
+    doc.comments.map((comment, index) => {
+        if (comment._id == req.body.commentId) {
+            doc.comments[index].isApproved = true;
+        }
+    })
+
+    doc.save()
+        .then(() => res.json({ response: "SUCCESS" }))
+})
+
+router.route("/comment/sub/approve/:id").post(async (req, res) => {
+    const doc = await CommentContainer.findById(req.params.id);
+
+    doc.comments.map((comment, i) => {
+        if (comment._id == req.body.commentId) {
+            comment.subComments.map((subCom, j) => {
+                if (subCom._id == req.body.subComId) {
+                    doc.comments[i].subComments[j].isApproved = true;
+                }
+            })
+        }
+    })
+
+    doc.save()
+        .then(() => res.json({ response: "SUCCESS" }))
 })
 
 module.exports = router;

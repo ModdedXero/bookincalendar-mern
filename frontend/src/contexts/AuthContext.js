@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { auth, storage } from "../firebase";
+import { auth, storage, googleAuth } from "../firebase";
 
 const AuthContext = React.createContext();
 
@@ -11,7 +11,8 @@ export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState(null);
     const [isLoading, setLoading] = useState(true);
 
-    // User Functions
+    // User Email Functions
+
     function signup(email, password) {
         return auth.createUserWithEmailAndPassword(email, password);
     }
@@ -34,6 +35,12 @@ export function AuthProvider({ children }) {
 
     function updatePassword(password) {
         return currentUser.updatePassword(password);
+    }
+
+    // User Google Functions
+
+    function signInWithGoogle() {
+        return auth.signInWithPopup(googleAuth);
     }
 
     // Storage Functions
@@ -78,6 +85,9 @@ export function AuthProvider({ children }) {
         resetPassword,
         updateEmail,
         updatePassword,
+
+        // Google Exports
+        signInWithGoogle,
 
         // Storage Exports
         uploadFile,

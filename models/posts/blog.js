@@ -39,7 +39,8 @@ const blogSchema = new Schema({
     },
     seoDescription: {
         type: String
-    }
+    },
+    commentsID: String
 })
 
 const Blog = mongoose.model("Blog", blogSchema);

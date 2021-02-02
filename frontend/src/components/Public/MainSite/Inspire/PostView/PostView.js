@@ -6,6 +6,7 @@ import SiteFooter from "../../SiteFooter";
 import PostViewNav from "./PostViewNav";
 import PostViewBody from "./PostViewBody";
 import PostViewFoot from "./PostViewFoot";
+import PostViewComments from "./PostViewComments";
 
 export default function PostView() {
     const [postData, setPostData] = useState("");
@@ -24,6 +25,7 @@ export default function PostView() {
             <div className="inspire-post-container">
                 <PostViewNav />
                 <PostViewBody postData={postData} />
+                <PostViewComments postID={postData.commentID} />
                 <PostViewFoot category="FEATURED" />
             </div>
             <SiteFooter />

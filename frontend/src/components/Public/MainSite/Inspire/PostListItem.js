@@ -22,7 +22,7 @@ export default function PostListItem({ post }) {
                     <a className="no-decor" href={window.location.origin + `/inspire/post/${post.slug}`}>
                         <h1>{post.title}</h1>
                     </a>
-                    <div className="no-overflow">{parse(post.body)}</div>
+                    <div>{parse(post.body)}</div>
                 <button className="modal-button" onClick={toggleModal}><i className="fas fa-ellipsis-v"></i></button>
             </div>
             <Modal open={isModal} onClose={toggleModal} small>
