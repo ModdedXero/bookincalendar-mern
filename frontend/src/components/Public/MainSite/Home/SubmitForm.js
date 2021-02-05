@@ -23,8 +23,6 @@ export default function SubmitForm() {
             email: emailRef.current.value,
             business: businessRef.current.value,
             website: websiteRef.current.value,
-            gallery: galleryRef.current.value,
-            article: articleRef.current.value,
             about: aboutRef.current.value
         }
 
@@ -68,15 +66,7 @@ export default function SubmitForm() {
                     <input ref={websiteRef} type="text"></input>
                 </div>
                 <div className="home-submit-input">
-                    <label>Link to Gallery</label>
-                    <input ref={galleryRef} type="text"></input>
-                </div>
-                <div className="home-submit-input">
-                    <label>Link to Tutorial/Article</label>
-                    <input ref={articleRef} type="text"></input>
-                </div>
-                <div className="home-submit-input">
-                    <label>Tell Us About the Session or Article</label>
+                    <label>Tell Us About Your Idea</label>
                     <textarea ref={aboutRef}></textarea>
                 </div>
                 <button type="submit" disabled={submitText !== "Submit"} className="home-submit-btn">{submitText}</button>

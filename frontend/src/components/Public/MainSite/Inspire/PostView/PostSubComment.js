@@ -23,7 +23,7 @@ export default function PostSubComment({ subComment }) {
 
     return (
         <div className="inspire-subcomment">
-            <p>{subComment.authorName} said:</p>
+            <p><a className="stripped-button" href={`https://${subComment.authorWebsite}`}>{subComment.authorName}</a> said:</p>
             <p className="inspire-comment-date">{format(new Date(Date.parse(subComment.createdDate)), "MMMM d, yyyy h:mm aaaa")}</p>
             <textarea 
                 ref={bodyRef}

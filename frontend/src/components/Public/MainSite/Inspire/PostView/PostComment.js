@@ -32,7 +32,7 @@ export default function PostComment({ comment, containerID }) {
 
     return (
         <div className="inspire-comment">
-            <p>{comment.authorName} said:</p>
+            <p><a className="stripped-button" href={`https://${comment.authorWebsite}`}>{comment.authorName}</a> said:</p>
             <p className="inspire-comment-date">{format(new Date(Date.parse(comment.createdDate)), "MMMM d, yyyy h:mm aaaa")}</p>
             <textarea 
                 ref={bodyRef}

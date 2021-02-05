@@ -14,8 +14,6 @@ router.route("/blog").post((req, res) => {
     const email = req.body.email;
     const business = req.body.business;
     const website = req.body.website;
-    const gallery = req.body.gallery;
-    const article = req.body.article;
     const about = req.body.about;
 
     var mailOptions = {
@@ -26,9 +24,7 @@ router.route("/blog").post((req, res) => {
         Email: ${email}
         Business: ${business}
         Website: ${website}
-        Link to Gallery: ${gallery}
-        Link to Article: ${article}
-        Tell Us About the Session or Article:
+        Tell Us About Your Idea:
         ${about}`
     }
 
