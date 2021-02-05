@@ -1,12 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { format } from "date-fns";
 
-import { useStickyWindow } from "../../../../Utility/Hooks";
+import { useRerender, useStickyWindow } from "../../../../Utility/Hooks";
 import PostSubComment from "./PostSubComment";
 import CommentPost from "./CommentPost";
 
 export default function PostComment({ comment, containerID }) {
-    const [rendered, setRendered] = useState(false);
     const [showReply, setShowReply] = useState(false);
 
     const bodyRef = useRef();
@@ -15,9 +14,9 @@ export default function PostComment({ comment, containerID }) {
         bodyRef.current.style.height = "0px";
         const scrollHeight = bodyRef.current.scrollHeight;
         bodyRef.current.style.height = scrollHeight + "px";
-        setRendered(!rendered);
     }, [])
 
+    useRerender(2);
     useStickyWindow();
 
     const toggleReply = () => {

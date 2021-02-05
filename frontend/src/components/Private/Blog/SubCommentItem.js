@@ -2,15 +2,19 @@ import React, { useEffect, useRef, useState } from "react";
 import { format } from "date-fns";
 import axios from "axios";
 
+import Modal from "../../Utility/Modal";
+import { DirtyRerender, useRerender } from "../../Utility/Hooks";
+
 export default function SubCommentItem({ subComment, containerID, commentID }) {
-    const [rendered, setRendered] = useState(false);
+    const [isModal, setIsModal] = useState(false);
+
     const bodyRef = useRef();
 
+    useRerender();
     useEffect(() => {
         bodyRef.current.style.height = "0px";
         const scrollHeight = bodyRef.current.scrollHeight;
         bodyRef.current.style.height = scrollHeight + "px";
-        setRendered(true);
     }, [])
 
     const handleApprove = () => {
@@ -18,9 +22,18 @@ export default function SubCommentItem({ subComment, containerID, commentID }) {
             .then(res => {
                 if (res.data.response === "SUCCESS") {
                     subComment.isApproved = true;
-                    setRendered(!rendered);
+                    DirtyRerender();
                 }
             })
+    }
+
+    const handleDelete = () => {
+        axios.delete(`/api/blog/comment/sub/delete/${containerID}/${commentID}/${subComment._id}`)
+        .then(() => DirtyRerender())
+    }
+
+    const toggleDeleteModal = () => {
+        setIsModal(!isModal);
     }
 
     const renderBody = () => {
@@ -42,6 +55,10 @@ export default function SubCommentItem({ subComment, containerID, commentID }) {
             {!subComment.isApproved && <button className="yellow-button" onClick={handleApprove}>
                 Approve
             </button>}
+            <button style={{ marginLeft: "20px" }} className="yellow-button" onClick={toggleDeleteModal}>Delete</button>
+            <Modal open={isModal} onClose={toggleDeleteModal} small>
+                Are you sure? <button className="generic-button" onClick={handleDelete}>Yes</button> <button className="generic-button" onClick={toggleDeleteModal}>No</button>
+            </Modal>
         </div>
     )
 }

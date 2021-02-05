@@ -17,8 +17,6 @@ export default function PostView() {
             .catch(err => {})
     }, [postID.current])
 
-    // TODO: Fix Navbar Links
-    // TODO: Fix Copied Notification
     return (
         <div className="home-bg-img-3-fixed">
             <div className="inspire-post-container">

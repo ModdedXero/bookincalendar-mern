@@ -11,3 +11,17 @@ export function useStickyWindow() {
         }
     })
 }
+
+export function useRerender(renderCount = 1) {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        if (count < renderCount) {
+            setCount(count + 1);
+        }
+    }, [])
+}
+
+export function DirtyRerender() {
+    window.location.reload();
+}

@@ -1,16 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import { format } from "date-fns";
 
+import { useRerender } from "../../../../Utility/Hooks";
+
 export default function PostSubComment({ subComment }) {
-    const [rendered, setRendered] = useState(false);
     const bodyRef = useRef();
 
     useEffect(() => {
         bodyRef.current.style.height = "0px";
         const scrollHeight = bodyRef.current.scrollHeight;
         bodyRef.current.style.height = scrollHeight + "px";
-        setRendered(!rendered);
     }, [])
+
+    useRerender();
 
     const renderBody = () => {
         var ret = []
