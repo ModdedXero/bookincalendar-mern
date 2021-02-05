@@ -5,13 +5,11 @@ import BlogListItem from "./BlogListItem";
 import SiteFooter from "../SiteFooter";
 import PostViewNav from "./PostView/PostViewNav";
 
-export default function BlogFeatured({ setPage }) {
+export default function BlogTutorial() {
     const [blogs, setBlogs] = useState([]);
 
     useEffect(() => {
-        setPage("Inspire");
-
-        axios.get("/api/blog/blogs/category/Tutorials")
+        axios.get("/api/blog/blogs/category/tutorials")
             .then(res => setBlogs(res.data.blogs.reverse()))
     }, [blogs])
 

@@ -5,12 +5,10 @@ import BlogListItem from "./BlogListItem";
 import SiteFooter from "../SiteFooter";
 import PostViewNav from "./PostView/PostViewNav";
 
-export default function BlogBusiness({ setPage }) {
+export default function BlogBusiness() {
     const [blogs, setBlogs] = useState([]);
 
     useEffect(() => {
-        setPage("Inspire");
-
         axios.get(`/api/blog/blogs/category/${"Business"}`)
             .then(res => setBlogs(res.data.blogs.reverse()))
     })

@@ -6,7 +6,6 @@ import SiteFooter from "../../SiteFooter";
 import PostViewNav from "./PostViewNav";
 import PostViewBody from "./PostViewBody";
 import PostViewFoot from "./PostViewFoot";
-import PostViewComments from "./PostViewComments";
 
 export default function PostView() {
     const [postData, setPostData] = useState("");

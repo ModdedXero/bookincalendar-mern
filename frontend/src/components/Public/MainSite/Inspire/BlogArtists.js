@@ -5,12 +5,10 @@ import BlogListItem from "./BlogListItem";
 import SiteFooter from "../SiteFooter";
 import PostViewNav from "./PostView/PostViewNav";
 
-export default function BlogArtists({ setPage }) {
+export default function BlogArtists() {
     const [blogs, setBlogs] = useState([]);
 
     useEffect(() => {
-        setPage("Inspire");
-
         axios.get(`/api/blog/blogs/category/${"Featured Artists"}`)
             .then(res => setBlogs(res.data.blogs.reverse()))
     })
