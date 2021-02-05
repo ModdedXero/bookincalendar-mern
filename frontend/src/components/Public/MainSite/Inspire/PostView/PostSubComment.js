@@ -9,7 +9,7 @@ export default function PostSubComment({ subComment }) {
         bodyRef.current.style.height = "0px";
         const scrollHeight = bodyRef.current.scrollHeight;
         bodyRef.current.style.height = scrollHeight + "px";
-        setRendered(true);
+        setRendered(!rendered);
     }, [])
 
     const renderBody = () => {

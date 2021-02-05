@@ -15,7 +15,7 @@ export default function PostComment({ comment, containerID }) {
         bodyRef.current.style.height = "0px";
         const scrollHeight = bodyRef.current.scrollHeight;
         bodyRef.current.style.height = scrollHeight + "px";
-        setRendered(true);
+        setRendered(!rendered);
     }, [])
 
     useStickyWindow();
