@@ -2,6 +2,7 @@ import React from "react";
 import ReactQuill from "react-quill";
 
 import SocialMedia from "../SocialMedia";
+import PostViewComments from "./PostViewComments";
 
 export default function PostViewBody({ postData }) {
     return (
@@ -14,6 +15,7 @@ export default function PostViewBody({ postData }) {
                 value={postData.body}
             />
             <SocialMedia post={postData} />
+            <PostViewComments commentsID={postData.commentsID} />
         </div>
     )
 }

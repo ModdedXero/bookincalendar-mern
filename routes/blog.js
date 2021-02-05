@@ -39,7 +39,7 @@ router.route("/create").post((req, res) => {
         .catch(err => console.log(err))
     newCommentContainer.save()
         .then()
-        .catch(err => {})
+        .catch(() => {})
 })
 
 router.route("/blogs").get((req, res) => {
@@ -93,11 +93,18 @@ router.route("/delete/:id").delete((req, res) => {
 
 /* Comment Routes */
 
+router.route("/comments/:id").get((req, res) => {
+    CommentContainer.findById(req.params.id)
+        .then(doc => res.json({ response: doc }))
+        .catch(err => res.status(400).json({ response: `Error: ${err}` }))
+})
+
 router.route("/comment/add/:id").post((req, res) => {
     const newComment = {
         authorName: req.body.name,
         authorEmail: req.body.email,
         authorWebsite: req.body.website,
+        commentBody: req.body.commentBody,
         isApproved: false,
         createdDate: new Date()
     }
@@ -105,7 +112,7 @@ router.route("/comment/add/:id").post((req, res) => {
     CommentContainer.findByIdAndUpdate(req.params.id, {
         $push: { comments: newComment }
     })
-    .then(doc => res.json({ response: "SUCCESS" }))
+    .then(() => res.json({ response: "SUCCESS" }))
 })
 
 router.route("/comment/sub/add/:id").post(async (req, res) => {
@@ -115,6 +122,7 @@ router.route("/comment/sub/add/:id").post(async (req, res) => {
         authorName: req.body.name,
         authorEmail: req.body.email,
         authorWebsite: req.body.website,
+        commentBody: req.body.commentBody,
         isApproved: false,
         createdDate: new Date()
     }
@@ -164,7 +172,7 @@ router.route("/comment/approve/:id").post(async (req, res) => {
     const doc = await CommentContainer.findById(req.params.id);
 
     doc.comments.map((comment, index) => {
-        if (comment._id == req.body.commentId) {
+        if (comment._id == req.body.commentID) {
             doc.comments[index].isApproved = true;
         }
     })
@@ -177,9 +185,9 @@ router.route("/comment/sub/approve/:id").post(async (req, res) => {
     const doc = await CommentContainer.findById(req.params.id);
 
     doc.comments.map((comment, i) => {
-        if (comment._id == req.body.commentId) {
+        if (comment._id == req.body.commentID) {
             comment.subComments.map((subCom, j) => {
-                if (subCom._id == req.body.subComId) {
+                if (subCom._id == req.body.subComID) {
                     doc.comments[i].subComments[j].isApproved = true;
                 }
             })

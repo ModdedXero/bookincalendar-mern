@@ -8,7 +8,6 @@ import { MakeID, ReadParam } from "../../Utility/RandomUtils";
 import { useAuth } from "../../../contexts/AuthContext";
 import { BlogPostTypes } from "../../../global";
 import CreatePostNavbar from "./CreatePostNavbar";
-import axios from "axios";
 
 export default function CreateBlog() {
     const { uploadFile } = useAuth();

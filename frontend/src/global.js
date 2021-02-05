@@ -1,4 +1,5 @@
 export const BlogPostTypes = [
     "Featured Artists",
-    "Business"
+    "Business",
+    "Tutorials"
 ]

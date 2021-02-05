@@ -9,6 +9,7 @@ export default function PostViewNav() {
             <DynamicLink className="stripped-button" to="/inspire/featured">Featured</DynamicLink>
             <DynamicLink className="stripped-button" to="/inspire/artists">Featured Artists</DynamicLink>
             <DynamicLink className="stripped-button" to="/inspire/business">Business</DynamicLink>
+            <DynamicLink className="stripped-button" to="/inspire/tutorials">Tutorials</DynamicLink>
             <div className="float-right">
             </div>
         </div>

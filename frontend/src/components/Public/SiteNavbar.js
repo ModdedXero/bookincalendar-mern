@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import DynamicLink from "../Utility/DynamicLink";
 
 export default function SiteNavbar({ component: Component }) {
-    const [activePage, setActivePage] = useState();
     const [isNavCollapsed, setIsNavCollapsed] = useState(true);
 
     const toggleNav = () => {
@@ -14,7 +13,7 @@ export default function SiteNavbar({ component: Component }) {
         <>
             <nav className="navbar">
                 <div
-                    className={`navbar-links ${isNavCollapsed ? "" : "active"}`}
+                    className={`navbar-links ${isNavCollapsed ? "" : "active animate"}`}
                 >
                     <DynamicLink className="navbar-link" to="/" root>Home</DynamicLink>
                     <DynamicLink className="navbar-link" to="/inspire" root>Inspire</DynamicLink>
@@ -25,7 +24,7 @@ export default function SiteNavbar({ component: Component }) {
                 <button className="navbar-burger" onClick={toggleNav}><i className="fa fa-bars"></i></button>
             </nav>
             <div className="site-content">
-                <Component setPage={setActivePage} />
+                <Component />
             </div>
         </>
     )

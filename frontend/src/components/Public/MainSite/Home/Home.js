@@ -4,11 +4,7 @@ import SubmitForm from "./SubmitForm";
 import SiteFooter from "../SiteFooter";
 import NewsletterPop from "../../NewsletterPop";
 
-export default function Home({ setPage }) {
-    useEffect(() => {
-        setPage("Home");
-    })
-
+export default function Home() {
     return (
         <>
             <NewsletterPop />

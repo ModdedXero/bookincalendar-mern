@@ -3,17 +3,12 @@ import axios from "axios";
 
 import { GenerateLocalURL } from "../../../../Utility/RandomUtils";
 
-export default function PostViewFoot({ category }) {
+export default function PostViewFoot() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        if (category !== "FEATURED") {
-            axios.get(`/api/blog/blogs/category/${category}`)
-                .then(res => setPosts(res.data.blogs))
-        } else {
-            axios.get("/api/blog/blogs/featured")
-                .then(res => setPosts(res.data.blogs))
-        }
+        axios.get("/api/blog/blogs/featured")
+            .then(res => setPosts(res.data.blogs.reverse()))
     }, [posts])
 
     return (

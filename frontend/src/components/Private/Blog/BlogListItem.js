@@ -55,7 +55,7 @@ export default function BlogListItem({ post }) {
                 {post.title}
             </td>
             <td style={{ width: "100px" }}>
-                <a className="stripped-button" href={`/private/admin/blog/edit/?postid=${post._id}`}>Edit</a> | <button className="stripped-button" onClick={toggleDeleteModal}>Delete</button>
+            <a className="stripped-button" href={`/private/admin/blog/comments/?commentsid=${post.commentsID}`}>Comments</a>  <a className="stripped-button" href={`/private/admin/blog/edit/?postid=${post._id}`}>Edit</a> | <button className="stripped-button" onClick={toggleDeleteModal}>Delete</button>
             </td>
 
             <Modal open={isModal} onClose={toggleDeleteModal} small>

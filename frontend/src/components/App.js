@@ -15,6 +15,7 @@ import Blog from "./Public/MainSite/Inspire/Blog";
 import BlogFeatured from "./Public/MainSite/Inspire/BlogFeatured";
 import BlogArtists from "./Public/MainSite/Inspire/BlogArtists";
 import BlogBusiness from "./Public/MainSite/Inspire/BlogBusiness";
+import BlogTutorial from "./Public/MainSite/Inspire/BlogTutorial";
 import PostView from "./Public/MainSite/Inspire/PostView/PostView";
 
 /* Login Routes */
@@ -25,6 +26,7 @@ import ForgotPassword from "./Public/Login/ForgotPassword";
 /* Admin Routes */
 import CreateBlog from "./Private/Blog/CreateBlog";
 import BlogAdmin from "./Private/Blog/BlogAdmin";
+import BlogComments from "./Private/Blog/BlogComments";
 
 /* Booking Calendar Routes */
 import Calendar from "./Private/BookingCalendar/Calendar/Calendar";
@@ -41,14 +43,17 @@ function App() {
             <Switch>
                 {/* Main Site Routes */}
                 <DynamicRoute exact path="/" layout="SITE" component={Home} />
+                <DynamicRoute path="/create" layout="SITE" component={Booking} />
+                <DynamicRoute path="/educate" layout="SITE" component={ECourses} />
+                <DynamicRoute path="/submit" layout="SITE" component={Submit} />
+
+                {/* Blog Routes */}
                 <DynamicRoute path="/inspire/post" layout="SITE" component={PostView} />
                 <DynamicRoute path="/inspire/featured" layout="SITE" component={BlogFeatured} />
                 <DynamicRoute path="/inspire/artists" layout="SITE" component={BlogArtists} />
                 <DynamicRoute path="/inspire/business" layout="SITE" component={BlogBusiness} />
+                <DynamicRoute path="/inspire/tutorials" layout="SITE" component={BlogTutorial} />
                 <DynamicRoute path="/inspire" layout="SITE" component={Blog} />
-                <DynamicRoute path="/create" layout="SITE" component={Booking} />
-                <DynamicRoute path="/educate" layout="SITE" component={ECourses} />
-                <DynamicRoute path="/submit" layout="SITE" component={Submit} />
 
                 {/* Login Routes */}
                 <DynamicRoute path="/login/signup" layout="SITE" component={Signup} />
@@ -58,6 +63,7 @@ function App() {
                 {/* Admin Routes */}
                 <DynamicRoute path="/private/admin/blog/create" layout="SITE" secure admin component={CreateBlog} />
                 <DynamicRoute path="/private/admin/blog/edit/" layout="SITE" secure admin component={CreateBlog} />
+                <DynamicRoute path="/private/admin/blog/comments/" layout="SITE" secure admin component={BlogComments} />
                 <DynamicRoute exact path="/private/admin/blog" layout="SITE" secure admin component={BlogAdmin} />
 
                 {/* Booking Calendar Routes */}

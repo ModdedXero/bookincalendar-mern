@@ -25,8 +25,7 @@ export default function PostView() {
             <div className="inspire-post-container">
                 <PostViewNav />
                 <PostViewBody postData={postData} />
-                <PostViewComments postID={postData.commentID} />
-                <PostViewFoot category="FEATURED" />
+                <PostViewFoot />
             </div>
             <SiteFooter />
         </div>

@@ -6,6 +6,7 @@ const commentSchema = new Schema({
     authorName: String,
     authorEmail: String,
     authorWebsite: String,
+    commentBody: String,
     isApproved: {
         type: Boolean,
         default: false
@@ -15,6 +16,7 @@ const commentSchema = new Schema({
         authorName: String,
         authorEmail: String,
         authorWebsite: String,
+        commentBody: String,
         isApproved: {
             type: Boolean,
             default: false

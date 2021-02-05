@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import PostListItem from "./PostListItem";
+import BlogListItem from "./BlogListItem";
 import SiteFooter from "../SiteFooter";
 import PostViewNav from "./PostView/PostViewNav";
 
@@ -23,7 +23,7 @@ export default function BlogBusiness({ setPage }) {
                 <ul className="inspire-blog-list">
                     {blogs.map((blog) => {
                         if (blog.visible) {
-                            return <PostListItem post={blog} />
+                            return <BlogListItem post={blog} />
                         }
                     })}
                 </ul>

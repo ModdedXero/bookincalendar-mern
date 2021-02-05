@@ -10,20 +10,14 @@ import {
 } from "react-share";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
-import { GenerateLocalURL } from "../../../Utility/RandomUtils";
+import { useStickyWindow } from "../../../Utility/Hooks";
 
 export default function SocialMedia({ post }) {
-    const windowPosition = useRef({});
     const [isCopied, setIsCopied] = useState(false);
 
-    useLayoutEffect(() => {
-        if (windowPosition !== null) {
-            window.scrollTo(windowPosition.current.x, windowPosition.current.y);
-        }
-    })
+    useStickyWindow();
 
     const handleCopy = () => {
-        windowPosition.current = { x: window.scrollX, y: window.scrollY };
         setIsCopied(true);
     }
 
