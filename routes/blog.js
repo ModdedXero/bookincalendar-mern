@@ -93,6 +93,27 @@ router.route("/delete/:id").delete((req, res) => {
 
 /* Comment Routes */
 
+router.route("/comments/count/:id").get(async (req, res) => {
+    var commentCount = 0;
+    const doc = await CommentContainer.findById(req.params.id).catch(() => {})
+
+    if (doc != undefined) {
+        doc.comments.map((comment) => {
+            if (!comment.isApproved) {
+                commentCount++;
+            }
+
+            comment.subComments.map((sub) => {
+                if (!sub.isApproved) {
+                    commentCount++;
+                }
+            })
+        })
+    }
+
+    res.json({ response: commentCount });
+})
+
 router.route("/comments/:id").get((req, res) => {
     CommentContainer.findById(req.params.id)
         .then(doc => res.json({ response: doc }))
