@@ -9,7 +9,7 @@ export default function BlogTutorial() {
     const [blogs, setBlogs] = useState([]);
 
     useEffect(() => {
-        axios.get("/api/blog/blogs/category/tutorials")
+        axios.get("/api/blog/blogs/category/Tutorials")
             .then(res => setBlogs(res.data.blogs.reverse()))
     }, [blogs])
 
