@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 
 import SubmitForm from "./SubmitForm";
 import SiteFooter from "../SiteFooter";
@@ -8,7 +9,11 @@ export default function Home() {
     return (
         <>
             <NewsletterPop />
-            <div className="bg-img-paral home-bg-img-1" id="Home" />
+            <div className="bg-img-paral home-bg-img-1" id="Home">
+                <Link className="blog-atag center stripped-button" to="/inspire">
+                    {"The Blog >"}
+                </Link>
+            </div>
             <div className="bg-img-paral home-bg-img-2" />
             <div className="home-twedo" id="ThWeDo">
                 <h1>INSPIRE. CREATE. EDUCATE.</h1>
