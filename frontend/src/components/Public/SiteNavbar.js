@@ -12,9 +12,7 @@ export default function SiteNavbar({ component: Component }) {
     return (
         <>
             <nav className="navbar">
-                <div
-                    className={`navbar-links ${isNavCollapsed ? "" : "active animate"}`}
-                >
+                <div className={`navbar-links ${isNavCollapsed ? "" : "active animate"}`}>
                     <DynamicLink className="navbar-link" to="/" root>Home</DynamicLink>
                     <DynamicLink className="navbar-link" to="/inspire" root>Inspire</DynamicLink>
                     <DynamicLink className="navbar-link" to="/create" root>Create</DynamicLink>

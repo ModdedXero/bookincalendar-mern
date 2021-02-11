@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import Modal from "../../Utility/Modal";
+import Modal from "../../../Utility/Modal";
 
 export default function BlogListItem({ post }) {
     const [isVis, setIsVis] = useState(post.visible);

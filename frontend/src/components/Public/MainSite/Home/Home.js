@@ -10,9 +10,13 @@ export default function Home() {
         <>
             <NewsletterPop />
             <div className="bg-img-paral home-bg-img-1" id="Home">
-                <Link className="blog-atag center stripped-button" to="/inspire">
-                    {"The Blog >"}
-                </Link>
+                <div className="center home-title-container">
+                    <h1>BEC</h1>
+                    <span>Bold, Emotional, Colorful</span>
+                    <Link className="blog-atag stripped-button" to="/inspire">
+                        {"The Blog >"}
+                    </Link>
+                </div>
             </div>
             <div className="bg-img-paral home-bg-img-2" />
             <div className="home-twedo" id="ThWeDo">

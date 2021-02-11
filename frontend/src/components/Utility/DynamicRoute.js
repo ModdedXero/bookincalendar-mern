@@ -1,6 +1,6 @@
 import React from "react";
 
-import ProfileNavbar from "../Private/ProfileNavbar";
+import ProfileNavbar from "../Private/SecureNavbar";
 import SiteNavbar from "../Public/SiteNavbar";
 import { useAuth } from "../../contexts/AuthContext";
 import Login from "../Public/Login/Login";
@@ -36,9 +36,7 @@ export default function DynamicRoute({ component: Component, layout, secure, adm
       }
       case "PROFILE": {
         return (
-          <ProfileNavbar>
-            {actualRouteComponent()}
-          </ProfileNavbar>
+          <ProfileNavbar component={actualRouteComponent()} />
         )
       }
       default: {

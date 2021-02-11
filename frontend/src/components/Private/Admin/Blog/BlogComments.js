@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
-import { ReadParam } from "../../Utility/RandomUtils";
+import { ReadParam } from "../../../Utility/RandomUtils";
 import CommentItem from "./CommentItem";
 
 export default function BlogComments() {

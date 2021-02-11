@@ -201,7 +201,7 @@ button {
 /* Home */
 
 .home-bg-img-1 {
-    background-image: url(https://firebasestorage.googleapis.com/v0/b/bec-livesite.appspot.com/o/SiteImages%2FHome%2FBECLogoHeader1.8.21.jpg?alt=media&token=c12d18ad-af39-4e71-a390-d0b34197713e);
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/bec-livesite.appspot.com/o/SiteImages%2FHome%2FBECBlankLogoHeader1.8.21.png?alt=media&token=d3eeadf3-8dbc-4ce6-9fbf-52e7d8a022d6);
     height: 100vh;
 }
 
@@ -212,7 +212,7 @@ button {
 
 .home-bg-img-3 {
     background-image: url(https://firebasestorage.googleapis.com/v0/b/bec-livesite.appspot.com/o/SiteImages%2FHome%2FBECBlankLogoHeader1.8.21.png?alt=media&token=d3eeadf3-8dbc-4ce6-9fbf-52e7d8a022d6);
-    height: 85vh;
+    height: 100vh;
 }
 
 .home-bg-img-3-fixed {
@@ -229,6 +229,24 @@ button {
     color: var(--yellow);
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;;
+}
+
+.home-title-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.home-title-container h1 {
+    font: var(--home-header-font);
+    color: #363636;
+    font-size: 120px;
+    margin-left: 5px;
+}
+
+.home-title-container span {
+    font-family: "Libre Baskerville";
+    font-size: 30px;
 }
 
 .home-minilogo {
@@ -432,13 +450,6 @@ button {
 }
 
 @media screen and (max-width:840px) {
-    .home-bg-img-1 {
-        height: auto;
-        min-height: 70vh;
-        width: 100vw;
-        background-attachment: unset;
-    }
-
     .home-bg-img-2 {
         height: auto;
         min-height: 70vh;
@@ -1374,14 +1385,12 @@ button {
 /* Side Navbar */
 
 .sidenav {
-    margin: 20px;
     padding: 0;
     width: 200px;
     background-color: white;
     position: fixed;
     overflow: hidden;
-    height: 95.5%;
-    border-radius: 10px;
+    height: 100%;
     box-shadow: var(--shadow);
 }
 

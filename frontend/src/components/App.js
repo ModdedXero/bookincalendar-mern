@@ -4,6 +4,8 @@ import { Switch } from "react-router-dom";
 
 import DynamicRoute from "./Utility/DynamicRoute";
 
+/* Public Routes */
+
 /* Main Site Routes */
 import Home from "./Public/MainSite/Home/Home";
 import ECourses from "./Public/MainSite/ECourses";
@@ -12,10 +14,6 @@ import Submit from "./Public/MainSite/Submit";
 
 /* Blog Routes */
 import Blog from "./Public/MainSite/Inspire/Blog";
-import BlogFeatured from "./Public/MainSite/Inspire/BlogFeatured";
-import BlogArtists from "./Public/MainSite/Inspire/BlogArtists";
-import BlogBusiness from "./Public/MainSite/Inspire/BlogBusiness";
-import BlogTutorial from "./Public/MainSite/Inspire/BlogTutorial";
 import PostView from "./Public/MainSite/Inspire/PostView/PostView";
 
 /* Login Routes */
@@ -23,10 +21,16 @@ import Login from "./Public/Login/Login";
 import Signup from "./Public/Login/Signup";
 import ForgotPassword from "./Public/Login/ForgotPassword";
 
+/* Secure Routes */
+
+import SecureHome from "./Private/SecureHome";
+import SecureBlog from "./Private/Blog/SecureBlog";
+import SecureProfile from "./Private/SecureProfile";
+
 /* Admin Routes */
-import CreateBlog from "./Private/Blog/CreateBlog";
-import BlogAdmin from "./Private/Blog/BlogAdmin";
-import BlogComments from "./Private/Blog/BlogComments";
+import CreateBlog from "./Private/Admin/Blog/CreateBlog";
+import BlogAdmin from "./Private/Admin/Blog/BlogAdmin";
+import BlogComments from "./Private/Admin/Blog/BlogComments";
 
 /* Booking Calendar Routes */
 import Calendar from "./Private/BookingCalendar/Calendar/Calendar";
@@ -41,6 +45,8 @@ function App() {
     return (
         <AuthProvider>
             <Switch>
+                {/* Public Routes */}
+
                 {/* Main Site Routes */}
                 <DynamicRoute exact path="/" layout="SITE" component={Home} />
                 <DynamicRoute path="/create" layout="SITE" component={Booking} />
@@ -49,16 +55,18 @@ function App() {
 
                 {/* Blog Routes */}
                 <DynamicRoute path="/inspire/post" layout="SITE" component={PostView} />
-                <DynamicRoute path="/inspire/featured" layout="SITE" component={BlogFeatured} />
-                <DynamicRoute path="/inspire/artists" layout="SITE" component={BlogArtists} />
-                <DynamicRoute path="/inspire/business" layout="SITE" component={BlogBusiness} />
-                <DynamicRoute path="/inspire/tutorials" layout="SITE" component={BlogTutorial} />
                 <DynamicRoute path="/inspire" layout="SITE" component={Blog} />
 
                 {/* Login Routes */}
                 <DynamicRoute path="/login/signup" layout="SITE" component={Signup} />
                 <DynamicRoute path="/login/forgot-password" layout="SITE" component={ForgotPassword} />
                 <DynamicRoute path="/login" layout="SITE" component={Login} />
+
+                {/* Secure Routes */}
+
+                <DynamicRoute path="/secure/inspire" layout="PROFILE" secure component={SecureBlog} />
+                <DynamicRoute path="/secure/profile" layout="PROFILE" secure component={SecureProfile} />
+                <DynamicRoute path="/secure" layout="PROFILE" secure component={SecureHome} />
 
                 {/* Admin Routes */}
                 <DynamicRoute path="/private/admin/blog/create" layout="SITE" secure admin component={CreateBlog} />

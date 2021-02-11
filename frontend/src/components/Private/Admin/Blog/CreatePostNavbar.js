@@ -1,6 +1,6 @@
 import React from "react";
 
-import { BlogPostTypes } from "../../../global";
+import { BlogPostTypes } from "../../../../global";
 
 export default function CreatePostNavbar({ defaults, saveDefaults}) {
     return (

@@ -4,9 +4,9 @@ import ReactQuill from "react-quill";
 import TextareaAutosize from "react-textarea-autosize";
 import Axios from "axios";
 
-import { MakeID, ReadParam } from "../../Utility/RandomUtils";
-import { useAuth } from "../../../contexts/AuthContext";
-import { BlogPostTypes } from "../../../global";
+import { MakeID, ReadParam } from "../../../Utility/RandomUtils";
+import { useAuth } from "../../../../contexts/AuthContext";
+import { BlogPostTypes } from "../../../../global";
 import CreatePostNavbar from "./CreatePostNavbar";
 
 export default function CreateBlog() {
