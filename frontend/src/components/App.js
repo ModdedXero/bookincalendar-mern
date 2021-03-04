@@ -30,9 +30,9 @@ import SecureInbox from "./Private/Secure/SecureInbox";
 import SecureUsers from "./Private/Secure/Users/SecureUsers";
 
 /* Admin Routes */
-import CreateBlog from "./Private/Admin/Blog/CreateBlog";
-import BlogAdmin from "./Private/Admin/Blog/BlogAdmin";
-import BlogComments from "./Private/Admin/Blog/BlogComments";
+import CreateBlog from "./Private/Secure/BlogAdmin/CreateBlog";
+import BlogAdmin from "./Private/Secure/BlogAdmin/BlogAdmin";
+import BlogComments from "./Private/Secure/BlogAdmin/BlogComments";
 
 /* Booking Calendar Routes */
 import Calendar from "./Private/BookingCalendar/Calendar/Calendar";
