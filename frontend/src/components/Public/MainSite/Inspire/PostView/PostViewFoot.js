@@ -1,34 +1,33 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
-
-import { GenerateLocalURL } from "../../../../Utility/RandomUtils";
 
 export default function PostViewFoot() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         axios.get("/api/blog/blogs/featured")
-            .then(res => setPosts(res.data.blogs.reverse()))
-    }, [posts])
+            .then(res => setPosts(res.data.blogs))
+    }, [])
 
     return (
         <div className="featured-container">
             <div className="featured-container-title">
                 <h1>
-                    <a 
+                    <Link 
                         className="stripped-button" 
-                        href={GenerateLocalURL("/inspire/featured")}
+                        to={"/inspire/featured"}
                     >
                         {`Featured Posts`}
-                    </a>
+                    </Link>
                 </h1>
                 <div className="">
-                    <a 
+                    <Link 
                         className="stripped-button" 
-                        href={GenerateLocalURL("/inspire")}
+                        to={"/inspire"}
                     >
                         See All
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className="inspire-post-featured">
@@ -39,7 +38,7 @@ export default function PostViewFoot() {
 
                     return (
                         <div>
-                            <a href={GenerateLocalURL(`/inspire/post/${post.slug}`)}>
+                            <a to={`/inspire/post/${post.slug}`}>
                                 <img 
                                     src={post.coverImage} 
                                     alt=""
@@ -48,7 +47,7 @@ export default function PostViewFoot() {
                             <h4>
                                 <a 
                                     className="stripped-button"
-                                    href={GenerateLocalURL(`/inspire/post/${post.slug}`)}
+                                    to={`/inspire/post/${post.slug}`}
                                 >
                                     {post.title}
                                 </a>

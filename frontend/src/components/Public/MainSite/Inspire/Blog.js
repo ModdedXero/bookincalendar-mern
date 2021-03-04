@@ -16,28 +16,28 @@ export default function Blog() {
         switch (location.pathname.split('/').pop())
         {
             case "inspire":
-                axios("/api/blog/blogs")
-                    .then(res => setBlogs(res.data.blogs.reverse()))
+                axios.get("/api/blog/blogs")
+                    .then(res => setBlogs(res.data.blogs))
                 break;
             case "featured":
                 axios.get("/api/blog/blogs/featured")
-                    .then(res => setBlogs(res.data.blogs.reverse()))
+                    .then(res => setBlogs(res.data.blogs))
                 break;
             case "artists":
                 axios.get(`/api/blog/blogs/category/${"Featured Artists"}`)
-                    .then(res => setBlogs(res.data.blogs.reverse()))
+                    .then(res => setBlogs(res.data.blogs))
                 break;
             case "business":
                 axios.get(`/api/blog/blogs/category/${"Business"}`)
-                    .then(res => setBlogs(res.data.blogs.reverse()))
+                    .then(res => setBlogs(res.data.blogs))
                 break;
             case "tutorials":
                 axios.get("/api/blog/blogs/category/Tutorials")
-                    .then(res => setBlogs(res.data.blogs.reverse()))
+                    .then(res => setBlogs(res.data.blogs))
                 break;
             default:
-                axios("/api/blog/blogs")
-                    .then(res => setBlogs(res.data.blogs.reverse()))
+                axios.get("/api/blog/blogs")
+                    .then(res => setBlogs(res.data.blogs))
                 break;
         }
     }, [location])

@@ -18,7 +18,7 @@ export default function BlogAdmin() {
                     <h1>Posts {blogs.length}</h1>
                 </div>
                 <div className="blog-admin-title-button">
-                    <Link className="generic-button" to="/private/admin/blog/create">Create New Post</Link>
+                    <Link className="generic-button" to="/secure/admin/blog/create">Create New Post</Link>
                 </div>
             </div>
             <div style={{ backgroundColor: "white", borderRadius: "10px" }}>

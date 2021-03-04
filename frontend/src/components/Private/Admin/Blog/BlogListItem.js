@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import Modal from "../../../Utility/Modal";
+import { Link } from "react-router-dom";
 
 export default function BlogListItem({ post }) {
     const [isVis, setIsVis] = useState(post.visible);
@@ -61,10 +62,10 @@ export default function BlogListItem({ post }) {
                 {post.title}
             </td>
             <td style={{ width: "100px" }}>
-                <a className="stripped-button" href={`/private/admin/blog/edit/?postid=${post._id}`}>Edit</a> | <button className="stripped-button" onClick={toggleDeleteModal}>Delete</button>
+                <a className="stripped-button" href={`/secure/admin/blog/edit/?postid=${post._id}`}>Edit</a> | <button className="stripped-button" onClick={toggleDeleteModal}>Delete</button>
             </td>
             <td>
-                <a className="stripped-button" href={`/private/admin/blog/comments/?commentsid=${post.commentsID}`}>Comments</a> | <p>{commentCount}</p>
+                <Link className="stripped-button" to={`/secure/admin/blog/comments/${post.commentsID}`}>Comments</Link> | <p>{commentCount}</p>
             </td>
 
             <Modal open={isModal} onClose={toggleDeleteModal} small>

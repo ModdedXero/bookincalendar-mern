@@ -5,7 +5,7 @@ import { ReadParam } from "../../../Utility/RandomUtils";
 import CommentItem from "./CommentItem";
 
 export default function BlogComments() {
-    const commentsID = useRef(ReadParam(window, "commentsid"));
+    const commentsID = useRef(ReadParam());
 
     const [comments, setComments] = useState([]);
 

@@ -10,22 +10,21 @@ const userSchema = new Schema({
     },
     uid: {
         type: String,
-        required: true
+        required: true,
     },
-    eventsID: {
+    profileName: {
         type: String,
-        required: true
+        default: ""
     },
-    clientsID: {
+    profilePicture: {
         type: String,
-        required: true
+        default: ""
     },
-    isTrial: {
-        type: Boolean,
-        default: true
-    },
-    expirationDate: {
-        type: Date
+    profileTags: [String],
+    profileAuthority: Number,
+    profileCreatedDate: {
+        type: Date,
+        default: new Date()
     }
 })
 

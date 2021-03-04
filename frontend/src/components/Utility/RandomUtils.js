@@ -10,13 +10,13 @@ export function MakeID(length) {
     return result;
 }
 
-export function ReadParam(wind, param) {
-    if (param !== "") {
-        const queryString = wind.location.search;
+export function ReadParam(param) {
+    if (param) {
+        const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         return urlParams.get(param);
     } else {
-        const ret = wind.location.pathname.split("/");
+        const ret = window.location.pathname.split("/");
         return ret[ret.length - 1];
     }
 }

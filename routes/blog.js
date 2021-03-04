@@ -15,6 +15,8 @@ router.route("/create").post((req, res) => {
     const seoTitle = req.body.seoTitle;
     const slug = req.body.slug;
     const seoDescription = req.body.seoDescription;
+    const status = req.body.status;
+    const authorID = req.body.authorID;
 
     const newCommentContainer = new CommentContainer();
 
@@ -28,10 +30,12 @@ router.route("/create").post((req, res) => {
         blogCategory,
         featured,
         visible,
+        status,
         seoTitle,
         slug,
         seoDescription,
-        commentsID
+        commentsID,
+        authorID
     });
 
     newBlog.save()
@@ -42,21 +46,27 @@ router.route("/create").post((req, res) => {
         .catch(() => {})
 })
 
-router.route("/blogs").get((req, res) => {
-    Blog.find()
-        .then(doc => res.json({ blogs: doc }))
+router.route("/blogs/featured").get((req, res) => {
+    Blog.find({ featured: true, visible: true })
+        .then(doc => res.json({ blogs: doc.reverse() }))
         .catch(err => res.status(400).json({ response: `Error: ${err}` }))
 })
 
-router.route("/blogs/featured").get((req, res) => {
-    Blog.find({ featured: true, visible: true })
-        .then(doc => res.json({ blogs: doc }))
+router.route("/blogs/:id").get((req, res) => {
+    Blog.find({ authorID: req.params.id})
+        .then(doc => res.json({ response: doc }))
         .catch(err => res.status(400).json({ response: `Error: ${err}` }))
 })
 
 router.route("/blogs/category/:category").get((req, res) => {
     Blog.find({ blogCategory: req.params.category })
-        .then(doc => res.json({ blogs: doc }))
+        .then(doc => res.json({ blogs: doc.reverse() }))
+        .catch(err => res.status(400).json({ response: `Error: ${err}` }))
+})
+
+router.route("/blogs").get((req, res) => {
+    Blog.find()
+        .then(doc => res.json({ blogs: doc.reverse() }))
         .catch(err => res.status(400).json({ response: `Error: ${err}` }))
 })
 

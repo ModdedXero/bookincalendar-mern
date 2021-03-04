@@ -10,8 +10,8 @@ import { BlogPostTypes } from "../../../../global";
 import CreatePostNavbar from "./CreatePostNavbar";
 
 export default function CreateBlog() {
-    const { uploadFile } = useAuth();
-    const postID = useRef(ReadParam(window, "postid"));
+    const { uploadFile, currentUser } = useAuth();
+    const postID = useRef(ReadParam("postid"));
     const history = useHistory();
 
     const [postDoc, setPostDoc] = useState();
@@ -58,6 +58,7 @@ export default function CreateBlog() {
     })
 
     async function handleSubmit() {
+        // TODO: Update the status list when creating blogs and change it from just a 1
         if (postID.current === null) {
             const postData = {
                 title: titleRef.current.value,
@@ -67,9 +68,11 @@ export default function CreateBlog() {
                 blogCategory: category,
                 featured: isFeatured,
                 visible: isPublished,
+                status: 1,
                 seoTitle: seoTitle.current,
                 slug: slug.current,
-                seoDescription: seoDescription.current
+                seoDescription: seoDescription.current,
+                authorID: currentUser.uid
             }
 
             const fileRef = {
@@ -93,7 +96,9 @@ export default function CreateBlog() {
                 visible: isPublished,
                 seoTitle: seoTitle.current,
                 slug: slug.current,
-                seoDescription: seoDescription.current
+                status: 0,
+                seoDescription: seoDescription.current,
+                authorID: currentUser.uid
             };
 
             const fileRef = {
@@ -108,7 +113,7 @@ export default function CreateBlog() {
 
             Axios.post(`/api/blog/update/${postID.current}`, postData)
                 .then(res => console.log(res.data.response))
-            history.push("/private/admin/blog");
+            history.push("/secure/admin/blog");
         }
     }
 

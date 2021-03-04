@@ -1,6 +1,6 @@
 import React from "react";
 
-import ProfileNavbar from "../Private/SecureNavbar";
+import ProfileNavbar from "../Private/Secure/SecureNavbar";
 import SiteNavbar from "../Public/SiteNavbar";
 import { useAuth } from "../../contexts/AuthContext";
 import Login from "../Public/Login/Login";

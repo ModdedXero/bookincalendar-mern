@@ -3,6 +3,7 @@ import { AuthProvider } from "../contexts/AuthContext";
 import { Switch } from "react-router-dom";
 
 import DynamicRoute from "./Utility/DynamicRoute";
+import "normalize.css"
 
 /* Public Routes */
 
@@ -23,9 +24,10 @@ import ForgotPassword from "./Public/Login/ForgotPassword";
 
 /* Secure Routes */
 
-import SecureHome from "./Private/SecureHome";
-import SecureBlog from "./Private/Blog/SecureBlog";
-import SecureProfile from "./Private/SecureProfile";
+import SecureBlogPosts from "./Private/Secure/Blog/SecureBlogPosts";
+import SecurePostCreate from "./Private/Secure/Blog/SecurePostCreate";
+import SecureInbox from "./Private/Secure/SecureInbox";
+import SecureUsers from "./Private/Secure/Users/SecureUsers";
 
 /* Admin Routes */
 import CreateBlog from "./Private/Admin/Blog/CreateBlog";
@@ -54,7 +56,7 @@ function App() {
                 <DynamicRoute path="/submit" layout="SITE" component={Submit} />
 
                 {/* Blog Routes */}
-                <DynamicRoute path="/inspire/post" layout="SITE" component={PostView} />
+                <DynamicRoute path="/inspire/post/" layout="SITE" component={PostView} />
                 <DynamicRoute path="/inspire" layout="SITE" component={Blog} />
 
                 {/* Login Routes */}
@@ -62,17 +64,18 @@ function App() {
                 <DynamicRoute path="/login/forgot-password" layout="SITE" component={ForgotPassword} />
                 <DynamicRoute path="/login" layout="SITE" component={Login} />
 
+                {/* Admin Routes */}
+                <DynamicRoute path="/secure/admin/blog/create" layout="SITE" secure admin component={CreateBlog} />
+                <DynamicRoute path="/secure/admin/blog/edit/" layout="SITE" secure admin component={CreateBlog} />
+                <DynamicRoute path="/secure/admin/blog/comments/" layout="PROFILE" secure admin component={BlogComments} />
+                <DynamicRoute exact path="/secure/admin/blog" layout="PROFILE" secure admin component={BlogAdmin} />
+
                 {/* Secure Routes */}
 
-                <DynamicRoute path="/secure/inspire" layout="PROFILE" secure component={SecureBlog} />
-                <DynamicRoute path="/secure/profile" layout="PROFILE" secure component={SecureProfile} />
-                <DynamicRoute path="/secure" layout="PROFILE" secure component={SecureHome} />
-
-                {/* Admin Routes */}
-                <DynamicRoute path="/private/admin/blog/create" layout="SITE" secure admin component={CreateBlog} />
-                <DynamicRoute path="/private/admin/blog/edit/" layout="SITE" secure admin component={CreateBlog} />
-                <DynamicRoute path="/private/admin/blog/comments/" layout="SITE" secure admin component={BlogComments} />
-                <DynamicRoute exact path="/private/admin/blog" layout="SITE" secure admin component={BlogAdmin} />
+                <DynamicRoute path="/secure/blog/post" layout="PROFILE" secure component={SecurePostCreate} />
+                <DynamicRoute path="/secure/blog" layout="PROFILE" secure component={SecureBlogPosts} />
+                <DynamicRoute path="/secure/users" layout="PROFILE" secure component={SecureUsers} />
+                <DynamicRoute path="/secure" layout="PROFILE" secure component={SecureInbox} />
 
                 {/* Booking Calendar Routes */}
                 <DynamicRoute path="/client/calendar/:calendarID" layout="NONE" component={ClientCalendar} />

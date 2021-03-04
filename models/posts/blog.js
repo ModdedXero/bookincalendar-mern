@@ -30,6 +30,7 @@ const blogSchema = new Schema({
         type: Boolean,
         default: false
     },
+    status: String,
     seoTitle: {
         type: String
     },
@@ -40,7 +41,8 @@ const blogSchema = new Schema({
     seoDescription: {
         type: String
     },
-    commentsID: String
+    commentsID: String,
+    authorID: String
 })
 
 const Blog = mongoose.model("Blog", blogSchema);

@@ -9,7 +9,7 @@ import PostViewFoot from "./PostViewFoot";
 
 export default function PostView() {
     const [postData, setPostData] = useState("");
-    const postID = useRef(ReadParam(window, ""));
+    const postID = useRef(ReadParam(""));
 
     useEffect(() => {
         axios.get(`/api/blog/public/${postID.current}`)
