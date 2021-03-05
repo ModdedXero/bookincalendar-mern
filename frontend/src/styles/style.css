@@ -635,11 +635,45 @@ button {
     width: fit-content;
     padding: 10px;
     bottom: 0;
+    color: white;
 }
 
 .secure-blog-post-status span {
     padding: 5px 20px;
     border-radius: 30px;
+}
+
+.secure-blog-create-container {
+    display: flex;
+    flex-direction: column;
+    width: 702px;
+    padding: 15px 30px;
+    margin: 0 auto 10px auto;
+    border: 1px solid #cacaca;
+    background-color: white;
+}
+
+.secure-blog-create-title {
+    font: var(--home-header-font);
+    text-align: center;
+    background-color: white;
+    color: #474747;
+    resize: none;
+    width: 640px;
+}
+
+.secure-blog-create-body {
+    width: 640px;
+    position: relative;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.secure-blog-create-body .ql-toolbar {
+    position: sticky;
+    top: 68px;
+    background-color: white;
+    z-index: 10;
 }
 
 .blog-admin-page {

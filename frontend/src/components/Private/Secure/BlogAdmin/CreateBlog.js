@@ -1,10 +1,11 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import ReactQuill from "react-quill";
 import TextareaAutosize from "react-textarea-autosize";
 import Axios from "axios";
 
 import { MakeID, ReadParam } from "../../../Utility/RandomUtils";
+import { useStickyWindow } from "../../../Utility/Hooks";
 import { useAuth } from "../../../../contexts/AuthContext";
 import { BlogPostTypes } from "../../../../global";
 import CreatePostNavbar from "./CreatePostNavbar";
@@ -29,7 +30,6 @@ export default function CreateBlog() {
     const quillBody = useRef("");
     const blogID = useRef(MakeID(24));
     const titleRef = useRef("");
-    const windowPosition = useRef({});
 
     useEffect(() => {
         // Get Post data from backend server
@@ -51,11 +51,7 @@ export default function CreateBlog() {
         }
     }, [postID.current])
 
-    useLayoutEffect(() => {
-        if (windowPosition !== null) {
-            window.scrollTo(windowPosition.current.x, windowPosition.current.y);
-        }
-    })
+    useStickyWindow();
 
     async function handleSubmit() {
         // TODO: Update the status list when creating blogs and change it from just a 1
@@ -180,8 +176,6 @@ export default function CreateBlog() {
     }
 
     const saveNavbarData = (e, type) => {
-        windowPosition.current = { x: window.scrollX, y: window.scrollY };
-
         switch (type) {
             case "COVER":
                 setCoverImage(e.target.files[0]);
