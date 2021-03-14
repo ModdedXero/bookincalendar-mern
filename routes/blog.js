@@ -47,7 +47,7 @@ router.route("/create").post((req, res) => {
 })
 
 router.route("/blogs/featured").get((req, res) => {
-    Blog.find({ featured: true, visible: true })
+    Blog.find({ featured: true })
         .then(doc => res.json({ blogs: doc.reverse() }))
         .catch(err => res.status(400).json({ response: `Error: ${err}` }))
 })
@@ -90,7 +90,7 @@ router.route("/update/:id").post((req, res) => {
         new: true
     })
     .then(res.json({ response: "Blog Updated!" }))
-    .catch(err => res.status(400).json({ response: `Error: ${err}` }))
+    .catch(err => console.log(err))
 })
 
 router.route("/delete/:id").delete((req, res) => {

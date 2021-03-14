@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const firebase = require("firebase");
 const metaRender = require("./metarender");
+const patches = require("./patches");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -50,6 +51,7 @@ app.use("/api/calendar", calenadarRouter);
 app.use("/api/blog", blogRouter);
 app.use("/api/submit", submitRouter);
 
+
 if (process.env.NODE_ENV === "production") {
     app.get("/inspire/post/*", (req, res) => {
       metaRender.RenderMetaTags(req, res, metaRender.types.BLOG);
@@ -67,6 +69,8 @@ if (process.env.NODE_ENV === "production") {
       metaRender.RenderMetaTags(req, res, metaRender.types.Default);
     })
 }
+
+patches.PatchDatabase();
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

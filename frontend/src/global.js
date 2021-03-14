@@ -15,3 +15,9 @@ export const BlogPostStatus = Object.freeze({
     1: "Draft",
     2: "Under Review"
 })
+
+export const BlogPostStatusColor = Object.freeze({
+    0: "#8fd461",
+    1: "#d94366",
+    2: "#EBBA4D"
+})

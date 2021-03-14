@@ -4,8 +4,8 @@ import axios from "axios";
 import { useAuth } from "../../../../contexts/AuthContext";
 import Modal from "../../../Utility/Modal";
 import Form from "../../../Utility/Form";
-import ProfileTag from "./ProfileTag";
 import { ProfileAuthority } from "../../../../global";
+import ProfileTag from "./ProfileTag";
 
 export default function ProfileCard({ profile }) {
     const { updatePassword, uploadFile } = useAuth();

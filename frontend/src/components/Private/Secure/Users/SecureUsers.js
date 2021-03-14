@@ -3,9 +3,9 @@ import { format } from "date-fns";
 import axios from "axios";
 
 import Modal from "../../../Utility/Modal";
-import { ProfileAuthority } from "../../../../global";
 import { MakeID } from "../../../Utility/RandomUtils";
 import Form from "../../../Utility/Form";
+import { ProfileAuthority } from "../../../../global";
 
 export default function SecureUsers() {
     const [users, setUsers] = useState([]);

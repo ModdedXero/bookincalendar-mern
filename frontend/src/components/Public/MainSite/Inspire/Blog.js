@@ -49,7 +49,7 @@ export default function Blog() {
                 <PostViewNav />
                 <ul className="inspire-blog-list">
                     {blogs.map((blog) => {
-                        if (blog.visible) {
+                        if (blog.status == 0) {
                             return <BlogListItem post={blog} />
                         }
                     })}

@@ -30,7 +30,6 @@ import SecureInbox from "./Private/Secure/SecureInbox";
 import SecureUsers from "./Private/Secure/Users/SecureUsers";
 
 /* Admin Routes */
-import CreateBlog from "./Private/Secure/BlogAdmin/CreateBlog";
 import BlogAdmin from "./Private/Secure/BlogAdmin/BlogAdmin";
 import BlogComments from "./Private/Secure/BlogAdmin/BlogComments";
 
@@ -65,8 +64,6 @@ function App() {
                 <DynamicRoute path="/login" layout="SITE" component={Login} />
 
                 {/* Admin Routes */}
-                <DynamicRoute path="/secure/admin/blog/create" layout="SITE" secure admin component={CreateBlog} />
-                <DynamicRoute path="/secure/admin/blog/edit/" layout="SITE" secure admin component={CreateBlog} />
                 <DynamicRoute path="/secure/admin/blog/comments/" layout="PROFILE" secure admin component={BlogComments} />
                 <DynamicRoute exact path="/secure/admin/blog" layout="PROFILE" secure admin component={BlogAdmin} />
 

@@ -135,7 +135,7 @@ button {
     background-color: var(--yellow);
     color: white;
     padding: 10px;
-    margin: 10px 0;
+    margin: 10px 5px;
     transition: all 0.35s ease 0s;
     cursor: pointer;
     text-decoration: none !important;
@@ -588,6 +588,7 @@ button {
     border: 1px solid #cacaca;
     height: 200px;
     min-width: 670px;
+    margin-bottom: 20px;
 }
 
 .secure-blog-post img {
@@ -626,7 +627,8 @@ button {
 }
 
 .secure-blog-post-buttons button, .secure-blog-post-buttons a {
-    margin: 13px;
+    margin: 13px auto;
+    padding-right: 5px;
     font-size: 24px;
 }
 
@@ -643,7 +645,26 @@ button {
     border-radius: 30px;
 }
 
-.secure-blog-create-container {
+.secure-blog-create-container-1 {
+    text-align: center;
+}
+
+.secure-blog-create-container-1 h1 {
+    font: var(--home-header-font);
+    margin: 0 0 20px 0;
+}
+
+.secure-blog-create-container-1 img {
+    width: 420px;
+    height: auto;
+    outline: 1px solid #cacaca;
+}
+
+.secure-blog-create-container-1 img:hover {
+    box-shadow: 0 0 8px var(--yellow);
+}
+
+.secure-blog-create-container-2, .secure-blog-create-container-1 {
     display: flex;
     flex-direction: column;
     width: 702px;
@@ -676,149 +697,22 @@ button {
     z-index: 10;
 }
 
-.blog-admin-page {
-    margin: 0 auto;
-    padding: 30px;
-    width: 900px;
-}
-
-.blog-admin-title {
-    height: 60px;
-}
-
-.blog-admin-title-header {
-    float: left;
-}
-
-.blog-admin-title-button {
-    float: right;
-}
-
-.blog-admin-table {
-    width: 100%;
-}
-
-.blog-admin-table-row {
-    width: 640px;
-    height: 100px;
-    border-bottom: 5px solid black;
-}
-
-.blog-create {
-    justify-content: center;
-    height: 100%;
-    display: flex;
-    padding-left: 400px;
-}
-
-.blog-create-navbar {
-    position: fixed;
-    left: 0;
-    padding: 10px;
-    width: 400px;
-    height: 100%;
-    background-color: white;
-    box-shadow: var(--shadow-sm);
-    overflow: scroll;
-    overflow-x: hidden;
-}
-
-.blog-create-navbar div {
-    padding-bottom: 20px;
-    border-bottom: 1px solid black;
-}
-
-.blog-create-navbar h3 {
-    margin-top: 10px;
-}
-
-.blog-create-navbar-seo input {
-    font-size: 18px;
-    width: 100%;
-}
-
-.blog-create-navbar-seo textarea {
-    background-color: white;
-    border: 1px solid black;
-    font-size: 18px;
-    width: 100%;
-    resize: vertical;
-}
-
-.blog-create-container {
-    position: relative;
-    margin: 10px auto;
-    background-color: white;
-    width: 640px;
-}
-
-.blog-create-title {
-    font: var(--home-header-font);
-    text-align: center;
-    background-color: white;
-    color: #474747;
-    resize: none;
-    width: 100%;
-}
-
-.blog-create-content {
-    width: 640px;
-    position: relative;
-    margin: 0 auto;
-    background-color: white;
-}
-
-.blog-create-content .ql-toolbar {
-    position: sticky;
-    top: 68px;
-    background-color: white;
-    z-index: 10;
-}
-
-.blog-create-cover {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: 10px auto;
-}
-
-.blog-create-cover img {
-    width: 100%;
-    height: auto;
-}
-
-.blog-create-cover input::-webkit-file-upload-button {
-    visibility: hidden;
-    display: none;
-}
-
-.blog-create-cover input {
-    width: 117px;
-    overflow-x: hidden;
-    top: 22px;
-}
-
-.blog-create-cover input::before {
-    content: "Select a picture";
+.secure-blog-create-body .ql-save {
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
     display: inline-block;
-    background: -webkit-linear-gradient(top,#f9f9f9,#e3e3e3);
-    border: 1px solid #999;
-    border-radius: 3px;
-    padding: 5px 8px;
-    outline: none;
-    white-space: nowrap;
-    -webkit-user-select: none;
-    user-select: none;
-    cursor: pointer;
-    text-shadow: 1px 1px #fff;
-    font-weight: 700;
-    font-size: 10pt;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
 }
 
-.blog-create-button {
-    position: fixed;
-    right: 20px;
-    top: 90px;
+.secure-blog-create-body .ql-save:hover {
+    color: var(--yellow) !important;
+}
+
+.secure-blog-create-body .ql-save::before {
+    content: "\f0c7";
 }
 
 /* Blog */
@@ -1800,7 +1694,6 @@ button {
     right: 0;
     bottom: 0;
     overflow: auto;
-    background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.7);
 }
 

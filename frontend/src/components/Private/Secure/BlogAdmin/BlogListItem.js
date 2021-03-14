@@ -3,10 +3,10 @@ import axios from "axios";
 
 import Modal from "../../../Utility/Modal";
 import { Link } from "react-router-dom";
+import { BlogPostStatusColor, BlogPostStatus } from "../../../../global";
 
 export default function BlogListItem({ post }) {
-    const [isVis, setIsVis] = useState(post.visible);
-    const [isModal, setIsModal] = useState(false);
+    const [deleteModal, setDeleteModal] = useState(false);
     const [commentCount, setCommentCount] = useState(0);
 
     useEffect(() => {
@@ -14,63 +14,43 @@ export default function BlogListItem({ post }) {
             .then(res => setCommentCount(res.data.response));
     }, [])
 
-    const toggleVisible = (vis) => {
-        if (vis === true) {
-            const updatedPost = post;
-            updatedPost.visible = true;
-
-            axios.post(`/api/blog/update/${post._id}`, updatedPost)
-                .then(res => console.log(res.data.response))
-        } else if (vis === false) {
-            const updatedPost = post;
-            updatedPost.visible = false;
-
-            axios.post(`/api/blog/update/${post._id}`, updatedPost)
-                .then(res => console.log(res.data.response))
-        }
-
-        setIsVis(vis);
-    }
-
-    const toggleDeleteModal = () => {
-        setIsModal(!isModal);
-    }
-
-    const handleDelete = () => {
-        axios.delete(`/api/blog/delete/${post._id}`)
+    async function handleDelete() {
+        await axios.delete(`/api/blog/delete/${post._id}`)
             .then(res => console.log(res.data.response))
 
         window.location.reload();
     }
 
     return (
-        <tr className="blog-admin-table-row">
-            <td style={{ width: "72px", textAlign: "center" }}>
-                {isVis ?
-                <button style={{ color: "green", cursor: "pointer" }} onClick={() => toggleVisible(false)}>Published</button>
-                : 
-                <button style={{ color: "red", cursor: "pointer" }} onClick={() => toggleVisible(true)}>Draft</button>}
-            </td>
-            <td>
-                <img 
-                    style={{ padding: "10px 10px 5px 10px", height: "95px", width: "auto" }}
-                    src={post.coverImage}
-                    alt="cover"
-                />
-            </td>
-            <td style={{ width: "auto" }}>
-                {post.title}
-            </td>
-            <td style={{ width: "100px" }}>
-                <a className="stripped-button" href={`/secure/admin/blog/edit/?postid=${post._id}`}>Edit</a> | <button className="stripped-button" onClick={toggleDeleteModal}>Delete</button>
-            </td>
-            <td>
-                <Link className="stripped-button" to={`/secure/admin/blog/comments/${post.commentsID}`}>Comments</Link> | <p>{commentCount}</p>
-            </td>
-
-            <Modal open={isModal} onClose={toggleDeleteModal} small>
-                Are you sure? <button className="generic-button" onClick={handleDelete}>Yes</button> <button className="generic-button" onClick={toggleDeleteModal}>No</button>
+        <div className="secure-blog-post">
+            <img src={post.coverImage} />
+            <div className="secure-blog-post-title">
+                <h1>{post.title}</h1>
+                <div className="secure-blog-post-status">
+                    <span style={{ backgroundColor: BlogPostStatusColor[post.status] }}>
+                        {BlogPostStatus[post.status]}
+                    </span>
+                </div>
+            </div>
+            <div className="secure-blog-post-buttons">
+                <Link className="stripped-button" to={`/secure/blog/post/${post._id}`}>
+                    <i className="fas fa-edit" />
+                </Link>
+                <Link className="stripped-button" to={`/secure/admin/blog/comments/${post.commentsID}`}>
+                    {commentCount}
+                    <i className="fas fa-comments" />
+                </Link>
+                <button className="stripped-button" onClick={() => setDeleteModal(true)}>
+                    <i className="fas fa-trash-alt" />
+                </button>
+            </div>
+            <Modal open={deleteModal} onClose={() => setDeleteModal(false)} small>
+                <div>
+                    <h1>Are you sure you want to delete this post?</h1>
+                    <button className="yellow-button" onClick={handleDelete}>Yes</button>
+                    <button className="yellow-button" onClick={() => setDeleteModal(false)}>No</button>
+                </div>
             </Modal>
-        </tr>
+        </div>
     )
 }
