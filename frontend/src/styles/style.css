@@ -351,6 +351,38 @@ button {
     margin: 10px 0;
 }
 
+.home-blogtiles {
+    height: 1500px;
+}
+
+.home-blogtiles h1 {
+    padding: 100px 0;
+    margin: auto;
+    font: var(--home-header-font);
+    color: var(--home-header-color);
+    width: 500px;
+    text-align: center;
+}
+
+.home-blogtiles-grid {
+    display: grid;
+    grid-template-columns: 313px 313px 313px;
+    width: 313px;
+    height: 394px;
+    justify-content: space-evenly;
+    margin-left: calc((100% - 450px) * 0.5);
+}
+
+.home-blogtiles-tile {
+    background-color: white;
+
+}
+
+.home-blogtiles-tile img {
+    height: 315px;
+    width: 315px;
+}
+
 .home-submit {
     height: fit-content;
     background-color: white;

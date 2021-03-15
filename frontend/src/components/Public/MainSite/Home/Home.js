@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import SubmitForm from "./SubmitForm";
 import SiteFooter from "../SiteFooter";
 import NewsletterPop from "../../NewsletterPop";
+import BlogTiles from "./BlogTiles";
 
 export default function Home() {
     return (
@@ -63,7 +63,7 @@ export default function Home() {
                     </section>
                 </div>
             </div>
-            <SubmitForm />
+            <BlogTiles />
             <div className="home-follow" id="FollowUs">
                 <h1>Let's get Social</h1>
                 <p className="home-follow-line" />
