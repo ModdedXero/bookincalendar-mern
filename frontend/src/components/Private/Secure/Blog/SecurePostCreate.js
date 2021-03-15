@@ -140,6 +140,7 @@ export default function SecurePostCreate({ authority }) {
     }
 
     // TODO: Add safety filters for SEO before publish
+    // TODO: Add filters for Blog Types on backend
 
     return (
         <>

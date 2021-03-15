@@ -1,6 +1,10 @@
 const Blog = require("./models/posts/blog");
 
-async function PatchDatabase() {
+function PatchDatabase() {
+    BlogStatusPatch();
+}
+
+async function BlogStatusPatch() {
     let posts = [];
 
     await Blog.find()
