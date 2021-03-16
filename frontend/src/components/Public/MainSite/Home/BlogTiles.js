@@ -10,8 +10,6 @@ export default function BlogTiles() {
             .then(res => setPosts(res.data.blogs))
     }, [])
 
-    console.log(posts.length)
-
     return (
         <div className="bg-img-paral home-bg-img-3 home-blogtiles">
             <h1>FEATURED BLOG POSTS</h1>
@@ -19,10 +17,15 @@ export default function BlogTiles() {
                 {posts.map((post) => {
                     return (
                         <div className="home-blogtiles-tile">
-                            <img src={post.coverImage} />
-                            <Link className="stripped-button" to={`/inspire/post/${post.slug}`}>
-                                {post.title}
-                            </Link>
+                            <div 
+                                className="home-blogtiles-tile-img" 
+                                style={{ backgroundImage: `url(${post.coverImage})` }}
+                            />
+                            <div className="home-blogtiles-tile-title">
+                                <Link className="stripped-button" to={`/inspire/post/${post.slug}`}>
+                                    {post.title}
+                                </Link>
+                            </div>
                         </div>
                     )
                 })}
