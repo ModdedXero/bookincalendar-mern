@@ -1,30 +1,50 @@
 # Web Server API Calls
-# Foobar
+**Show User**
+----
+  Returns json data about a single user.
 
-Foobar is a Python library for dealing with word pluralization.
+* **URL**
 
-## Installation
+  /users/:id
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+* **Method:**
 
-```bash
-pip install foobar
-```
+  `GET`
+  
+*  **URL Params**
 
-## Usage
+   **Required:**
+ 
+   `id=[integer]`
 
-```python
-import foobar
+* **Data Params**
 
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
+  None
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+* **Success Response:**
 
-Please make sure to update tests as appropriate.
+  * **Code:** 200 <br />
+    **Content:** `{ id : 12, name : "Michael Bloom" }`
+ 
+* **Error Response:**
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "User doesn't exist" }`
+
+  OR
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{ error : "You are unauthorized to make this request." }`
+
+* **Sample Call:**
+
+  ```javascript
+    $.ajax({
+      url: "/users/1",
+      dataType: "json",
+      type : "GET",
+      success : function(r) {
+        console.log(r);
+      }
+    });
+  ```
