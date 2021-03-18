@@ -47,13 +47,13 @@ export default function Blog() {
             <div className="inspire-blog">
                 <h1>INSPIRE</h1>
                 <PostViewNav />
-                <ul className="inspire-blog-list">
+                <div className="home-blogtiles-grid">
                     {blogs.map((blog) => {
                         if (blog.status == 0) {
                             return <BlogListItem post={blog} />
                         }
                     })}
-                </ul>
+                </div>
             </div>
             <SiteFooter />
         </div>

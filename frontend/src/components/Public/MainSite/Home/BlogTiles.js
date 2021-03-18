@@ -17,10 +17,12 @@ export default function BlogTiles() {
                 {posts.map((post) => {
                     return (
                         <div className="home-blogtiles-tile">
-                            <div 
-                                className="home-blogtiles-tile-img" 
-                                style={{ backgroundImage: `url(${post.coverImage})` }}
-                            />
+                            <Link to={`/inspire/post/${post.slug}`}>
+                                <div 
+                                    className="home-blogtiles-tile-img" 
+                                    style={{ backgroundImage: `url(${post.coverImage})` }}
+                                />
+                            </Link>
                             <div className="home-blogtiles-tile-title">
                                 <Link className="stripped-button" to={`/inspire/post/${post.slug}`}>
                                     {post.title}

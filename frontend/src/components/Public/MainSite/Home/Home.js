@@ -19,6 +19,19 @@ export default function Home() {
                 </div>
             </div>
             <div className="bg-img-paral home-bg-img-2" />
+            <div className="bg-img-paral home-bg-img-3 home-community" id="Community">
+                <h1>COMMUNITY</h1>
+                <div className="home-community-body">
+                    <section className="home-community-body-img">
+                        <img alt="" src="https://firebasestorage.googleapis.com/v0/b/bec-livesite.appspot.com/o/SiteImages%2FHome%2FManWithBaby.jpg?alt=media&token=07362e9e-0c21-445e-89db-0d9b658b3e09" />
+                    </section>
+                    <section className="home-community-body-text">
+                        <p>Bold, Emotional, Colorful is a photography community for lifestyle photographers.</p>
+                        <p>Want to learn from BEC Artists? </p>
+                        <p>We provide the tools you need to find your style and run a business. </p>
+                    </section>
+                </div>
+            </div>
             <div className="home-twedo" id="ThWeDo">
                 <h1>INSPIRE. CREATE. EDUCATE.</h1>
                 <div className="home-twedo-body">
@@ -50,19 +63,6 @@ export default function Home() {
                     src="https://firebasestorage.googleapis.com/v0/b/bec-livesite.appspot.com/o/SiteImages%2FHome%2FLOGO%20MINI.png?alt=media&token=1e555dc3-23ab-4705-86c9-cfbe070890de" 
                 />
             </div>
-            <div className="bg-img-paral home-bg-img-3 home-community" id="Community">
-                <h1>OUR COMMUNITY</h1>
-                <div className="home-community-body">
-                    <section className="home-community-body-img">
-                        <img alt="" src="https://firebasestorage.googleapis.com/v0/b/bec-livesite.appspot.com/o/SiteImages%2FHome%2FManWithBaby.jpg?alt=media&token=07362e9e-0c21-445e-89db-0d9b658b3e09" />
-                    </section>
-                    <section className="home-community-body-text">
-                        <p>Bold, Emotional, Colorful is a photography community for lifestyle photographers.</p>
-                        <p>Want to learn from BEC Artists? </p>
-                        <p>We provide the tools you need to find your style and run a business. </p>
-                    </section>
-                </div>
-            </div>
             <BlogTiles />
             <div className="home-follow" id="FollowUs">
                 <h1>Let's get Social</h1>
@@ -73,7 +73,6 @@ export default function Home() {
                     <a href="https://www.instagram.com/boldemotionalcolorful/">INSTAGRAM</a>
                 </div>
             </div>
-            <div className="bg-img-paral home-bg-img-3 home-last" />
             <SiteFooter />
         </>
     )
