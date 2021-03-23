@@ -44,7 +44,7 @@ export default function SecureNavbar({ component: Component }) {
                 </div>
             </nav>
             <div className="sidenav-content">
-                <Component authority={profile.profileAuthority} />
+                <Component authority={profile.profileAuthority} userProfile={profile} />
             </div>
         </div>
     )

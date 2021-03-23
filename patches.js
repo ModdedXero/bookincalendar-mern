@@ -1,7 +1,10 @@
 const Blog = require("./models/posts/blog");
+const User = require("./models/user");
+const Inbox = require("./models/inbox");
 
 function PatchDatabase() {
     BlogStatusPatch();
+    UserInboxPatch();
 }
 
 async function BlogStatusPatch() {
@@ -21,6 +24,20 @@ async function BlogStatusPatch() {
         
         posts[index].visible = undefined;
         posts[index].save();
+    })
+}
+
+async function UserInboxPatch() {
+    const users = await User.find();
+
+    users.map((user) => {
+        if (user.inboxID == undefined) {
+            const inbox = new Inbox();
+
+            user.inboxID = inbox._id;
+            user.save();
+            inbox.save();
+        }
     })
 }
 

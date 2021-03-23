@@ -5,7 +5,6 @@ const nodemailer = require("nodemailer");
 
 const User = require("../models/user");
 
-
 const transporter = nodemailer.createTransport({
     service: "yahoo",
     auth: {

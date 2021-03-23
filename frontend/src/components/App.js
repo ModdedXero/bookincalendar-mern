@@ -26,7 +26,7 @@ import ForgotPassword from "./Public/Login/ForgotPassword";
 
 import SecureBlogPosts from "./Private/Secure/Blog/SecureBlogPosts";
 import SecurePostCreate from "./Private/Secure/Blog/SecurePostCreate";
-import SecureInbox from "./Private/Secure/SecureInbox";
+import SecureInbox from "./Private/Secure/Inbox/SecureInbox";
 import SecureUsers from "./Private/Secure/Users/SecureUsers";
 
 /* Admin Routes */

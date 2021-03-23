@@ -45,12 +45,13 @@ const userRouter = require("./routes/user");
 const calenadarRouter = require("./routes/calendar");
 const blogRouter = require("./routes/blog");
 const submitRouter = require("./routes/submit");
+const inboxRouter = require("./routes/inbox");
 
 app.use("/api/login", userRouter);
 app.use("/api/calendar", calenadarRouter);
 app.use("/api/blog", blogRouter);
 app.use("/api/submit", submitRouter);
-
+app.use("/api/inbox", inboxRouter);
 
 if (process.env.NODE_ENV === "production") {
     app.get("/inspire/post/*", (req, res) => {

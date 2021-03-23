@@ -13,7 +13,6 @@ export default function SecureUsers() {
     const [editUserModal, setEditUserModal] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
 
-    // Add User Refs
     const emailRef = useRef();
     const usernameRef = useRef();
     const authorityRef = useRef();
@@ -57,6 +56,8 @@ export default function SecureUsers() {
 
         return returnArray;
     }
+
+    // TODO: Fix delete user button
 
     return (
         <div className="secure-users-container">

@@ -25,7 +25,8 @@ const userSchema = new Schema({
     profileCreatedDate: {
         type: Date,
         default: new Date()
-    }
+    },
+    inboxID: String
 })
 
 const User = mongoose.model("User", userSchema);
